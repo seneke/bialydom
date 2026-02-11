@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <link rel="shortcut icon" href="https://seohost.pl/files/main/favicon.png" type=image/x-icon>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Strona domyślna">
+    <title>Strona domyślna</title>
+    <link href="https://default.seohost.pl/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <!-- Główna ikona -->
+        <div class="domain-icon">
+          <img src="https://default.seohost.pl/default-icon.svg" alt="Domain" />
+        </div>
+        
+        <!-- Nazwa domeny -->
+        <div class="domain-section">
+          <h1 class="domain-title">bialydomsarbinowo.pl</h1>
+        </div>
+        
+        <!-- Sekcja informacji -->
+        <div class="default-page-notice">
+          <div class="notice-content">
+            <span class="notice-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v4"/>
+                <circle cx="12" cy="16" r="1" fill="currentColor"/>
+              </svg>
+            </span>
+            <p class="notice-text">
+              <span class="lang-pl">To jest strona domyślna. Aby ją zmienić, wgraj pliki do katalogu</span>
+              <span class="lang-en" style="display:none;">This is the default page. To change it, upload files to</span>
+              <code>public_html</code>
+            </p>
+          </div>
+          <p class="notice-footer">
+            <span class="lang-pl">utworzono: Thu Feb  5 18:35:53 2026</span>
+            <span class="lang-en" style="display:none;">created: Thu Feb  5 18:35:53 2026</span>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <a href="https://seohost.pl"><img src="https://default.seohost.pl/logo-white.png" alt="Seohost" class="logo" /></a>
+    </footer>
+
+    <script>
+    // Automatyczne wykrywanie języka przeglądarki
+    (function() {
+      const userLang = navigator.language || navigator.userLanguage;
+      const isPolish = userLang.toLowerCase().startsWith('pl');
+      
+      if (!isPolish) {
+        document.querySelectorAll('.lang-pl').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.lang-en').forEach(el => {
+          if (el.tagName === 'SPAN') {
+            el.style.display = 'inline';
+          } else {
+            el.style.display = 'block';
+          }
+        });
+        document.documentElement.lang = 'en';
+      }
+    })();
+    </script>
+  </body>
+</html>

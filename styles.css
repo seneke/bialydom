@@ -1,0 +1,877 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+:root {
+    --light-grey: #f5f5f5; /* Jasnoszary */
+    --white: #ffffff; /* Biały */
+    --black: #000000; /* Czarny */
+    --violet: #8a3ffc; /* Fioletowy */
+    --dark-grey: #474747; /* Ciemnoszary */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    text-align: center;
+    color: var(--white);
+  }
+
+.background-container {
+    position: relative;
+    height: 100vh; /* Wysokość równająca się wysokości widoku */
+    background: url('img/tlo.jpg') no-repeat center center; /* Tło zdjęcia */
+    background-size: cover; /* Wypełnia cały ekran */
+    background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
+}
+
+header {
+    position: relative;
+    top: 20px;
+    color: white;
+    z-index: 1000;
+}
+
+.logo {
+    max-width: 50px;
+    display: none; /* Domyślnie logo jest ukryte */
+}
+
+section {
+    background: rgba(255, 255, 255, 1); /* Białe tło dla treści */
+    backdrop-filter: blur(5px); /* Rozmycie tła pod treścią */
+    border-radius: 10px;
+    text-align: center; /* Wyśrodkowanie tekstu w poziomie */
+    max-width: 1200px; /* Maksymalna szerokość dla sekcji */
+    margin: 2em auto; /* Wyśrodkowanie sekcji na stronie */
+    padding: 2em; /* Padding wewnętrzny */
+    box-sizing: border-box; /* Upewnia się, że padding i border są wliczane do szerokości */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+ul {
+  list-style: none;
+}
+  
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.notification {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  background: var(--violet);
+}
+
+.nav {
+  display: flex;
+  justify-content: center; /* Wyśrodkuje element w kontenerze */
+  align-items: center;
+  max-width: 100%; /* Dostosuj szerokość, jeśli potrzebujesz */
+  margin: 0 auto; /* Wyśrodkuje cały kontener na stronie */
+}
+
+.nav input#desktop-menu + label {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  cursor: pointer;
+  background: #4a4a4acc; /* Ciemnoszary z przezroczystością */
+  border-radius: 50%;
+}
+
+.nav input#desktop-menu + label:hover {
+    background: rgba(71, 71, 71, 1); /* Pełny kolor po najechaniu */
+}
+
+.nav [type="checkbox"] {
+  position: absolute;
+  left: -9999px;
+}
+
+.nav [type="checkbox"] + label {
+  position: relative;
+  display: block; /* Zapewnia, że element jest traktowany jak blokowy */
+  margin: 0 auto; /* Automatyczne marginesy wyrównają element w poziomie */
+  width: 75px;
+  height: 75px;
+  text-align: center; /* Wyśrodkuje tekst wewnątrz przycisku */
+  background: var(--violet);
+  border-radius: 50%;
+  transition: all 0.2s;
+  cursor: pointer;
+  transform: translateY(80%);
+  opacity: 1;
+}
+
+.nav [type="checkbox"] + label:hover {
+  background: var(--dark-violet);
+  opacity: 1;
+}
+
+.desktop-menu li {
+  position: absolute;
+  top: -100px; /* Pozycja poza widokiem */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.4s;
+  opacity: 0;
+}
+
+.desktop-menu li:nth-child(1) {
+  transition-delay: 0.02s;
+}
+  
+.desktop-menu li:nth-child(2) {
+  transition-delay: 0.015s;
+}
+  
+.desktop-menu li:nth-child(3) {
+  transition-delay: 0.01s;
+}
+  
+.desktop-menu li:nth-child(4) {
+  transition-delay: 0.05s;
+}
+
+.desktop-menu li a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(71, 71, 71, 0.8); /* Ciemnoszary z przezroczystością */
+  transition: background 0.3s; /* Dodaj przejście dla efektów hover */
+}
+
+.desktop-menu li a:hover {
+    background: rgba(71, 71, 71, 1); /* Pełny kolor po najechaniu */
+  }
+
+.desktop-menu li a span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(calc(-100% - 5px));
+  width: 100%;
+  font-size: 13px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s;
+  color: var(--dark-grey);
+  font-weight: bold;
+}
+
+.nav input:checked ~ .desktop-menu {
+    display: block; /* Wyświetlaj menu, gdy checkbox jest zaznaczony */
+}
+
+.nav input:checked ~ .desktop-menu li {
+  position: absolute;
+  left: 50%; /* Wyśrodkowanie */
+  transform: translateX(-50%); /* Wyśrodkowanie */
+  opacity: 1;
+  transition: all 0.4s;
+}
+
+.nav input:checked + label {
+  background: var(--black);
+  transform: translateY(calc(-2%));
+}
+
+.nav input:checked ~ .desktop-menu li:nth-child(1) {
+  top: 200px; /* Półokrąg poniżej przycisku */
+  transition-delay: 0.1s;
+}
+
+.nav input:checked ~ .desktop-menu li:nth-child(2) {
+  top: 180px;
+  transition-delay: 0.2s;
+}
+  
+.nav input:checked ~ .desktop-menu li:nth-child(3) {
+  top: 180px;
+  transition-delay: 0.3s;
+}
+
+h1 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+    color: #444;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+    color: #444;
+    text-align: center;
+}
+
+h3 {
+    color: #333;
+    text-align: center;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #666;
+    text-align: center;
+}
+
+.gallery-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Odstęp między galeriami */
+    background-color: #f5f5f5; /* Tło sekcji */
+}
+
+.gallery-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Odstęp między galerią a tekstem */
+}
+
+.gallery-carousel {
+    border-radius: 15px; /* lub inna wartość w zależności od preferencji */
+    overflow: hidden; /* Zapewnia, że zawartość wewnątrz sekcji nie wystaje poza zaokrąglone rogi */
+    flex: 1; /* Galeria zajmuje pozostałą przestrzeń */
+    position: relative;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease; /* Płynne przejścia między zdjęciami */
+    transform: translateX(-100%); /* Początkowa pozycja */
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: 100%; /* Szerokość każdego elementu */
+    box-sizing: border-box;
+    transition: transform 0.5s ease; /* Płynne przejścia między zdjęciami */
+    flex-shrink: 0;
+}
+
+.carousel-item img {
+    max-width: 100%; /* Maksymalna szerokość zdjęcia */
+    height: 100%; /* Zachowanie proporcji */
+    margin: 0;
+    padding: 0;
+}
+
+.gallery-text {
+    max-width: 400px; /* Maksymalna szerokość tekstu */
+}
+
+.gallery-text h3 {
+    margin: 0 0 10px 0; /* Odstęp poniżej tytułu */
+    font-size: 1.2em;
+}
+
+.gallery-text p {
+    margin: 0; /* Usunięcie marginesów domyślnych */
+    font-size: 1em;
+    color: #666; /* Opcjonalne: kolor tekstu */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.5); /* Tło przycisków */
+    border: none; /* Usunięcie obramowania */
+    color: white; /* Kolor tekstu przycisków */
+    font-size: 2rem; /* Rozmiar czcionki */   
+    display: flex; /* Flexbox do centrowania */
+    align-items: center; /* Wyrównanie pionowe */
+    justify-content: center; /* Wyrównanie poziome */
+    cursor: pointer; /* Kursor ręki */
+    z-index: 10; /* Aby przyciski były na wierzchu */
+    width: 10px; /* Szerokość przycisku */
+    height: 10px; /* Wysokość przycisku */
+}
+
+.carousel-control-prev {
+    left: 10px; /* Odległość od lewej krawędzi */
+}
+
+.carousel-control-next {
+    right: 10px; /* Odległość od prawej krawędzi */
+}
+
+.carousel-control-prev i,
+.carousel-control-next i {
+    font-size: 1.5rem; /* Rozmiar ikon */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: none; /* Ukryj domyślne ikony */
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.6); /* Tło po najechaniu */
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px; /* Odległość od dolnej krawędzi kontenera */
+    left: 50%;
+    transform: translateX(-50%); /* Wyśrodkowanie poziome */
+    display: flex;
+    gap: 8px; /* Odstęp między kropkami */
+    justify-content: center; /* Wyśrodkowanie poziome kropki w kontenerze */
+    align-items: center; /* Wyśrodkowanie pionowe kropki w kontenerze */
+    z-index: 20;
+}
+
+.carousel-indicators button {
+    background-color: white; /* Kolor kropki */
+    border: none; /* Usuń obramowanie */
+    width: 9px; /* Rozmiar kropki */
+    height: 9px; /* Rozmiar kropki */
+    border-radius: 50%; /* Kropki jako okręgi */
+    opacity: 0.7; /* Przezroczystość kropki */
+}
+
+.carousel-indicators span {
+    display: block;
+    width: 10px; /* Szerokość kropki */
+    height: 10px; /* Wysokość kropki */
+    border-radius: 50%; /* Okrągłe kropki */
+    background-color: #fff; /* Kolor kropki (biały) */
+    opacity: 0.6; /* Lekka przezroczystość */
+    cursor: pointer; /* Wskaźnik kursora */
+}
+
+.carousel-indicators .active {
+    background-color: white; /* Kolor aktywnej kropki */
+    opacity: 1; /* Brak przezroczystości dla aktywnej kropki */
+}
+
+.mfp-wrap {
+    margin: auto;           /* Wyśrodkowanie popupu */
+}
+
+
+/* Dostosowanie tła */
+.mfp-bg {
+    opacity: 0.8;           /* Zmienia przezroczystość tła popupu */
+}
+
+/* Opcjonalnie: zmiana wyglądu przycisków nawigacyjnych */
+.mfp-arrow-left {
+    background-image: url('twoja-strzalka-lewa.png'); /* Własna ikona */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Strzałka prawa */
+.mfp-arrow-right {
+    background-image: url('twoja-strzalka-prawa.png'); /* Własna ikona */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.mfp-figure .mfp-zoom-out-cur {
+    font-family: "Material Icons"; /* Font dla Material Icons */
+    content: "zoom_out"; /* Ikona "zoom_out" z Material Icons */
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+}
+
+.mfp-img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+    object-fit: cover; /* Lub "cover", w zależności od preferencji */
+  }
+  .mfp-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mfp-content {
+    max-width: 90%; /* Opcjonalnie: ogranicza maksymalne wymiary popupu */
+    max-height: 90%;
+  }
+
+#gallery {
+    padding: 50px 40px;
+}
+
+.gallery-container-mid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.gallery-text {
+    padding: 1em;
+}
+
+#contact {
+    display: flex; /* Ustawia kontener na flexbox */
+    justify-content: center; /* Rozkłada elementy na przestrzeni kontenera */
+    align-items: flex-start; /* Ustawia elementy do góry kontenera */
+    box-sizing: border-box; /* Upewnia się, że padding jest uwzględniany w szerokości kontenera */
+    gap: 40px; /* Odstęp między galeriami */
+    max-width: 1200px; /* Ta sama maksymalna szerokość co dla innych sekcji */
+    margin: 2em auto; /* Wyśrodkowanie sekcji na stronie */
+    padding: 2em; /* Padding wewnętrzny */
+    background-color: #f5f5f5; /* Tło sekcji */
+    flex-wrap: wrap; /* Umożliwia przejście elementów do nowej linii */
+}
+
+.contact-container, .contact-map {
+    width: 100%;
+}
+
+.contact-text {
+    width: 100%; /* Ogranicza szerokość kontenera tekstowego */
+}
+
+.contact-map iframe {
+    width: 100%; /* Ustawia szerokość iframe na 100% kontenera */
+    height: auto; /* Ustawia wysokość iframe automatycznie w zależności od szerokości */
+}
+
+.contact-text h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+}
+
+.contact-text p {
+    font-size: 1em;
+    color: #555;
+    text-align: center;
+}
+
+.contact-text a.phone {
+    display: block;
+    text-decoration: none;
+    color: #003580;
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.contact-text a.phone:hover {
+    color: #e65c00; /* Kolor po najechaniu */
+}
+
+.booking-button {
+    display: inline-block;
+    margin: 10px auto; /* Wyśrodkowanie przycisku z automatycznymi marginesami po bokach */
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #003580; /* Kolor tła przycisku */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center; /* Wyśrodkowanie tekstu w przycisku */
+    width: 80%; /* Szerokość przycisku dla domyślnych ekranów */
+    max-width: 300px; /* Maksymalna szerokość przycisku */
+}
+
+.booking-button:hover {
+    background-color: #e65c00;
+}
+
+footer {
+    background: rgba(255, 255, 255, 1); /* Przezroczyste tło dla treści */
+    backdrop-filter: blur(5px); /* Rozmycie tła pod treścią */
+    border-radius: 10px;
+    padding: 2em;
+    background-color: #f5f5f5;
+    margin: auto 2em; /* Wyśrodkowanie sekcji na stronie */
+}
+
+@media (max-width: 900px) {
+    .mfp-arrow-left, .mfp-arrow-right {
+        position: absolute;
+        top: 50% !important; /* Ustawienie strzałki na 50% wysokości kontenera */
+        transform: translateY(-50%) !important; /* Wyśrodkowanie strzałki */
+        margin-top: 0 !important; /* Usunięcie ewentualnych marginesów */
+    }
+
+.mfp-content {
+        width: 80%;  /* Przykładowa szerokość */
+        height: 80%;   
+    }
+
+}
+
+/* Tablet and larger screens */
+@media (min-width: 768px) {
+    .carousel-control-prev, .carousel-control-next {
+        width: 60px; /* Zmniejszenie szerokości strzałek */
+        height: 100%; /* Upewnij się, że strzałki zajmują całą wysokość zdjęcia */
+        position: absolute;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.3); /* Dodanie półprzezroczystego tła */
+        z-index: 10;
+    }
+
+    /* Strzałka po lewej stronie */
+    .carousel-control-prev {
+        left: 0; /* Przyleganie do lewej krawędzi zdjęcia */
+    }
+
+    /* Strzałka po prawej stronie */
+    .carousel-control-next {
+        right: 0; /* Przyleganie do prawej krawędzi zdjęcia */
+    }
+
+    .carousel-indicators {
+        display: none;
+    }
+
+    .nav input:checked ~ .desktop-menu li:nth-child(2) {
+        left: calc(50% - 75px); /* Przesunięcie w lewo */
+    }
+    
+    .nav input:checked ~ .desktop-menu li:nth-child(3) {
+        left: calc(50% + 75px); /* Przesunięcie w prawo */
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .logo {
+        display: none; /* Logo ukryte na tabletach i większych ekranach */
+    }
+
+    .background-container {
+        background-size: cover; /* Tło obejmuje całą szerokość i wysokość */
+        height: 80vh; /* Ustawiona większa wysokość na tabletach */
+    }
+
+    .mfp-content {
+        width: 80%;  /* Przykładowa szerokość */
+        height: 80%;
+    }
+
+    #contact {
+        display: flex; /* Ustawia kontener na flexbox */
+        justify-content: space-between; /* Rozkłada elementy na przestrzeni kontenera */
+        align-items: stretch; /* Ustawia elementy do góry kontenera */
+        box-sizing: border-box; /* Upewnia się, że padding jest uwzględniany w szerokości kontenera */
+        gap: 40px; /* Odstęp między galeriami */
+    }
+
+    .contact-container, .contact-map {
+        height: 100%;
+        width: 100%; /* Możesz dostosować szerokość według potrzeb */
+        max-width: 50%; /* Maksymalna szerokość na większych ekranach */
+        box-sizing: border-box; /* Uwzględnia padding w szerokości */
+    }
+    
+    .contact-text {
+        width: 100%; /* Ogranicza szerokość kontenera tekstowego */
+        background: rgba(255, 255, 255, 0.9);
+        padding: 1.5em;
+        border-radius: 10px;
+        text-align: center; /* Wyśrodkowanie tekstu */
+    }
+    
+    .contact-map {
+        height: auto;
+        min-height: 100%; /* Aby zapewnić, że zawsze będzie zajmować przynajmniej wysokość kontenera */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+    
+    .contact-map iframe {
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .contact-text h2 {
+        font-size: 1.8em;
+        margin-bottom: 0.5em;
+    }
+
+    .contact-text p {
+        font-size: 1em;
+        color: #555;
+        margin: 1em 0; /* Margines górny i dolny */
+    }
+
+    .booking-button {
+        display: inline-block;
+        margin: 20px auto; /* Wyśrodkowanie przycisku z automatycznymi marginesami po bokach */
+        padding: 15px 30px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: white;
+        background-color: #003580; /* Kolor tła przycisku */
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        text-align: center; /* Wyśrodkowanie tekstu w przycisku */
+        width: 80%; /* Szerokość przycisku dla domyślnych ekranów */
+        max-width: 300px; /* Maksymalna szerokość przycisku */
+    }
+}
+
+/* Desktop and larger screens */
+@media (min-width: 1024px) {
+    section {
+        padding: 4em;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .mfp-content {
+        width: 80%;  /* Przykładowa szerokość */
+        height: 80%;
+    }
+
+    .gallery-container img {
+        width: 100%; /* Zwiększ szerokość obrazów */
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+
+    .logo {
+        display: none; /* Logo ukryte na desktopach */
+    }
+
+    .background-container {
+        background-size: cover; /* Tło obejmuje całą szerokość i wysokość */
+        height: 100vh; /* Pełna wysokość na desktopie */
+    }
+
+    .carousel-indicators {
+        display: none;
+    }
+
+    #contact {
+        display: flex; /* Ustawia kontener na flexbox */
+        justify-content: space-between; /* Rozkłada elementy na przestrzeni kontenera */
+        align-items: stretch; /* Ustawia elementy do góry kontenera */
+        box-sizing: border-box; /* Upewnia się, że padding jest uwzględniany w szerokości kontenera */
+        gap: 40px; /* Odstęp między galeriami */
+        background-color: #f5f5f5;
+        max-width: 1400px;
+    }
+
+    .contact-container {
+        display: flex;
+        flex-wrap: wrap; /* Umożliwia przejście do nowej linii na małych ekranach */
+        gap: 20px; /* Odstęp między elementami */
+        justify-content: space-between; /* Rozkłada elementy na całą szerokość */
+    }
+
+    .contact-container, .contact-map {
+        flex: 1;
+        height: 100%;
+        width: 100%; /* Możesz dostosować szerokość według potrzeb */
+        min-width: 300px; /* Minimalna szerokość dla każdego kontenera */
+        max-width: 50%; /* Maksymalna szerokość na większych ekranach */
+        box-sizing: border-box; /* Uwzględnia padding w szerokości */
+    }
+    
+    .contact-text {
+        width: 100%; /* Ogranicza szerokość kontenera tekstowego */
+        background: rgba(255, 255, 255, 0.9);
+        padding: 1.5em;
+        border-radius: 10px;
+        text-align: center; /* Wyśrodkowanie tekstu */
+    }
+    
+    .contact-map {
+        height: auto;
+        min-height: 100%; /* Aby zapewnić, że zawsze będzie zajmować przynajmniej wysokość kontenera */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+    
+    .contact-map iframe {
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .contact-text h2 {
+        font-size: 1.8em;
+        margin-bottom: 0.5em;
+    }
+
+    .contact-text p {
+        font-size: 1em;
+        color: #555;
+        margin: 1em 0; /* Margines górny i dolny */
+    }
+
+    .booking-button {
+        display: inline-block;
+        margin: 20px auto; /* Wyśrodkowanie przycisku z automatycznymi marginesami po bokach */
+        padding: 15px 30px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: white;
+        background-color: #003580; /* Kolor tła przycisku */
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        text-align: center; /* Wyśrodkowanie tekstu w przycisku */
+        width: 80%; /* Szerokość przycisku dla domyślnych ekranów */
+        max-width: 300px; /* Maksymalna szerokość przycisku */
+    }
+}
+
+/* Styl dla urządzeń mobilnych */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.2em;
+        margin: 0;
+    }
+
+    .logo {
+        display: block; /* Pokaż logo na urządzeniach mobilnych */
+    }
+      
+      /*# sourceMappingURL=style.css.map */
+
+    .nav input:checked ~ .desktop-menu li:nth-child(2) {
+        left: calc(50% - 75px); /* Przesunięcie w lewo */
+    }
+    
+    .nav input:checked ~ .desktop-menu li:nth-child(3) {
+        left: calc(50% + 75px); /* Przesunięcie w prawo */
+    }
+
+    .nav {
+        display: block; /* Ukryj nowe menu na małych ekranach */
+      }
+
+    .background-container {
+        background: url('img/tlo.jpg') no-repeat center center; /* Zdjęcie dla telefonów */
+        background-size: cover; /* Pokrywa całą stronę, przycinając zdjęcie */
+    }
+
+    section {
+        padding: 1em; /* Mniejsze paddingi na mniejszych ekranach */
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+        display: none;
+    }
+
+    .gallery-container {
+        flex-direction: column; /* Ustaw elementy w kolumnie: zdjęcie nad tekstem */
+        align-items: center; /* Wyśrodkowanie zawartości */
+    }
+
+    .gallery-carousel, .gallery-text {
+        width: 100%; /* Pełna szerokość dla każdego elementu */
+    }
+
+    .gallery-carousel {
+        order: 1; /* Ustaw zdjęcie jako pierwsze */
+        position: relative;
+    }
+
+    .gallery-text {
+        order: 2; /* Ustaw tekst jako drugi */
+        text-align: center; /* Wyśrodkowanie tekstu */
+    }
+
+    .carousel-item img {
+        width: 100%; /* Ustaw zdjęcie na pełną szerokość kontenera */
+        height: auto; /* Zachowaj proporcje zdjęcia */
+    }
+
+    .mfp-content {
+        width: 1000%;  /* Przykładowa szerokość */
+        height: auto;
+    }
+
+    #contact {
+        flex-direction: column; /* Ustaw elementy w kolumnie dla urządzeń mobilnych */
+        padding: 2em;
+        background-color: #f5f5f5;
+    }
+
+    .contact-container {
+        gap: 20px; /* Odstęp między elementami */
+    }
+
+    .contact-text {
+        gap: 1em; /* Odstęp między elementami */
+        width: 100%; /* Pełna szerokość kontenerów */
+    }
+    
+    .booking-button {
+        width: 60%; /* Taka sama szerokość jak na laptopie */
+        max-width: 300px; /* Utrzymujemy tę samą maksymalną szerokość */
+        padding: 10px auto; /* Takie same odstępy jak na laptopie */
+        font-size: 1rem; /* Taka sama czcionka jak na laptopie */
+        margin: 10px auto; /* Większy margines dla wersji mobilnej */
+        margin-bottom: 40px; /* Większy margines dolny dla wersji mobilnej */
+    }
+
+    .contact-map {
+        width: 100%; /* Pełna szerokość mapy */
+        height: 200px;
+        padding-bottom: 56.25%; /* Proporcje 16:9 */
+        position: relative; /* Ustawienie w kontekście */
+        overflow: hidden; /* Ukryj zawartość wychodzącą poza kontener */
+    }
+
+    .contact-map iframe {
+        border-radius: 10px; /* Zaokrąglone rogi */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Cień */
+        position: absolute; /* Pozycjonowanie wewnętrzne */
+        top: 0;
+        left: 0;
+        width: 100%; /* Pełna szerokość */
+        height: 100%; /* Pełna wysokość */
+    }
+}
+
+@media (max-width: 600px) {
+    .mfp-arrow-left, .mfp-arrow-right {
+        font-size: 20px;
+    }
+}
