@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    font-family: "Inter", sans-serif;
+    font-family: "Montserrat", sans-serif;
     text-align: left;
     color: var(--white);
     scroll-padding-top: 90px; /* żeby kotwice #gallery/#offer nie wchodziły pod nagłówek */
@@ -801,7 +801,7 @@ footer {
     left: 0;
     right: 0;
     z-index: 9999;
-    padding: 18px 32px;
+
   }
 
   .nav{
@@ -821,7 +821,7 @@ footer {
   /* poziome menu */
   .desktop-menu{
     display: flex !important;
-    gap: 26px;
+    gap: 56px;
     align-items: center;
     justify-content: flex-end;
   }
@@ -845,7 +845,8 @@ footer {
     align-items: center;
     gap: 10px;
     padding: 10px 0;
-    color: #fff;
+    color: #000;
+    transition: color .25s ease, opacity .25s ease;
   }
 
   /* podpisy nie mają „wisieć nad kółkiem” – normalny tekst w pasku */
@@ -853,16 +854,22 @@ footer {
     position: static !important;
     transform: none !important;
     width: auto !important;
-    font-size: 18px !important;
-    color: #fff !important;
+    font-size: 20px !important;
+    color: #000000 !important;
     opacity: 1 !important;
     font-weight: 600 !important;
     pointer-events: auto !important;
+    transition: color .25s ease;
   }
 
   .desktop-menu li a:hover{
-    opacity: 0.85;
+    color: #333;   /* grafit */
+    opacity: 1;    /* opcjonalnie: żeby nie przygasało */
   }
+
+  .desktop-menu li a:hover span{
+  color: #5a5a5a !important; /* przebija Twoje color: ... !important na span */
+}
 
   /* jeśli chcesz ikonki na desktop – zostają */
   .desktop-menu li a i{
