@@ -17,7 +17,8 @@ body {
 
 .background-container {
   position: relative;
-  height: 100vh; /* Wysokość równająca się wysokości widoku */
+  height: 65vh;
+  min-height: 420px;
   background: url("img/tlo.jpg") no-repeat center center; /* Tło zdjęcia */
   background-size: cover; /* Wypełnia cały ekran */
   background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
@@ -601,7 +602,7 @@ footer {
     display: block;
   }
   .logo img {
-    height: 144px;
+    height: 110px;
     width: auto;
     display: block;
   }
@@ -677,7 +678,8 @@ footer {
 
   .background-container {
     background-size: cover; /* Tło obejmuje całą szerokość i wysokość */
-    height: 80vh; /* Ustawiona większa wysokość na tabletach */
+    height: 100vh;
+    min-height: 420px;
   }
 
   .mfp-content {
