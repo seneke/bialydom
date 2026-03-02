@@ -631,6 +631,16 @@ footer {
   }
 }
 
+.logo {
+  max-width: none; /* usuwa ograniczenie 50px */
+}
+
+.logo img {
+  height: 80px;   /* ustaw docelowo: 70–90px */
+  width: auto;
+  display: block;
+}
+
 /* Tablet and larger screens */
 @media (min-width: 768px) {
   .carousel-control-prev,
@@ -673,7 +683,11 @@ footer {
   }
 
   .logo {
-    display: none; /* Logo ukryte na tabletach i większych ekranach */
+    display: block;
+  }
+
+  .logo im {
+    height: 90px;
   }
 
   .background-container {
@@ -762,8 +776,14 @@ footer {
   }
 
   .logo {
-    display: block; /* Pokaż logo na urządzeniach mobilnych */
-  }
+  max-width: none; /* usuwa ograniczenie 50px */
+}
+
+.logo img {
+  height: 80px;   /* ustaw docelowo: 70–90px */
+  width: auto;
+  display: block;
+}
 
   /*# sourceMappingURL=style.css.map */
 
@@ -776,7 +796,10 @@ footer {
   }
 
   .nav {
-    display: block; /* Ukryj nowe menu na małych ekranach */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
   }
 
   .background-container {
