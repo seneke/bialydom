@@ -109,20 +109,6 @@ a {
   border-radius: 50%;
 }
 
-.nav input#desktop-menu + label:hover {
-  background: rgba(71, 71, 71, 1); /* Pełny kolor po najechaniu */
-}
-
-.nav [type="checkbox"] {
-  position: absolute;
-  left: -9999px;
-}
-
-.nav [type="checkbox"] + label:hover {
-  background: var(--dark-violet);
-  opacity: 1;
-}
-
 h1, h2, h3{
   margin: 0 0 12px 0;
   color: #111;
@@ -631,14 +617,36 @@ footer {
   }
 }
 
-.logo {
-  max-width: none; /* usuwa ograniczenie 50px */
+    .logo {
+    max-width: none; /* usuwa ograniczenie 50px */
+    }
+
+    .logo img {
+    height: 80px;   /* ustaw docelowo: 70–90px */
+    width: auto;
+    display: block;
+    }
+
+    .desktop-menu{
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;            /* jeśli zabraknie miejsca, zawinie do kolejnej linii */
 }
 
-.logo img {
-  height: 80px;   /* ustaw docelowo: 70–90px */
-  width: auto;
-  display: block;
+.desktop-menu li{
+  position: static;
+  top: auto;
+  left: auto;
+  transform: none;
+  opacity: 1;
+}
+
+.desktop-menu li a,
+.desktop-menu li a span{
+  position: static;
+  transform: none;
 }
 
 /* Tablet and larger screens */
@@ -670,12 +678,17 @@ footer {
     display: none;
   }
 
-  .nav input:checked ~ .desktop-menu li:nth-child(2) {
-    left: calc(50% - 75px); /* Przesunięcie w lewo */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 00px 60px;
   }
 
-  .nav input:checked ~ .desktop-menu li:nth-child(3) {
-    left: calc(50% + 75px); /* Przesunięcie w prawo */
+  .desktop-menu li a {
+    color: #000;
+    font-size: 20px !important;
+    font-weight: 600 !important;
   }
 
   h1 {
@@ -686,7 +699,7 @@ footer {
     display: block;
   }
 
-  .logo im {
+  .logo img {
     height: 90px;
   }
 
@@ -776,30 +789,26 @@ footer {
   }
 
   .logo {
-  max-width: none; /* usuwa ograniczenie 50px */
-}
+    max-width: none; /* usuwa ograniczenie 50px */
+    }
 
-.logo img {
-  height: 80px;   /* ustaw docelowo: 70–90px */
-  width: auto;
-  display: block;
-}
-
-  /*# sourceMappingURL=style.css.map */
-
-  .nav input:checked ~ .desktop-menu li:nth-child(2) {
-    left: calc(50% - 75px); /* Przesunięcie w lewo */
-  }
-
-  .nav input:checked ~ .desktop-menu li:nth-child(3) {
-    left: calc(50% + 75px); /* Przesunięcie w prawo */
-  }
+  .logo img {
+    height: 80px;   /* ustaw docelowo: 70–90px */
+    width: auto;
+    display: block;
+    }
 
   .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 16px;
+    padding: 10px 20px;
+  }
+
+  .desktop-menu li a {
+    color: #000;
+    font-size: 15px !important;
+    font-weight: 600 !important;
   }
 
   .background-container {
