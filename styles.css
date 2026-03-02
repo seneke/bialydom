@@ -25,7 +25,7 @@ body {
     background: url('img/tlo.jpg') no-repeat center center; /* Tło zdjęcia */
     background-size: cover; /* Wypełnia cały ekran */
     background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
-    padding-top: 90px; /* żeby nagłówek nie zasłaniał contentu w hero */
+    padding-top: 50px; /* żeby nagłówek nie zasłaniał contentu w hero */
 }
 
 header {
@@ -34,9 +34,17 @@ header {
     left: 0;
     right: 0;
     z-index: 9999;
-    color: white;
+    color: #fff;
 
-    /* żeby było czytelne na tle zdjęć */
+  /* NA HERO: brak tła */
+    background: transparent;
+    backdrop-filter: none;
+
+  /* płynne pojawianie się tła */
+    transition: background 250ms ease, backdrop-filter 250ms ease;
+}
+
+header.is-scrolled{
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(6px);
 }
@@ -81,12 +89,14 @@ a {
   background: var(--violet);
 }
 
-.nav {
+.nav{
   display: flex;
-  justify-content: center; /* Wyśrodkuje element w kontenerze */
   align-items: center;
-  max-width: 100%; /* Dostosuj szerokość, jeśli potrzebujesz */
-  margin: 0 auto; /* Wyśrodkuje cały kontener na stronie */
+  justify-content: space-between;
+
+  /* szerokość paska */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .nav input#desktop-menu + label {
