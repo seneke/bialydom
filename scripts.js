@@ -164,4 +164,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     
+(function () {
+  const header = document.querySelector('header');
+  const hero = document.querySelector('.background-container');
+
+  if (!header || !hero) return;
+
+  function updateHeader() {
+    const trigger = hero.offsetHeight - header.offsetHeight - 1;
+    if (window.scrollY > trigger) header.classList.add('is-scrolled');
+    else header.classList.remove('is-scrolled');
+  }
+
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('resize', updateHeader);
+})();
+
     console.log(ScrollReveal);
