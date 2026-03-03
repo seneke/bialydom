@@ -94,7 +94,7 @@ a {
 
   /* szerokość paska */
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .nav input#desktop-menu + label {
@@ -419,7 +419,7 @@ footer {
   /* poziome menu */
   .desktop-menu {
     display: flex !important;
-    gap: 56px;
+    gap: 90px !important;
     align-items: center;
     justify-content: flex-end;
   }
@@ -595,17 +595,9 @@ footer {
     width: auto;
     display: block;
   }
-
-  .background-container::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.25);
-    pointer-events: none;
-  }
 } 
 
-@media (max-width: 900px) {
+@media (max-width: 1023px) {
   .mfp-arrow-left,
   .mfp-arrow-right {
     position: absolute;
@@ -618,7 +610,6 @@ footer {
     width: 80%; /* Przykładowa szerokość */
     height: 80%;
   }
-}
 
   .logo {
     max-width: none; /* usuwa ograniczenie 50px */
@@ -636,7 +627,7 @@ footer {
 
   .desktop-menu{
     display: flex;
-    gap: 24px;
+    gap: 50px;
     align-items: center;
     justify-content: flex-end;
     flex-wrap: wrap;            /* jeśli zabraknie miejsca, zawinie do kolejnej linii */
@@ -654,6 +645,7 @@ footer {
   .desktop-menu li a span{
     position: static;
     transform: none;
+}
 }
 
 /* Tablet and larger screens */
@@ -823,7 +815,7 @@ footer {
   display: block;
   width: 28px;
   height: 2px;
-  background: #ffffff; /* jeśli na header masz ciemne tło; w razie czego zmień na #000 */
+  background: #000000; /* jeśli na header masz ciemne tło; w razie czego zmień na #000 */
 }
 
 /* mobile menu domyślnie schowane */
@@ -996,4 +988,12 @@ footer {
   .mfp-arrow-right {
     font-size: 20px;
   }
+}
+
+/* FIX: nav pełna szerokość, stały odstęp od krawędzi */
+.nav{
+  max-width: none !important;
+  margin: 0 !important;
+  width: 100%;
+  padding: 0 20px; /* tu sterujesz odległością logo od lewej */
 }
