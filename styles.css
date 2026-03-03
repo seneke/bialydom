@@ -48,6 +48,15 @@ header.is-scrolled {
   backdrop-filter: blur(6px);
 }
 
+header.is-scrolled .logo img{
+  content: url("img/logo2.png");
+}
+
+header.is-scrolled .desktop-menu a{
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
 .logo {
   max-width: 50px;
   display: block !important; /* Domyślnie logo jest ukryte */
@@ -595,6 +604,7 @@ footer {
     height: 110px;
     width: auto;
     display: block;
+    transition: 0.3s ease;
   }
 } 
 
@@ -897,6 +907,10 @@ footer {
     font-weight: 600 !important;
   }
 
+  header.is-scrolled .mobile-nav-toggle span {
+  background: #fff;
+  }
+
   .background-container {
     background: url("img/tlo.jpg") no-repeat center center; /* Zdjęcie dla telefonów */
     background-size: cover; /* Pokrywa całą stronę, przycinając zdjęcie */
@@ -1001,4 +1015,34 @@ footer {
   margin: 0 !important;
   width: 100%;
   padding: 0 20px; /* tu sterujesz odległością logo od lewej */
+}
+
+/* TABLET: 768–1023 — jeden pod drugim i na pełną szerokość */
+@media (min-width: 768px) and (max-width: 1023px){
+  #contact{
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;  /* pełna szerokość */
+  }
+
+  .contact-container,
+  .contact-map{
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0;          /* ważne, żeby nic nie blokowało zwężania */
+  }
+
+  /* opcjonalnie: jeśli contact-container ma własny flex układ, to go uspokajamy */
+  .contact-container{
+    justify-content: center;
+  }
+
+  .contact-map iframe{
+    height: 420px;
+  }
+}
+
+header.is-scrolled .desktop-menu li a,
+header.is-scrolled .desktop-menu li a span{
+  color: #fff !important;
 }
