@@ -806,10 +806,7 @@ footer {
     }
 
   .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
+    position: relative;
   }
 
   .mobile-nav-toggle{
@@ -826,7 +823,7 @@ footer {
   display: block;
   width: 28px;
   height: 2px;
-  background: #fff; /* jeśli na header masz ciemne tło; w razie czego zmień na #000 */
+  background: #ffffff; /* jeśli na header masz ciemne tło; w razie czego zmień na #000 */
 }
 
 /* mobile menu domyślnie schowane */
@@ -840,6 +837,7 @@ footer {
   backdrop-filter: blur(6px);
   padding: 12px 0;
   margin: 0;
+  z-index: 9999;
 }
 
 .mobile-menu.is-open{
@@ -848,8 +846,7 @@ footer {
 }
 
 .mobile-menu li{
-  padding: 0;
-  margin: 0;
+  list-style: none;
 }
 
 .mobile-menu a{
@@ -861,7 +858,7 @@ footer {
 
 /* Na telefonie chowamy menu desktop */
 .desktop-menu{
-  display: none;
+  display: none !important;
 }
 
   .desktop-menu li a {
