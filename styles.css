@@ -19,7 +19,7 @@ body {
   position: relative;
   height: 65vh;
   min-height: 420px;
-  background: url("img/tlo.png") no-repeat center center; /* Tło zdjęcia */
+  background: url("img/tlo.jpg") no-repeat center center; /* Tło zdjęcia */
   background-size: cover; /* Wypełnia cały ekran */
   background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
   padding-top: 50px; /* żeby nagłówek nie zasłaniał contentu w hero */
@@ -465,7 +465,6 @@ footer {
   background: rgba(0,0,0,0.90);
   border-radius: 0 0 0 14px;
 }
-}
 
 header.is-scrolled .mobile-menu a{
   color: var(--nav-ink-inv);
@@ -477,9 +476,10 @@ header.is-scrolled .mobile-menu a:focus{
 }
 
   .background-container {
-    background: url("img/tlo_mobile.png") no-repeat center center; /* Zdjęcie dla telefonów */
-    background-size: cover; /* Pokrywa całą stronę, przycinając zdjęcie */
-    background-attachment: scroll;
+    background: url("img/tlo_mobile.jpg") no-repeat center center; /* Zdjęcie dla telefonów */
+    background-size: cover; /* Wypełnia cały ekran */
+    background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
+    padding-top: 50px; /* żeby nagłówek nie zasłaniał contentu w hero */
   }
 
   section {
@@ -518,9 +518,7 @@ header.is-scrolled .mobile-menu a:focus{
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-
-  
+  }  
 
   #contact {
     flex-direction: column; /* Ustaw elementy w kolumnie dla urządzeń mobilnych */
@@ -563,6 +561,7 @@ header.is-scrolled .mobile-menu a:focus{
     width: 100%; /* Pełna szerokość */
     height: 100%; /* Pełna wysokość */
   }
+} 
 
 /* Tablet and larger screens */
 /* TABLET: 769–1023 */
@@ -600,7 +599,10 @@ header.is-scrolled .mobile-menu a:focus{
   .logo img{ height: 90px; }
 
   .background-container{
-    background-size: cover;
+    background-image: url("img/tlo_tablet.jpg");
+    background-size: cover; /* Wypełnia cały ekran */
+    background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
+    padding-top: 50px; /* żeby nagłówek nie zasłaniał contentu w hero */
     height: 100vh;
     min-height: 420px;
   }
@@ -779,8 +781,12 @@ header.is-scrolled .mobile-menu a:focus{
   }
 
   .background-container {
-    background-size: cover; /* Tło obejmuje całą szerokość i wysokość */
+    background-image: url("img/tlo.jpg");
+    background-size: cover; /* Wypełnia cały ekran */
+    background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
+    padding-top: 50px; /* żeby nagłówek nie zasłaniał contentu w hero */ /* Tło obejmuje całą szerokość i wysokość */
     height: 100vh; /* Pełna wysokość na desktopie */
+    background-position: center 30%;
   }
 
   .carousel-indicators {
