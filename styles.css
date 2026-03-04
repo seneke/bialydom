@@ -19,7 +19,7 @@ body {
   position: relative;
   height: 65vh;
   min-height: 420px;
-  background: url("img/tlo.png") no-repeat center center; /* Tło zdjęcia */
+  background: url("img/tlo.jpg") no-repeat center center; /* Tło zdjęcia */
   background-size: cover; /* Wypełnia cały ekran */
   background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
   padding-top: 50px; /* żeby nagłówek nie zasłaniał contentu w hero */
@@ -249,53 +249,7 @@ p{
   opacity: 1; /* Brak przezroczystości dla aktywnej kropki */
 }
 
-.mfp-wrap {
-  margin: auto; /* Wyśrodkowanie popupu */
-}
 
-/* Dostosowanie tła */
-.mfp-bg {
-  opacity: 0.8; /* Zmienia przezroczystość tła popupu */
-}
-
-/* Opcjonalnie: zmiana wyglądu przycisków nawigacyjnych */
-.mfp-arrow-left {
-  background-image: url("twoja-strzalka-lewa.png"); /* Własna ikona */
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-/* Strzałka prawa */
-.mfp-arrow-right {
-  background-image: url("twoja-strzalka-prawa.png"); /* Własna ikona */
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.mfp-figure .mfp-zoom-out-cur {
-  font-family: "Material Icons"; /* Font dla Material Icons */
-  content: "zoom_out"; /* Ikona "zoom_out" z Material Icons */
-  font-size: 24px;
-  color: #000;
-  cursor: pointer;
-}
-
-.mfp-img {
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-  margin: auto;
-  object-fit: cover; /* Lub "cover", w zależności od preferencji */
-}
-.mfp-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.mfp-content {
-  max-width: 90%; /* Opcjonalnie: ogranicza maksymalne wymiary popupu */
-  max-height: 90%;
-}
 
 #gallery {
   padding: 50px 40px;
@@ -393,13 +347,6 @@ footer {
   text-align: center;
 }
 
-@media (max-width: 600px) {
-  .mfp-arrow-left,
-  .mfp-arrow-right {
-    font-size: 20px;
-  }
-}
-
 /* Styl dla urządzeń mobilnych */
 @media (max-width: 768px) {
   h1 {
@@ -441,50 +388,41 @@ footer {
 
 /* mobile menu domyślnie schowane */
 .mobile-menu{
-  position: absolute;
-  top: calc(100%);
-  right: 0px;
-  left: auto;
-  width: 150px;
-  padding: 10px;
+    position: absolute;
+    top: calc(100% + 0px);
+    right: 0px;
 
-  background: rgba(0,0,0,0.55);
-  color: var(--nav-ink);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+    width: 130px;                 /* jak było wcześniej */
+    padding: 12px;
+    border-radius: 14px 0 0 14px;
 
-  border-radius: 14px 0 0 14px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
-  z-index: 9999;
+    /* wygląd jak wcześniej (tu możesz zostawić swoje kolory) */
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
-  display: flex;
-  flex-direction: column;
+    display: flex;                /* UWAGA: nie none */
+    flex-direction: column;
+    gap: 8px;
 
-  /* animacja */
-  transform: translateX(110%);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+    /* start: schowane i przesunięte w prawo */
+    transform: translateX(30px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-  transition:
-    transform 260ms ease,
-    opacity 260ms ease,
-    visibility 0s linear 260ms;
-
-  will-change: transform, opacity;
-}
+    transition: transform 220ms ease, opacity 220ms ease, visibility 0s linear 220ms;
+    z-index: 9999;
+  }
 
 .mobile-menu.is-open{
-  transform: translateX(0);
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 
-  transition:
-    transform 260ms ease,
-    opacity 260ms ease,
-    visibility 0s;
-}
+    transition: transform 220ms ease, opacity 220ms ease, visibility 0s;
+  }
 
 .mobile-menu li{
   list-style: none;
@@ -498,14 +436,9 @@ footer {
 
 .mobile-menu a{
   display: block;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-
-  color: #c2c0c0;
-  font-weight: 600;
-  text-decoration: none;
-  letter-spacing: 0.4px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  text-align: center;              /* w panelu wygląda naturalniej */
 }
 
 .mobile-menu a:hover,
@@ -529,7 +462,8 @@ footer {
   }
 
   header.is-scrolled .mobile-menu{
-  background: var(--dropdown-bg-scrolled);
+  background: rgba(0,0,0,0.90);
+  border-radius: 0 0 0 14px;
 }
 
 header.is-scrolled .mobile-menu a{
@@ -542,9 +476,10 @@ header.is-scrolled .mobile-menu a:focus{
 }
 
   .background-container {
-    background: url("img/tlo.png") no-repeat center center; /* Zdjęcie dla telefonów */
-    background-size: cover; /* Pokrywa całą stronę, przycinając zdjęcie */
-    background-attachment: scroll;
+    background: url("img/tlo_mobile.jpg") no-repeat center center; /* Zdjęcie dla telefonów */
+    background-size: cover; /* Wypełnia cały ekran */
+    background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
+    padding-top: 50px; /* żeby nagłówek nie zasłaniał contentu w hero */
   }
 
   section {
@@ -583,12 +518,7 @@ header.is-scrolled .mobile-menu a:focus{
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-
-  .mfp-content {
-    width: 1000%; /* Przykładowa szerokość */
-    height: auto;
-  }
+  }  
 
   #contact {
     flex-direction: column; /* Ustaw elementy w kolumnie dla urządzeń mobilnych */
@@ -631,162 +561,109 @@ header.is-scrolled .mobile-menu a:focus{
     width: 100%; /* Pełna szerokość */
     height: 100%; /* Pełna wysokość */
   }
-}
+} 
 
 /* Tablet and larger screens */
-@media (min-width: 768px) {
-  .carousel-control-prev,
-  .carousel-control-next {
-    width: 60px; /* Zmniejszenie szerokości strzałek */
-    height: 100%; /* Upewnij się, że strzałki zajmują całą wysokość zdjęcia */
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.3); /* Dodanie półprzezroczystego tła */
-    z-index: 10;
-  }
+/* TABLET: 769–1023 */
+@media (min-width: 769px) and (max-width: 1023px) {
 
-  /* Strzałka po lewej stronie */
-  .carousel-control-prev {
-    left: 0; /* Przyleganie do lewej krawędzi zdjęcia */
-  }
-
-  /* Strzałka po prawej stronie */
-  .carousel-control-next {
-    right: 0; /* Przyleganie do prawej krawędzi zdjęcia */
-  }
-
-  .carousel-indicators {
-    display: none;
-  }
-
-  .nav {
+  /* --- Nawigacja / logo / tło --- */
+  .nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 00px 60px;
+    padding: 0 60px;
   }
 
-  .desktop-menu li a {
+  /* na tablecie pokazujemy menu desktopowe, chowamy mobile */
+  .mobile-nav-toggle{ display: none; }
+  .mobile-menu{ display: none; }
+
+  .desktop-menu{
+    display: flex !important;
+    gap: 50px;            /* na tablet ciaśniej niż desktop (u Ciebie desktop ma 90px) */
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .desktop-menu li a{
     color: #000;
     font-size: 20px !important;
     font-weight: 600 !important;
   }
 
-  h1 {
-    font-size: 2em;
-  }
+  h1{ font-size: 2em; }
 
-  .logo {
-    display: block;
-  }
+  .logo{ display: block; }
+  .logo img{ height: 90px; }
 
-  .logo img {
-    height: 90px;
-  }
-
-  .background-container {
-    background-size: cover; /* Tło obejmuje całą szerokość i wysokość */
+  .background-container{
+    background-image: url("img/tlo_tablet.jpg");
+    background-size: cover; /* Wypełnia cały ekran */
+    background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
+    padding-top: 50px; /* żeby nagłówek nie zasłaniał contentu w hero */
     height: 100vh;
     min-height: 420px;
   }
 
-  .mfp-content {
-    width: 80%; /* Przykładowa szerokość */
-    height: 80%;
-  }
-
-  #contact {
-    display: flex; /* Ustawia kontener na flexbox */
-    justify-content: space-between; /* Rozkłada elementy na przestrzeni kontenera */
-    align-items: stretch; /* Ustawia elementy do góry kontenera */
-    box-sizing: border-box; /* Upewnia się, że padding jest uwzględniany w szerokości kontenera */
-    gap: 40px; /* Odstęp między galeriami */
-  }
-
-  .contact-container,
-  .contact-map {
-    height: 100%;
-    width: 100%; /* Możesz dostosować szerokość według potrzeb */
-    max-width: 50%; /* Maksymalna szerokość na większych ekranach */
-    box-sizing: border-box; /* Uwzględnia padding w szerokości */
-  }
-
-  .contact-text {
-    width: 100%; /* Ogranicza szerokość kontenera tekstowego */
-    background: rgba(255, 255, 255, 0.9);
-    padding: 1.5em;
-    border-radius: 10px;
-    text-align: center; /* Wyśrodkowanie tekstu */
-  }
-
-  .contact-map {
-    height: auto;
-    min-height: 100%; /* Aby zapewnić, że zawsze będzie zajmować przynajmniej wysokość kontenera */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* --- Karuzela --- */
+.gallery-carousel {
+    border-radius: 15px;
+    overflow: hidden;
     position: relative;
   }
 
-  .contact-map iframe {
-    border-radius: 10px;
-    width: 100%;
+  .carousel-control-prev,
+  .carousel-control-next{
+    width: 60px;
     height: 100%;
-    display: block;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 10;
   }
+  .carousel-control-prev{ left: 0; }
+  .carousel-control-next{ right: 0; }
+  .carousel-indicators{ display: none; }
 
-  .contact-text h2 {
-    font-size: 1.8em;
-    margin-bottom: 0.5em;
-  }
-
-  .contact-text p {
-    font-size: 1em;
-    color: #555;
-    margin: 1em 0; /* Margines górny i dolny */
-  }
-
-  .booking-button {
-    display: inline-block;
-    margin: 20px auto; /* Wyśrodkowanie przycisku z automatycznymi marginesami po bokach */
-    padding: 15px 30px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: white;
-    background-color: #003580; /* Kolor tła przycisku */
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    text-align: center; /* Wyśrodkowanie tekstu w przycisku */
-    width: 80%; /* Szerokość przycisku dla domyślnych ekranów */
-    max-width: 300px; /* Maksymalna szerokość przycisku */
-  }
-}
-
-/* TABLET: 768–1023 — jeden pod drugim i na pełną szerokość */
-@media (min-width: 768px) and (max-width: 1023px){
+  /* --- CONTACT: na tablecie ma być kolumnowo (to było w Twoim drugim media) --- */
   #contact{
     flex-direction: column;
     justify-content: center;
-    align-items: stretch;  /* pełna szerokość */
+    align-items: stretch;
   }
-
   .contact-container,
   .contact-map{
     max-width: 100% !important;
     width: 100% !important;
-    min-width: 0;          /* ważne, żeby nic nie blokowało zwężania */
+    min-width: 0;
   }
-
-  /* opcjonalnie: jeśli contact-container ma własny flex układ, to go uspokajamy */
   .contact-container{
     justify-content: center;
   }
-
   .contact-map iframe{
     height: 420px;
+  }
+
+  /* --- Przycisk Booking (to też było w min-width:768) --- */
+  .booking-button{
+    display: inline-block;
+    margin: 20px auto;
+    padding: 15px 30px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    background-color: #003580;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 80%;
+    max-width: 300px;
   }
 }
 
@@ -825,7 +702,7 @@ header.is-scrolled .mobile-menu a:focus{
 
   /* poziome menu */
   .desktop-menu {
-    display: flex !important;
+    display: flex;
     gap: 90px !important;
     align-items: center;
     justify-content: flex-end;
@@ -883,11 +760,6 @@ header.is-scrolled .mobile-menu a:focus{
     font-size: 16px;
   }
 
-  .mfp-content {
-    width: 80%; /* Przykładowa szerokość */
-    height: 80%;
-  }
-
   .gallery-container img {
     width: 100%; /* Zwiększ szerokość obrazów */
   }
@@ -909,13 +781,36 @@ header.is-scrolled .mobile-menu a:focus{
   }
 
   .background-container {
-    background-size: cover; /* Tło obejmuje całą szerokość i wysokość */
+    background-image: url("img/tlo.jpg");
+    background-size: cover; /* Wypełnia cały ekran */
+    background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
+    padding-top: 50px; /* żeby nagłówek nie zasłaniał contentu w hero */ /* Tło obejmuje całą szerokość i wysokość */
     height: 100vh; /* Pełna wysokość na desktopie */
+    background-position: center 30%;
   }
 
-  .carousel-indicators {
-    display: none;
+   /* --- Karuzela --- */
+.gallery-carousel {
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
   }
+
+  .carousel-control-prev,
+  .carousel-control-next{
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+  .carousel-control-prev{ left: 0; }
+  .carousel-control-next{ right: 0; }
+  .carousel-indicators{ display: none; }
 
   #contact {
     display: flex; /* Ustawia kontener na flexbox */
@@ -1003,57 +898,6 @@ header.is-scrolled .mobile-menu a:focus{
     display: block;
     transition: 0.3s ease;
   }
-} 
-
-@media (max-width: 1023px) {
-  .mfp-arrow-left,
-  .mfp-arrow-right {
-    position: absolute;
-    top: 50% !important; /* Ustawienie strzałki na 50% wysokości kontenera */
-    transform: translateY(-50%) !important; /* Wyśrodkowanie strzałki */
-    margin-top: 0 !important; /* Usunięcie ewentualnych marginesów */
-  }
-
-  .mfp-content {
-    width: 80%; /* Przykładowa szerokość */
-    height: 80%;
-  }
-
-  .logo {
-    max-width: none; /* usuwa ograniczenie 50px */
-    }
-
-  .logo img {
-    height: 80px;   /* ustaw docelowo: 70–90px */
-    width: auto;
-    display: block;
-    }
-
-  .mobile-nav-toggle{ display: none; }
-  .mobile-menu{ display: none; }
-  .mobile-menu.is-open { display: flex; flex-direction: column; }
-
-  .desktop-menu{
-    display: flex;
-    gap: 50px;
-    align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;            /* jeśli zabraknie miejsca, zawinie do kolejnej linii */
-}
-
-  .desktop-menu li{
-    position: static;
-    top: auto;
-    left: auto;
-    transform: none;
-    opacity: 1;
-}
-
-  .desktop-menu li a,
-  .desktop-menu li a span{
-    position: static;
-    transform: none;
-}
 }
 
 /* FIX: nav pełna szerokość, stały odstęp od krawędzi */
