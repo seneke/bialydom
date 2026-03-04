@@ -608,12 +608,15 @@ header.is-scrolled .mobile-menu a:focus{
   }
 
   /* --- Karuzela --- */
+<<<<<<< HEAD
 .gallery-carousel {
     border-radius: 15px;
     overflow: hidden;
     position: relative;
   }
 
+=======
+>>>>>>> 5e693849b7a2276d83eaafbf939e3a2a0e89459a
   .carousel-control-prev,
   .carousel-control-next{
     width: 60px;
@@ -630,6 +633,15 @@ header.is-scrolled .mobile-menu a:focus{
   .carousel-control-next{ right: 0; }
   .carousel-indicators{ display: none; }
 
+<<<<<<< HEAD
+=======
+  /* --- Lightbox --- */
+  .mfp-content{
+    width: 80%;
+    height: 80%;
+  }
+
+>>>>>>> 5e693849b7a2276d83eaafbf939e3a2a0e89459a
   /* --- CONTACT: na tablecie ma być kolumnowo (to było w Twoim drugim media) --- */
   #contact{
     flex-direction: column;
