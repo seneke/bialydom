@@ -347,10 +347,6 @@ footer {
   text-align: center;
 }
 
-@media (max-width: 600px) {
-  
-}
-
 /* Styl dla urządzeń mobilnych */
 @media (max-width: 768px) {
   h1 {
@@ -392,51 +388,41 @@ footer {
 
 /* mobile menu domyślnie schowane */
 .mobile-menu{
-  position: absolute;
-  top: calc(100%);
-  right: 0px;
-  left: auto;
-  width: 150px;
-  padding: 10px;
+    position: absolute;
+    top: calc(100% + 0px);
+    right: 0px;
 
-  background: rgba(0,0,0,0.55);
-  color: var(--nav-ink);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+    width: 130px;                 /* jak było wcześniej */
+    padding: 12px;
+    border-radius: 14px 0 0 14px;
 
-  border-radius: 14px 0 0 14px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
-  z-index: 9999;
+    /* wygląd jak wcześniej (tu możesz zostawić swoje kolory) */
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
-  display: none;
-  flex-direction: column;
+    display: flex;                /* UWAGA: nie none */
+    flex-direction: column;
+    gap: 8px;
 
-  /* animacja */
-  transform: translateX(110%);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+    /* start: schowane i przesunięte w prawo */
+    transform: translateX(30px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-  transition:
-    transform 260ms ease,
-    opacity 260ms ease,
-    visibility 0s linear 260ms;
-
-  will-change: transform, opacity;
-}
+    transition: transform 220ms ease, opacity 220ms ease, visibility 0s linear 220ms;
+    z-index: 9999;
+  }
 
 .mobile-menu.is-open{
-  display: flex; flex-direction: column;
-  transform: translateX(0);
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 
-  transition:
-    transform 260ms ease,
-    opacity 260ms ease,
-    visibility 0s;
-}
+    transition: transform 220ms ease, opacity 220ms ease, visibility 0s;
+  }
 
 .mobile-menu li{
   list-style: none;
@@ -450,14 +436,9 @@ footer {
 
 .mobile-menu a{
   display: block;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-
-  color: #c2c0c0;
-  font-weight: 600;
-  text-decoration: none;
-  letter-spacing: 0.4px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  text-align: center;              /* w panelu wygląda naturalniej */
 }
 
 .mobile-menu a:hover,
@@ -481,7 +462,9 @@ footer {
   }
 
   header.is-scrolled .mobile-menu{
-  background: var(--dropdown-bg-scrolled);
+  background: rgba(0,0,0,0.90);
+  border-radius: 0 0 0 14px;
+}
 }
 
 header.is-scrolled .mobile-menu a{
@@ -580,7 +563,6 @@ header.is-scrolled .mobile-menu a:focus{
     width: 100%; /* Pełna szerokość */
     height: 100%; /* Pełna wysokość */
   }
-}
 
 /* Tablet and larger screens */
 /* TABLET: 769–1023 */
