@@ -249,53 +249,7 @@ p{
   opacity: 1; /* Brak przezroczystości dla aktywnej kropki */
 }
 
-.mfp-wrap {
-  margin: auto; /* Wyśrodkowanie popupu */
-}
 
-/* Dostosowanie tła */
-.mfp-bg {
-  opacity: 0.8; /* Zmienia przezroczystość tła popupu */
-}
-
-/* Opcjonalnie: zmiana wyglądu przycisków nawigacyjnych */
-.mfp-arrow-left {
-  background-image: url("twoja-strzalka-lewa.png"); /* Własna ikona */
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-/* Strzałka prawa */
-.mfp-arrow-right {
-  background-image: url("twoja-strzalka-prawa.png"); /* Własna ikona */
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.mfp-figure .mfp-zoom-out-cur {
-  font-family: "Material Icons"; /* Font dla Material Icons */
-  content: "zoom_out"; /* Ikona "zoom_out" z Material Icons */
-  font-size: 24px;
-  color: #000;
-  cursor: pointer;
-}
-
-.mfp-img {
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-  margin: auto;
-  object-fit: cover; /* Lub "cover", w zależności od preferencji */
-}
-.mfp-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.mfp-content {
-  max-width: 90%; /* Opcjonalnie: ogranicza maksymalne wymiary popupu */
-  max-height: 90%;
-}
 
 #gallery {
   padding: 50px 40px;
@@ -394,10 +348,7 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .mfp-arrow-left,
-  .mfp-arrow-right {
-    font-size: 20px;
-  }
+  
 }
 
 /* Styl dla urządzeń mobilnych */
@@ -542,7 +493,7 @@ header.is-scrolled .mobile-menu a:focus{
 }
 
   .background-container {
-    background: url("img/tlo.png") no-repeat center center; /* Zdjęcie dla telefonów */
+    background: url("img/tlo_mobile.png") no-repeat center center; /* Zdjęcie dla telefonów */
     background-size: cover; /* Pokrywa całą stronę, przycinając zdjęcie */
     background-attachment: scroll;
   }
@@ -585,10 +536,7 @@ header.is-scrolled .mobile-menu a:focus{
     display: block;
   }
 
-  .mfp-content {
-    width: 1000%; /* Przykładowa szerokość */
-    height: auto;
-  }
+  
 
   #contact {
     flex-direction: column; /* Ustaw elementy w kolumnie dla urządzeń mobilnych */
@@ -693,10 +641,7 @@ header.is-scrolled .mobile-menu a:focus{
     min-height: 420px;
   }
 
-  .mfp-content {
-    width: 80%; /* Przykładowa szerokość */
-    height: 80%;
-  }
+ 
 
   #contact {
     display: flex; /* Ustawia kontener na flexbox */
@@ -883,11 +828,6 @@ header.is-scrolled .mobile-menu a:focus{
     font-size: 16px;
   }
 
-  .mfp-content {
-    width: 80%; /* Przykładowa szerokość */
-    height: 80%;
-  }
-
   .gallery-container img {
     width: 100%; /* Zwiększ szerokość obrazów */
   }
@@ -1006,18 +946,6 @@ header.is-scrolled .mobile-menu a:focus{
 } 
 
 @media (max-width: 1023px) {
-  .mfp-arrow-left,
-  .mfp-arrow-right {
-    position: absolute;
-    top: 50% !important; /* Ustawienie strzałki na 50% wysokości kontenera */
-    transform: translateY(-50%) !important; /* Wyśrodkowanie strzałki */
-    margin-top: 0 !important; /* Usunięcie ewentualnych marginesów */
-  }
-
-  .mfp-content {
-    width: 80%; /* Przykładowa szerokość */
-    height: 80%;
-  }
 
   .logo {
     max-width: none; /* usuwa ograniczenie 50px */
