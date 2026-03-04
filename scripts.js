@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
      MOBILE MENU (hamburger)
      ========================= */
   const menuToggle = document.querySelector('.mobile-nav-toggle');
+<<<<<<< HEAD
   const mobileMenu = document.querySelector('#mobile-menu');
 
   const isMenuOpen = () => mobileMenu && mobileMenu.classList.contains('is-open');
@@ -70,6 +71,72 @@ document.addEventListener('DOMContentLoaded', function () {
       const href = link.getAttribute('href');
       if (!href || href === '#') return;
 
+=======
+const mobileMenu = document.querySelector('#mobile-menu');
+
+const isMenuOpen = () => mobileMenu && mobileMenu.classList.contains('is-open');
+
+const openMenu = () => {
+  if (!menuToggle || !mobileMenu) return;
+  mobileMenu.classList.add('is-open');
+  menuToggle.setAttribute('aria-expanded', 'true');
+  mobileMenu.setAttribute('aria-hidden', 'false');
+};
+
+const closeMenu = () => {
+  if (!menuToggle || !mobileMenu) return;
+  mobileMenu.classList.remove('is-open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  mobileMenu.setAttribute('aria-hidden', 'true');
+};
+
+if (menuToggle && mobileMenu) {
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    isMenuOpen() ? closeMenu() : openMenu();
+  });
+
+  // zamknij po kliknięciu linku
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // zamknij po kliknięciu poza menu
+  document.addEventListener('click', (e) => {
+    if (!isMenuOpen()) return;
+    if (menuToggle.contains(e.target)) return;
+    if (mobileMenu.contains(e.target)) return;
+    closeMenu();
+  });
+
+  // na większych ekranach zawsze zamknięte
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMenu();
+  });
+}
+
+  /* =========================
+     ScrollReveal
+     ========================= */
+  if (typeof ScrollReveal === 'function') {
+    ScrollReveal().reveal('.gallery-container, .contact-container, .contact-map, #offer', {
+      distance: '20px',
+      duration: 1000,
+      easing: 'ease-in-out',
+      origin: 'bottom',
+      opacity: 0,
+      interval: 200,
+      reset: false
+    });
+  }
+
+  /* =========================
+     Smooth scroll dla a[href^="#"]
+     ========================= */
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', function (e) {
+      const href = link.getAttribute('href');
+      if (!href || href === '#') return;
+
+>>>>>>> 058ce59 (first commit)
       const target = document.querySelector(href);
       if (!target) return;
 
@@ -196,4 +263,8 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', updateHeader, { passive: true });
     window.addEventListener('resize', updateHeader);
   })();
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 058ce59 (first commit)
