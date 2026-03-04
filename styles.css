@@ -393,6 +393,403 @@ footer {
   text-align: center;
 }
 
+@media (max-width: 600px) {
+  .mfp-arrow-left,
+  .mfp-arrow-right {
+    font-size: 20px;
+  }
+}
+
+/* Styl dla urządzeń mobilnych */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.2em;
+    margin: 0;
+  }
+
+  .logo {
+    max-width: none; /* usuwa ograniczenie 50px */
+    }
+
+  .logo img {
+    height: 80px;   /* ustaw docelowo: 70–90px */
+    width: auto;
+    display: block;
+    }
+
+  .nav {
+    position: relative;
+  }
+
+  .mobile-nav-toggle{
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.mobile-nav-toggle span{
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--nav-ink); /* jeśli na header masz ciemne tło; w razie czego zmień na #000 */
+  transition: background 0.3s ease;
+}
+
+/* mobile menu domyślnie schowane */
+.mobile-menu{
+  position: absolute;
+  top: calc(100%);
+  right: 0px;
+  left: auto;
+  width: 150px;
+  padding: 10px;
+
+  background: rgba(0,0,0,0.55);
+  color: var(--nav-ink);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 14px 0 0 14px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+
+  /* animacja */
+  transform: translateX(110%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    transform 260ms ease,
+    opacity 260ms ease,
+    visibility 0s linear 260ms;
+
+  will-change: transform, opacity;
+}
+
+.mobile-menu.is-open{
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transition:
+    transform 260ms ease,
+    opacity 260ms ease,
+    visibility 0s;
+}
+
+.mobile-menu li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu li + li{
+  margin-top: 6px;
+}
+
+.mobile-menu a{
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+
+  color: #c2c0c0;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a:focus{
+  background: rgba(255,255,255,0.08);
+}
+
+/* Na telefonie chowamy menu desktop */
+.desktop-menu{
+  display: none !important;
+}
+
+  .desktop-menu li a {
+    color: #000;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+  }
+
+  header.is-scrolled .mobile-nav-toggle span {
+  background: var(--nav-ink-inv);
+  }
+
+  header.is-scrolled .mobile-menu{
+  background: var(--dropdown-bg-scrolled);
+}
+
+header.is-scrolled .mobile-menu a{
+  color: var(--nav-ink-inv);
+}
+
+header.is-scrolled .mobile-menu a:hover,
+header.is-scrolled .mobile-menu a:focus{
+  background: rgba(255,255,255,0.12);
+}
+
+  .background-container {
+    background: url("img/tlo.png") no-repeat center center; /* Zdjęcie dla telefonów */
+    background-size: cover; /* Pokrywa całą stronę, przycinając zdjęcie */
+    background-attachment: scroll;
+  }
+
+  section {
+    padding: 1em; /* Mniejsze paddingi na mniejszych ekranach */
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+
+  .gallery-container {
+    flex-direction: column; /* Ustaw elementy w kolumnie: zdjęcie nad tekstem */
+    align-items: center; /* Wyśrodkowanie zawartości */
+  }
+
+  .gallery-carousel,
+  .gallery-text {
+    width: 100%; /* Pełna szerokość dla każdego elementu */
+  }
+
+  .gallery-carousel {
+    order: 1; /* Ustaw zdjęcie jako pierwsze */
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .gallery-text {
+    order: 2; /* Ustaw tekst jako drugi */
+    text-align: center; /* Wyśrodkowanie tekstu */
+  }
+
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .mfp-content {
+    width: 1000%; /* Przykładowa szerokość */
+    height: auto;
+  }
+
+  #contact {
+    flex-direction: column; /* Ustaw elementy w kolumnie dla urządzeń mobilnych */
+    padding: 2em;
+    background-color: #f5f5f5;
+  }
+
+  .contact-container {
+    gap: 20px; /* Odstęp między elementami */
+  }
+
+  .contact-text {
+    gap: 1em; /* Odstęp między elementami */
+    width: 100%; /* Pełna szerokość kontenerów */
+  }
+
+  .booking-button {
+    width: 60%; /* Taka sama szerokość jak na laptopie */
+    max-width: 300px; /* Utrzymujemy tę samą maksymalną szerokość */
+    padding: 10px auto; /* Takie same odstępy jak na laptopie */
+    font-size: 1rem; /* Taka sama czcionka jak na laptopie */
+    margin: 10px auto; /* Większy margines dla wersji mobilnej */
+    margin-bottom: 40px; /* Większy margines dolny dla wersji mobilnej */
+  }
+
+  .contact-map {
+    width: 100%; /* Pełna szerokość mapy */
+    height: 200px;
+    padding-bottom: 56.25%; /* Proporcje 16:9 */
+    position: relative; /* Ustawienie w kontekście */
+    overflow: hidden; /* Ukryj zawartość wychodzącą poza kontener */
+  }
+
+  .contact-map iframe {
+    border-radius: 10px; /* Zaokrąglone rogi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Cień */
+    position: absolute; /* Pozycjonowanie wewnętrzne */
+    top: 0;
+    left: 0;
+    width: 100%; /* Pełna szerokość */
+    height: 100%; /* Pełna wysokość */
+  }
+}
+
+/* Tablet and larger screens */
+@media (min-width: 768px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 60px; /* Zmniejszenie szerokości strzałek */
+    height: 100%; /* Upewnij się, że strzałki zajmują całą wysokość zdjęcia */
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3); /* Dodanie półprzezroczystego tła */
+    z-index: 10;
+  }
+
+  /* Strzałka po lewej stronie */
+  .carousel-control-prev {
+    left: 0; /* Przyleganie do lewej krawędzi zdjęcia */
+  }
+
+  /* Strzałka po prawej stronie */
+  .carousel-control-next {
+    right: 0; /* Przyleganie do prawej krawędzi zdjęcia */
+  }
+
+  .carousel-indicators {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 00px 60px;
+  }
+
+  .desktop-menu li a {
+    color: #000;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .logo {
+    display: block;
+  }
+
+  .logo img {
+    height: 90px;
+  }
+
+  .background-container {
+    background-size: cover; /* Tło obejmuje całą szerokość i wysokość */
+    height: 100vh;
+    min-height: 420px;
+  }
+
+  .mfp-content {
+    width: 80%; /* Przykładowa szerokość */
+    height: 80%;
+  }
+
+  #contact {
+    display: flex; /* Ustawia kontener na flexbox */
+    justify-content: space-between; /* Rozkłada elementy na przestrzeni kontenera */
+    align-items: stretch; /* Ustawia elementy do góry kontenera */
+    box-sizing: border-box; /* Upewnia się, że padding jest uwzględniany w szerokości kontenera */
+    gap: 40px; /* Odstęp między galeriami */
+  }
+
+  .contact-container,
+  .contact-map {
+    height: 100%;
+    width: 100%; /* Możesz dostosować szerokość według potrzeb */
+    max-width: 50%; /* Maksymalna szerokość na większych ekranach */
+    box-sizing: border-box; /* Uwzględnia padding w szerokości */
+  }
+
+  .contact-text {
+    width: 100%; /* Ogranicza szerokość kontenera tekstowego */
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5em;
+    border-radius: 10px;
+    text-align: center; /* Wyśrodkowanie tekstu */
+  }
+
+  .contact-map {
+    height: auto;
+    min-height: 100%; /* Aby zapewnić, że zawsze będzie zajmować przynajmniej wysokość kontenera */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+
+  .contact-map iframe {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .contact-text h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+  }
+
+  .contact-text p {
+    font-size: 1em;
+    color: #555;
+    margin: 1em 0; /* Margines górny i dolny */
+  }
+
+  .booking-button {
+    display: inline-block;
+    margin: 20px auto; /* Wyśrodkowanie przycisku z automatycznymi marginesami po bokach */
+    padding: 15px 30px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    background-color: #003580; /* Kolor tła przycisku */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center; /* Wyśrodkowanie tekstu w przycisku */
+    width: 80%; /* Szerokość przycisku dla domyślnych ekranów */
+    max-width: 300px; /* Maksymalna szerokość przycisku */
+  }
+}
+
+/* TABLET: 768–1023 — jeden pod drugim i na pełną szerokość */
+@media (min-width: 768px) and (max-width: 1023px){
+  #contact{
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;  /* pełna szerokość */
+  }
+
+  .contact-container,
+  .contact-map{
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0;          /* ważne, żeby nic nie blokowało zwężania */
+  }
+
+  /* opcjonalnie: jeśli contact-container ma własny flex układ, to go uspokajamy */
+  .contact-container{
+    justify-content: center;
+  }
+
+  .contact-map iframe{
+    height: 420px;
+  }
+}
+
 /* Desktop and larger screens */
 @media (min-width: 1024px) {
   section {
@@ -659,409 +1056,12 @@ footer {
 }
 }
 
-/* Tablet and larger screens */
-@media (min-width: 768px) {
-  .carousel-control-prev,
-  .carousel-control-next {
-    width: 60px; /* Zmniejszenie szerokości strzałek */
-    height: 100%; /* Upewnij się, że strzałki zajmują całą wysokość zdjęcia */
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.3); /* Dodanie półprzezroczystego tła */
-    z-index: 10;
-  }
-
-  /* Strzałka po lewej stronie */
-  .carousel-control-prev {
-    left: 0; /* Przyleganie do lewej krawędzi zdjęcia */
-  }
-
-  /* Strzałka po prawej stronie */
-  .carousel-control-next {
-    right: 0; /* Przyleganie do prawej krawędzi zdjęcia */
-  }
-
-  .carousel-indicators {
-    display: none;
-  }
-
-  .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 00px 60px;
-  }
-
-  .desktop-menu li a {
-    color: #000;
-    font-size: 20px !important;
-    font-weight: 600 !important;
-  }
-
-  h1 {
-    font-size: 2em;
-  }
-
-  .logo {
-    display: block;
-  }
-
-  .logo img {
-    height: 90px;
-  }
-
-  .background-container {
-    background-size: cover; /* Tło obejmuje całą szerokość i wysokość */
-    height: 100vh;
-    min-height: 420px;
-  }
-
-  .mfp-content {
-    width: 80%; /* Przykładowa szerokość */
-    height: 80%;
-  }
-
-  #contact {
-    display: flex; /* Ustawia kontener na flexbox */
-    justify-content: space-between; /* Rozkłada elementy na przestrzeni kontenera */
-    align-items: stretch; /* Ustawia elementy do góry kontenera */
-    box-sizing: border-box; /* Upewnia się, że padding jest uwzględniany w szerokości kontenera */
-    gap: 40px; /* Odstęp między galeriami */
-  }
-
-  .contact-container,
-  .contact-map {
-    height: 100%;
-    width: 100%; /* Możesz dostosować szerokość według potrzeb */
-    max-width: 50%; /* Maksymalna szerokość na większych ekranach */
-    box-sizing: border-box; /* Uwzględnia padding w szerokości */
-  }
-
-  .contact-text {
-    width: 100%; /* Ogranicza szerokość kontenera tekstowego */
-    background: rgba(255, 255, 255, 0.9);
-    padding: 1.5em;
-    border-radius: 10px;
-    text-align: center; /* Wyśrodkowanie tekstu */
-  }
-
-  .contact-map {
-    height: auto;
-    min-height: 100%; /* Aby zapewnić, że zawsze będzie zajmować przynajmniej wysokość kontenera */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-  }
-
-  .contact-map iframe {
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
-  .contact-text h2 {
-    font-size: 1.8em;
-    margin-bottom: 0.5em;
-  }
-
-  .contact-text p {
-    font-size: 1em;
-    color: #555;
-    margin: 1em 0; /* Margines górny i dolny */
-  }
-
-  .booking-button {
-    display: inline-block;
-    margin: 20px auto; /* Wyśrodkowanie przycisku z automatycznymi marginesami po bokach */
-    padding: 15px 30px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: white;
-    background-color: #003580; /* Kolor tła przycisku */
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    text-align: center; /* Wyśrodkowanie tekstu w przycisku */
-    width: 80%; /* Szerokość przycisku dla domyślnych ekranów */
-    max-width: 300px; /* Maksymalna szerokość przycisku */
-  }
-}
-
-/* Styl dla urządzeń mobilnych */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.2em;
-    margin: 0;
-  }
-
-  .logo {
-    max-width: none; /* usuwa ograniczenie 50px */
-    }
-
-  .logo img {
-    height: 80px;   /* ustaw docelowo: 70–90px */
-    width: auto;
-    display: block;
-    }
-
-  .nav {
-    position: relative;
-  }
-
-  .mobile-nav-toggle{
-  display: inline-flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 10px;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.mobile-nav-toggle span{
-  display: block;
-  width: 28px;
-  height: 2px;
-  background: var(--nav-ink); /* jeśli na header masz ciemne tło; w razie czego zmień na #000 */
-  transition: background 0.3s ease;
-}
-
-/* mobile menu domyślnie schowane */
-.mobile-menu{
-  position: absolute;
-  top: calc(100%);
-  right: 0px;
-  left: auto;
-  width: 150px;
-  padding: 10px;
-
-  background: rgba(0,0,0,0.55);
-  color: var(--nav-ink);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border-radius: 14px 0 0 14px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
-  z-index: 9999;
-
-  display: flex;
-  flex-direction: column;
-
-  /* animacja */
-  transform: translateX(110%);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  transition:
-    transform 260ms ease,
-    opacity 260ms ease,
-    visibility 0s linear 260ms;
-
-  will-change: transform, opacity;
-}
-
-.mobile-menu.is-open{
-  transform: translateX(0);
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-
-  transition:
-    transform 260ms ease,
-    opacity 260ms ease,
-    visibility 0s;
-}
-
-.mobile-menu li{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.mobile-menu li + li{
-  margin-top: 6px;
-}
-
-.mobile-menu a{
-  display: block;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-
-  color: #c2c0c0;
-  font-weight: 600;
-  text-decoration: none;
-  letter-spacing: 0.4px;
-}
-
-.mobile-menu a:hover,
-.mobile-menu a:focus{
-  background: rgba(255,255,255,0.08);
-}
-
-/* Na telefonie chowamy menu desktop */
-.desktop-menu{
-  display: none !important;
-}
-
-  .desktop-menu li a {
-    color: #000;
-    font-size: 15px !important;
-    font-weight: 600 !important;
-  }
-
-  header.is-scrolled .mobile-nav-toggle span {
-  background: var(--nav-ink-inv);
-  }
-
-  header.is-scrolled .mobile-menu{
-  background: var(--dropdown-bg-scrolled);
-}
-
-header.is-scrolled .mobile-menu a{
-  color: var(--nav-ink-inv);
-}
-
-header.is-scrolled .mobile-menu a:hover,
-header.is-scrolled .mobile-menu a:focus{
-  background: rgba(255,255,255,0.12);
-}
-
-  .background-container {
-    background: url("img/tlo.png") no-repeat center center; /* Zdjęcie dla telefonów */
-    background-size: cover; /* Pokrywa całą stronę, przycinając zdjęcie */
-    background-attachment: scroll;
-  }
-
-  section {
-    padding: 1em; /* Mniejsze paddingi na mniejszych ekranach */
-  }
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    display: none;
-  }
-
-  .gallery-container {
-    flex-direction: column; /* Ustaw elementy w kolumnie: zdjęcie nad tekstem */
-    align-items: center; /* Wyśrodkowanie zawartości */
-  }
-
-  .gallery-carousel,
-  .gallery-text {
-    width: 100%; /* Pełna szerokość dla każdego elementu */
-  }
-
-  .gallery-carousel {
-    order: 1; /* Ustaw zdjęcie jako pierwsze */
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-  }
-
-  .gallery-text {
-    order: 2; /* Ustaw tekst jako drugi */
-    text-align: center; /* Wyśrodkowanie tekstu */
-  }
-
-  .carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .mfp-content {
-    width: 1000%; /* Przykładowa szerokość */
-    height: auto;
-  }
-
-  #contact {
-    flex-direction: column; /* Ustaw elementy w kolumnie dla urządzeń mobilnych */
-    padding: 2em;
-    background-color: #f5f5f5;
-  }
-
-  .contact-container {
-    gap: 20px; /* Odstęp między elementami */
-  }
-
-  .contact-text {
-    gap: 1em; /* Odstęp między elementami */
-    width: 100%; /* Pełna szerokość kontenerów */
-  }
-
-  .booking-button {
-    width: 60%; /* Taka sama szerokość jak na laptopie */
-    max-width: 300px; /* Utrzymujemy tę samą maksymalną szerokość */
-    padding: 10px auto; /* Takie same odstępy jak na laptopie */
-    font-size: 1rem; /* Taka sama czcionka jak na laptopie */
-    margin: 10px auto; /* Większy margines dla wersji mobilnej */
-    margin-bottom: 40px; /* Większy margines dolny dla wersji mobilnej */
-  }
-
-  .contact-map {
-    width: 100%; /* Pełna szerokość mapy */
-    height: 200px;
-    padding-bottom: 56.25%; /* Proporcje 16:9 */
-    position: relative; /* Ustawienie w kontekście */
-    overflow: hidden; /* Ukryj zawartość wychodzącą poza kontener */
-  }
-
-  .contact-map iframe {
-    border-radius: 10px; /* Zaokrąglone rogi */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Cień */
-    position: absolute; /* Pozycjonowanie wewnętrzne */
-    top: 0;
-    left: 0;
-    width: 100%; /* Pełna szerokość */
-    height: 100%; /* Pełna wysokość */
-  }
-}
-
-@media (max-width: 600px) {
-  .mfp-arrow-left,
-  .mfp-arrow-right {
-    font-size: 20px;
-  }
-}
-
 /* FIX: nav pełna szerokość, stały odstęp od krawędzi */
 .nav{
   max-width: none !important;
   margin: 0 !important;
   width: 100%;
   padding: 0 20px; /* tu sterujesz odległością logo od lewej */
-}
-
-/* TABLET: 768–1023 — jeden pod drugim i na pełną szerokość */
-@media (min-width: 768px) and (max-width: 1023px){
-  #contact{
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;  /* pełna szerokość */
-  }
-
-  .contact-container,
-  .contact-map{
-    max-width: 100% !important;
-    width: 100% !important;
-    min-width: 0;          /* ważne, żeby nic nie blokowało zwężania */
-  }
-
-  /* opcjonalnie: jeśli contact-container ma własny flex układ, to go uspokajamy */
-  .contact-container{
-    justify-content: center;
-  }
-
-  .contact-map iframe{
-    height: 420px;
-  }
 }
 
 header.is-scrolled .desktop-menu li a,
