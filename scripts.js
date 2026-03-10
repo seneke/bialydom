@@ -220,6 +220,24 @@ function disableParallaxOnMobile() {
   }
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+  const fab = document.querySelector('.contact-fab');
+  const toggle = document.getElementById('contactFabToggle');
+
+  if (!fab || !toggle) return;
+
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    fab.classList.toggle('active');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!fab.contains(e.target)) {
+      fab.classList.remove('active');
+    }
+  });
+});
+
 disableParallaxOnMobile();
 window.addEventListener('resize', disableParallaxOnMobile);
 
