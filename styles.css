@@ -587,30 +587,116 @@ header.is-scrolled .mobile-menu a:focus{
 @media (min-width: 769px) and (max-width: 1023px) {
 
   /* --- Nawigacja / logo / tło --- */
-  .nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 60px;
+  .nav {
+    position: relative;
   }
 
-  /* na tablecie pokazujemy menu desktopowe, chowamy mobile */
-  .mobile-nav-toggle{ display: none; }
-  .mobile-menu{ display: none; }
+  .mobile-nav-toggle{
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
 
-  .desktop-menu{
-    display: flex !important;
-    gap: 50px;            /* na tablet ciaśniej niż desktop (u Ciebie desktop ma 90px) */
-    align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+.mobile-nav-toggle span{
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--nav-ink); /* jeśli na header masz ciemne tło; w razie czego zmień na #000 */
+  transition: background 0.3s ease;
+}
+
+/* mobile menu domyślnie schowane */
+.mobile-menu{
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0px;
+
+    width: 130px;                 /* jak było wcześniej */
+    padding: 12px;
+    border-radius: 14px 0 0 14px;
+
+    /* wygląd jak wcześniej (tu możesz zostawić swoje kolory) */
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    display: flex;                /* UWAGA: nie none */
+    flex-direction: column;
+    gap: 8px;
+
+    /* start: schowane i przesunięte w prawo */
+    transform: translateX(30px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: transform 220ms ease, opacity 220ms ease, visibility 0s linear 220ms;
+    z-index: 9999;
   }
 
-  .desktop-menu li a{
+.mobile-menu.is-open{
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transition: transform 220ms ease, opacity 220ms ease, visibility 0s;
+  }
+
+.mobile-menu li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu li + li{
+  margin-top: 6px;
+}
+
+.mobile-menu a{
+  display: block;
+  padding: 12px 12px;
+  border-radius: 12px;
+  text-align: center;              /* w panelu wygląda naturalniej */
+}
+
+.mobile-menu a:hover,
+.mobile-menu a:focus{
+  background: rgba(255,255,255,0.08);
+}
+
+/* Na telefonie chowamy menu desktop */
+.desktop-menu{
+  display: none !important;
+}
+
+  .desktop-menu li a {
     color: #000;
-    font-size: 20px !important;
+    font-size: 15px !important;
     font-weight: 600 !important;
   }
+
+  header.is-scrolled .mobile-nav-toggle span {
+  background: var(--nav-ink-inv);
+  }
+
+  header.is-scrolled .mobile-menu{
+  background: rgba(0,0,0,0.90);
+  border-radius: 14px 0 0 14px;
+}
+
+header.is-scrolled .mobile-menu a{
+  color: var(--nav-ink-inv);
+}
+
+header.is-scrolled .mobile-menu a:hover,
+header.is-scrolled .mobile-menu a:focus{
+  background: rgba(255,255,255,0.12);
+}
 
   h1{ font-size: 2em; }
 
@@ -627,77 +713,62 @@ header.is-scrolled .mobile-menu a:focus{
   }
 
   /* --- Karuzela --- */
-.gallery-carousel {
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
+section {
+    padding: 1em; /* Mniejsze paddingi na mniejszych ekranach */
   }
 
   .carousel-control-prev,
-  .carousel-control-next{
-    width: 60px;
+  .carousel-control-next {
+    display: none;
+  }
+
+  .gallery-container {
+    flex-direction: column; /* Ustaw elementy w kolumnie: zdjęcie nad tekstem */
+    align-items: center; /* Wyśrodkowanie zawartości */
+  }
+
+  .gallery-carousel,
+  .gallery-text {
+    width: 100%; /* Pełna szerokość dla każdego elementu */
+  }
+
+  .gallery-carousel {
+    order: 1; /* Ustaw zdjęcie jako pierwsze */
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .gallery-text {
+    order: 2; /* Ustaw tekst jako drugi */
+    text-align: center; /* Wyśrodkowanie tekstu */
+  }
+
+  .carousel-item img {
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    display: block;
+  }  
+
+  .mfp-container{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .mfp-arrow{
     position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 10;
-  }
-  .carousel-control-prev{ left: 0; }
-  .carousel-control-next{ right: 0; }
-  .carousel-indicators{ display: none; }
-
-  /* --- Lightbox --- */
-  .mfp-content{
-    width: 80%;
-    height: 80%;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-  /* --- Magnific Popup: zawsze nad fixed header + centrowanie --- */
-.mfp-bg {
-  z-index: 10000 !important;
-}
+  .mfp-arrow-left{
+    left: 10px;
+  }
 
-.mfp-wrap {
-  z-index: 10001 !important;
-}
-
-/* prawdziwe centrowanie w pionie i poziomie */
-.mfp-container {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 24px !important;
-  box-sizing: border-box;
-  padding-left: 90px !important;
-  padding-right: 90px !important;
-}
-
-/* ograniczenia rozmiaru okna/zdjęcia */
-.mfp-content {
-  width: auto !important;
-  height: auto !important;
-  max-width: 90vw !important;
-  max-height: 90vh !important;
-}
-
-img.mfp-img {
-  max-height: 90vh !important;
-  width: auto !important;
-}
-
-.mfp-arrow{
-  position: fixed !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  margin: 0 !important;
-  z-index: 10002 !important; /* nad obrazem i tłem */
-}
-
-.mfp-arrow-left{ left: 20px !important; }
-.mfp-arrow-right{ right: 20px !important; }
+  .mfp-arrow-right{
+    right: 10px;
+  }
 
   /* --- CONTACT: na tablecie ma być kolumnowo (to było w Twoim drugim media) --- */
   #contact{
