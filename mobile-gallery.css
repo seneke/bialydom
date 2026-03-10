@@ -95,7 +95,7 @@
   margin: 0;
   color: #111;
   background: #f7f7f7;
-  font-family: Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .gallery-page-header {
@@ -148,6 +148,7 @@
 .gallery-page-hero {
   max-width: 820px;
   margin-bottom: 28px;
+  margin-top: 120px;
 }
 
 .gallery-page-eyebrow {
@@ -303,4 +304,13 @@
     top: 10px;
     right: 10px;
   }
+}
+
+.gallery-page-body header {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.gallery-page-body .desktop-menu a {
+  color: #fff;
 }
