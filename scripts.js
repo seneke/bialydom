@@ -182,20 +182,27 @@ document.addEventListener('DOMContentLoaded', function () {
      Header: is-scrolled
      ========================= */
   (function () {
-    const header = document.querySelector('header');
-    const hero = document.querySelector('.background-container');
-    if (!header || !hero) return;
+  const header = document.querySelector('header');
+  const homeHero = document.querySelector('.background-container');
+  const galleryHero = document.querySelector('.gallery-page-hero');
+  const hero = homeHero || galleryHero;
 
-    function updateHeader() {
-      const trigger = hero.offsetHeight - header.offsetHeight - 1;
-      if (window.scrollY > trigger) header.classList.add('is-scrolled');
-      else header.classList.remove('is-scrolled');
+  if (!header || !hero) return;
+
+  function updateHeader() {
+    const trigger = hero.offsetTop + hero.offsetHeight - header.offsetHeight - 1;
+
+    if (window.scrollY > trigger) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
     }
+  }
 
-    updateHeader();
-    window.addEventListener('scroll', updateHeader, { passive: true });
-    window.addEventListener('resize', updateHeader);
-  })();
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('resize', updateHeader);
+})();
 });
 
 function disableParallaxOnMobile() {
@@ -206,3 +213,5 @@ function disableParallaxOnMobile() {
 
 disableParallaxOnMobile();
 window.addEventListener('resize', disableParallaxOnMobile);
+
+
