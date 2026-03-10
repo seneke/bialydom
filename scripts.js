@@ -190,13 +190,22 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!header || !hero) return;
 
   function updateHeader() {
-    const trigger = hero.offsetTop + hero.offsetHeight - header.offsetHeight - 1;
 
-    if (window.scrollY > trigger) {
-      header.classList.add('is-scrolled');
-    } else {
-      header.classList.remove('is-scrolled');
-    }
+  let trigger;
+
+  if (homeHero) {
+    // STRONA GŁÓWNA – szybciej pojawia się tło
+    trigger = homeHero.offsetHeight - header.offsetHeight - 700;
+  } else if (galleryHero) {
+    // STRONA GALERII – zostaje jak było
+    trigger = galleryHero.offsetTop + galleryHero.offsetHeight - header.offsetHeight - 1;
+  }
+
+  if (window.scrollY > trigger) {
+    header.classList.add('is-scrolled');
+  } else {
+    header.classList.remove('is-scrolled');
+  }
   }
 
   updateHeader();
