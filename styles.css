@@ -1028,9 +1028,9 @@ header.is-scrolled .desktop-menu li a span{
 
 header.is-scrolled .desktop-menu li a:hover,
 header.is-scrolled .desktop-menu li a:hover span,
-header.is-scrolled .desktop-menu li a.active,
-header.is-scrolled .desktop-menu li a.active span {
-  color: #e65c00;
+header.is-scrolled .desktop-menu li a:focus,
+header.is-scrolled .desktop-menu li a:focus span{
+  color: #e65c00 !important;
 }
 
 :root{
