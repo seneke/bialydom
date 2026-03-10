@@ -151,14 +151,6 @@
   margin-top: 120px;
 }
 
-.gallery-page-eyebrow {
-  margin: 0 0 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.85rem;
-  color: #666;
-}
-
 .gallery-page-hero h1 {
   margin: 0 0 14px;
   font-size: clamp(2rem, 4vw, 3.5rem);
@@ -249,9 +241,6 @@
 .mobile-lightbox__close,
 .mobile-lightbox__nav {
   position: fixed;
-  border: 0;
-  background: rgba(255, 255, 255, 0.16);
-  color: #fff;
   cursor: pointer;
 }
 
@@ -260,6 +249,9 @@
   right: 20px;
   width: 48px;
   height: 48px;
+  border: 2px solid #000;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
   border-radius: 999px;
   font-size: 2rem;
   line-height: 1;
@@ -270,16 +262,24 @@
   transform: translateY(-50%);
   width: 52px;
   height: 52px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
   border-radius: 999px;
   font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  z-index: 10000;
 }
 
 .mobile-lightbox__nav--prev {
-  left: 20px;
+  left: 55px;
 }
 
 .mobile-lightbox__nav--next {
-  right: 20px;
+  right: 55px;
 }
 
 @media (max-width: 767px) {
@@ -290,25 +290,21 @@
   .mobile-lightbox__nav {
     width: 44px;
     height: 44px;
+    font-size: 1.6rem;
   }
 
   .mobile-lightbox__nav--prev {
-    left: 10px;
+    left: 55px;
   }
 
   .mobile-lightbox__nav--next {
-    right: 10px;
+    right: 55px;
   }
 
   .mobile-lightbox__close {
     top: 10px;
     right: 10px;
   }
-}
-
-.gallery-page-body header {
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(6px);
 }
 
 .gallery-page-body .desktop-menu a {
