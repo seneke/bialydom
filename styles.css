@@ -26,6 +26,7 @@ body {
 }
 
 header {
+  padding-top: 12px;
   position: fixed;
   top: 0;
   left: 0;
@@ -359,7 +360,7 @@ footer {
     }
 
   .logo img {
-    height: 80px;   /* ustaw docelowo: 70–90px */
+    height: 100px;   /* ustaw docelowo: 70–90px */
     width: auto;
     display: block;
     }
@@ -476,16 +477,19 @@ header.is-scrolled .mobile-menu a:focus{
 }
 
   .background-container {
-    background: url("img/tlo_mobile.jpg") no-repeat center center; /* Zdjęcie dla telefonów */
-    background-size: cover; /* Wypełnia cały ekran */
-    background-attachment: fixed; /* Tło będzie się "przyklejać" do ekranu */
-    padding-top: 50px; /* żeby nagłówek nie zasłaniał contentu w hero */
-  }
+    background: url("img/tlo_tablet.jpg") no-repeat center center; /* Zdjęcie dla telefonów */
+    background-size: cover; 
 
-  .background-container {
-  position: relative;
-  overflow: hidden;
-}
+    padding-top: 50px; /* żeby nagłówek nie zasłaniał contentu w hero */
+    position: relative;
+    overflow: hidden;
+
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+
+    height: auto;
+  }
 
 .background-container::before {
   content: "";
@@ -499,7 +503,7 @@ header.is-scrolled .mobile-menu a:focus{
   position: absolute;
   z-index: 2;
   left: 50%;
-  top: 35%;
+  top: 55%;
   transform: translate(-50%, -50%);
   width: min(90%, 760px);
   text-align: center;
@@ -536,7 +540,15 @@ header.is-scrolled .mobile-menu a:focus{
 }
 
 .hero-text {
-  display: none;
+  margin: 0 auto 32px;
+  max-width: 620px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+
+  text-shadow: 
+  0 1px 3px rgba(0,0,0,0.8),
+  0 0 6px rgba(0,0,0,0.6);
 }
 
 .hero-buttons {
@@ -664,6 +676,22 @@ header.is-scrolled .mobile-menu a:focus{
     left: 0;
     width: 100%; /* Pełna szerokość */
     height: 100%; /* Pełna wysokość */
+  }
+
+  .contact-fab {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .contact-fab__toggle {
+    width: 54px;
+    height: 54px;
+  }
+
+  .contact-fab__item {
+    min-width: 160px;
+    padding: 11px 14px;
+    font-size: 0.95rem;
   }
 } 
 
@@ -1381,4 +1409,88 @@ header.is-scrolled .desktop-menu li a:focus span{
   --nav-ink-inv: #fff;             /* kolor ikon/tekstu na ciemnym tle */
   --dropdown-bg: rgba(255,255,255,0.85);  /* tło dropdownu na starcie */
   --dropdown-bg-scrolled: rgba(0,0,0,0.65); /* tło dropdownu po scrollu */
+}
+
+.contact-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column-reverse; /* kluczowa zmiana */
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.contact-fab__toggle {
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85); /* półprzezroczyste białe */
+  color: #111;
+  font-size: 1.35rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px); /* delikatny efekt szkła */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-fab__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px); /* start trochę niżej */
+  transition: 0.25s ease;
+
+  pointer-events: none;
+}
+
+.contact-fab.active .contact-fab__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.contact-fab__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 180px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  transition: 0.2s ease;
+}
+
+.contact-fab__item i {
+  width: 18px;
+  text-align: center;
+}
+
+.contact-fab__item:hover {
+  transform: translateX(-4px);
+  transition: 0.2s ease;
+}
+
+.contact-fab__item--facebook {
+  background: #1877f2;
+}
+
+.contact-fab__item--instagram {
+  background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
+}
+
+.contact-fab__item--phone {
+  background: #25d366;
 }
