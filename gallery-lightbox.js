@@ -1,10 +1,14 @@
 (function () {
-  const links = Array.from(document.querySelectorAll('#galleryGrid a'));
+  const links = Array.from(
+    document.querySelectorAll('#galleryGrid a, .feature-lightbox')
+  );
+
   const lightbox = document.getElementById('mobileLightbox');
   const image = document.getElementById('lightboxImage');
   const closeBtn = document.getElementById('lightboxClose');
   const prevBtn = document.getElementById('lightboxPrev');
   const nextBtn = document.getElementById('lightboxNext');
+
   let currentIndex = 0;
   let touchStartX = 0;
   let touchEndX = 0;
@@ -43,9 +47,9 @@
     });
   });
 
-  closeBtn.addEventListener('click', closeLightbox);
-  nextBtn.addEventListener('click', showNext);
-  prevBtn.addEventListener('click', showPrev);
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (nextBtn) nextBtn.addEventListener('click', showNext);
+  if (prevBtn) prevBtn.addEventListener('click', showPrev);
 
   lightbox.addEventListener('click', function (event) {
     if (event.target === lightbox) closeLightbox();
@@ -53,20 +57,30 @@
 
   document.addEventListener('keydown', function (event) {
     if (!lightbox.classList.contains('is-open')) return;
+
     if (event.key === 'Escape') closeLightbox();
     if (event.key === 'ArrowRight') showNext();
     if (event.key === 'ArrowLeft') showPrev();
   });
 
-  lightbox.addEventListener('touchstart', function (event) {
-    touchStartX = event.changedTouches[0].screenX;
-  }, { passive: true });
+  lightbox.addEventListener(
+    'touchstart',
+    function (event) {
+      touchStartX = event.changedTouches[0].screenX;
+    },
+    { passive: true }
+  );
 
-  lightbox.addEventListener('touchend', function (event) {
-    touchEndX = event.changedTouches[0].screenX;
-    const delta = touchEndX - touchStartX;
-    if (Math.abs(delta) < 40) return;
-    if (delta < 0) showNext();
-    if (delta > 0) showPrev();
-  }, { passive: true });
+  lightbox.addEventListener(
+    'touchend',
+    function (event) {
+      touchEndX = event.changedTouches[0].screenX;
+      const delta = touchEndX - touchStartX;
+
+      if (Math.abs(delta) < 40) return;
+      if (delta < 0) showNext();
+      if (delta > 0) showPrev();
+    },
+    { passive: true }
+  );
 })();
