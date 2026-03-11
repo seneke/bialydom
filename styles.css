@@ -1977,6 +1977,57 @@ header.is-scrolled .desktop-menu li a:focus span{
   background: #25d366;
 }
 
+.mobile-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.mobile-lightbox.is-open {
+  display: flex;
+}
+
+.mobile-lightbox img {
+  max-width: 92%;
+  max-height: 92%;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 32px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
 /* feature-content*/
 
 @keyframes featureImageFade {
@@ -1988,4 +2039,5 @@ header.is-scrolled .desktop-menu li a:focus span{
     opacity: 1;
     transform: translateY(0);
   }
+
 }
