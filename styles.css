@@ -801,6 +801,23 @@ header.is-scrolled .mobile-menu a:focus{
   animation: featureImageFade 0.5s ease;
 }
 
+.feature-lightbox {
+  display: block;
+  margin-top: 14px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.feature-lightbox .feature-image {
+  margin-top: 0;
+  cursor: zoom-in;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.feature-lightbox:hover .feature-image {
+  transform: scale(1.02);
+}
+
   .carousel-control-prev,
   .carousel-control-next {
     display: none;
@@ -1363,6 +1380,23 @@ section {
 
 .feature-item[open] .feature-image {
   animation: featureImageFade 0.5s ease;
+}
+
+.feature-lightbox {
+  display: block;
+  margin-top: 14px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.feature-lightbox .feature-image {
+  margin-top: 0;
+  cursor: zoom-in;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.feature-lightbox:hover .feature-image {
+  transform: scale(1.02);
 }
 
   .carousel-control-prev,
