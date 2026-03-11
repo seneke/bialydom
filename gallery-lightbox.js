@@ -1,7 +1,6 @@
 (function () {
   const galleryLinks = Array.from(document.querySelectorAll('#galleryGrid a'));
   const featureLinks = Array.from(document.querySelectorAll('.feature-lightbox'));
-  const allLinks = [...galleryLinks, ...featureLinks];
 
   const lightbox = document.getElementById('mobileLightbox');
   const image = document.getElementById('lightboxImage');
@@ -10,26 +9,28 @@
   const nextBtn = document.getElementById('lightboxNext');
 
   let currentIndex = 0;
-  let activeGroup = [];
-  let touchStartX = 0;
-  let touchEndX = 0;
+  let activeLinks = [];
+  let arrowsEnabled = false;
 
-  if (!lightbox || !image || !allLinks.length) return;
+  if (!lightbox || !image) return;
 
-  function updateArrowVisibility() {
-    const shouldHideArrows = activeGroup.length <= 1;
-    lightbox.classList.toggle('hide-arrows', shouldHideArrows);
+  function setImage(index) {
+    currentIndex = index;
+    const link = activeLinks[currentIndex];
+    if (!link) return;
+
+    image.src = link.getAttribute('href');
+    image.alt = link.querySelector('img')?.alt || '';
   }
 
-  function openLightbox(index, group) {
-    activeGroup = group;
-    currentIndex = index;
+  function openLightbox(index, links, showArrows) {
+    activeLinks = links;
+    arrowsEnabled = showArrows;
 
-    const currentLink = activeGroup[currentIndex];
-    image.src = currentLink.getAttribute('href');
-    image.alt = currentLink.querySelector('img')?.alt || '';
+    setImage(index);
 
-    updateArrowVisibility();
+    if (prevBtn) prevBtn.style.display = showArrows ? '' : 'none';
+    if (nextBtn) nextBtn.style.display = showArrows ? '' : 'none';
 
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
@@ -39,39 +40,34 @@
   function closeLightbox() {
     lightbox.classList.remove('is-open');
     lightbox.setAttribute('aria-hidden', 'true');
-    lightbox.classList.remove('hide-arrows');
     document.body.style.overflow = '';
+    image.src = '';
+    image.alt = '';
   }
 
   function showNext() {
-    if (activeGroup.length <= 1) return;
-
-    currentIndex = (currentIndex + 1) % activeGroup.length;
-    const currentLink = activeGroup[currentIndex];
-    image.src = currentLink.getAttribute('href');
-    image.alt = currentLink.querySelector('img')?.alt || '';
+    if (!arrowsEnabled || activeLinks.length < 2) return;
+    const nextIndex = (currentIndex + 1) % activeLinks.length;
+    setImage(nextIndex);
   }
 
   function showPrev() {
-    if (activeGroup.length <= 1) return;
-
-    currentIndex = (currentIndex - 1 + activeGroup.length) % activeGroup.length;
-    const currentLink = activeGroup[currentIndex];
-    image.src = currentLink.getAttribute('href');
-    image.alt = currentLink.querySelector('img')?.alt || '';
+    if (!arrowsEnabled || activeLinks.length < 2) return;
+    const prevIndex = (currentIndex - 1 + activeLinks.length) % activeLinks.length;
+    setImage(prevIndex);
   }
 
   galleryLinks.forEach((link, index) => {
     link.addEventListener('click', function (event) {
       event.preventDefault();
-      openLightbox(index, galleryLinks);
+      openLightbox(index, galleryLinks, true);
     });
   });
 
   featureLinks.forEach((link, index) => {
     link.addEventListener('click', function (event) {
       event.preventDefault();
-      openLightbox(index, featureLinks);
+      openLightbox(index, featureLinks, false);
     });
   });
 
@@ -80,11 +76,17 @@
   }
 
   if (prevBtn) {
-    prevBtn.addEventListener('click', showPrev);
+    prevBtn.addEventListener('click', function (event) {
+      event.stopPropagation();
+      showPrev();
+    });
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener('click', showNext);
+    nextBtn.addEventListener('click', function (event) {
+      event.stopPropagation();
+      showNext();
+    });
   }
 
   lightbox.addEventListener('click', function (event) {
@@ -100,27 +102,4 @@
     if (event.key === 'ArrowRight') showNext();
     if (event.key === 'ArrowLeft') showPrev();
   });
-
-  lightbox.addEventListener(
-    'touchstart',
-    function (event) {
-      touchStartX = event.changedTouches[0].screenX;
-    },
-    { passive: true }
-  );
-
-  lightbox.addEventListener(
-    'touchend',
-    function (event) {
-      if (activeGroup.length <= 1) return;
-
-      touchEndX = event.changedTouches[0].screenX;
-      const delta = touchEndX - touchStartX;
-
-      if (Math.abs(delta) < 40) return;
-      if (delta < 0) showNext();
-      if (delta > 0) showPrev();
-    },
-    { passive: true }
-  );
 })();
