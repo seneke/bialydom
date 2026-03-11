@@ -130,6 +130,188 @@ p{
   color: #222;
 }
 
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  background: #f8f6f2;
+}
+
+.content-intro {
+  max-width: 760px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9a7b4f;
+  font-weight: 700;
+}
+
+.content-intro h2 {
+  margin-bottom: 18px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  color: #1f2a30;
+}
+
+.content-intro p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: #4f5b62;
+}
+
+.content-story {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.story-card {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.story-card--reverse .story-card__text {
+  order: 2;
+}
+
+.story-card--reverse .story-card__image {
+  order: 1;
+}
+
+.story-card__text h3 {
+  margin: 0 0 14px;
+  font-size: 1.6rem;
+  color: #1f2a30;
+}
+
+.story-card__text p {
+  margin: 0 0 14px;
+  line-height: 1.8;
+  color: #55636b;
+}
+
+.story-card__image img {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.story-card--highlight {
+  grid-template-columns: 1fr;
+  background: linear-gradient(135deg, #ffffff, #f4efe7);
+}
+
+.story-features {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.story-features li {
+  background: rgba(154, 123, 79, 0.08);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 600;
+  color: #3f4a50;
+}
+
+.feature-accordion {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.feature-item {
+  background: rgba(154, 123, 79, 0.08);
+  border: 1px solid rgba(154, 123, 79, 0.14);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  background: rgba(154, 123, 79, 0.12);
+}
+
+.feature-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 52px 18px 18px;
+  font-weight: 700;
+  color: #2f3a40;
+  position: relative;
+  user-select: none;
+}
+
+.feature-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.feature-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #9a7b4f;
+  transition: transform 0.25s ease;
+}
+
+.feature-item[open] summary::after {
+  content: "–";
+}
+
+.feature-content {
+  padding: 0 18px 18px;
+}
+
+.feature-content p {
+  margin: 0;
+  line-height: 1.75;
+  color: #55636b;
+}
+
+.story-card--highlight .story-card__text {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* efekt pojawiania */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .gallery-section {
   display: flex;
   flex-direction: column;
@@ -583,6 +765,29 @@ header.is-scrolled .mobile-menu a:focus{
     padding: 1em; /* Mniejsze paddingi na mniejszych ekranach */
   }
 
+  .main-content {
+    padding: 64px 18px;
+  }
+
+  .story-card {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 18px;
+  }
+
+  .story-card--reverse .story-card__text,
+  .story-card--reverse .story-card__image {
+    order: unset;
+  }
+
+  .story-card__image img {
+    height: 240px;
+  }
+
+  .story-features {
+    grid-template-columns: 1fr;
+  }
+
   .carousel-control-prev,
   .carousel-control-next {
     display: none;
@@ -922,6 +1127,29 @@ header.is-scrolled .mobile-menu a:focus{
   /* --- Karuzela --- */
 section {
     padding: 1em; /* Mniejsze paddingi na mniejszych ekranach */
+  }
+
+.main-content {
+    padding: 64px 18px;
+  }
+
+  .story-card {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 18px;
+  }
+
+  .story-card--reverse .story-card__text,
+  .story-card--reverse .story-card__image {
+    order: unset;
+  }
+
+  .story-card__image img {
+    height: 240px;
+  }
+
+  .story-features {
+    grid-template-columns: 1fr;
   }
 
   .carousel-control-prev,
