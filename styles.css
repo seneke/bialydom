@@ -123,16 +123,6 @@ a {
   background: var(--violet);
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  /* szerokość paska */
-  max-width: 1200px;
-  margin: 0;
-}
-
 .desktop-menu {
   margin: 0;
   padding: 0;
@@ -162,30 +152,6 @@ header.is-scrolled .desktop-menu a {
   color: var(--nav-link-color-scrolled);
 }
 
-.mobile-nav-toggle {
-  flex: 0 0 auto;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  padding: 8px;
-  margin-left: auto;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.mobile-nav-toggle span {
-  display: block;
-  width: 28px;
-  height: 2px;
-  background: #fff;
-  transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
-}
-
-header.is-scrolled .mobile-nav-toggle span {
-  background: #fff;
-}
 
 .mobile-menu {
   position: absolute;

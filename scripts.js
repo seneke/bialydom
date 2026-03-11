@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // na większych ekranach zawsze zamknięte
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 768) closeMenu();
+      if (window.innerWidth > 1023) closeMenu();
     });
   }
 
