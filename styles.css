@@ -66,7 +66,7 @@ header.is-scrolled .desktop-menu a{
 section {
   background: rgba(255, 255, 255, 1); /* Białe tło dla treści */
   backdrop-filter: blur(5px); /* Rozmycie tła pod treścią */
-  border-radius: 10px;
+  border-radius: 40px;
   text-align: center; /* Wyśrodkowanie tekstu w poziomie */
   max-width: 1200px; /* Maksymalna szerokość dla sekcji */
   margin: 2em auto; /* Wyśrodkowanie sekcji na stronie */
@@ -610,7 +610,6 @@ header.is-scrolled .mobile-menu a:focus{
   max-width: 1200px;
   margin: 0 auto;
   padding: 80px 20px;
-  background: #f8f6f2;
 }
 
 .content-intro {
@@ -692,6 +691,21 @@ header.is-scrolled .mobile-menu a:focus{
 .story-card--highlight {
   grid-template-columns: 1fr;
   background: linear-gradient(135deg, #ffffff, #f4efe7);
+  max-width: 900px;
+  width: min(1100px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.story-card--highlight .story-card__media,
+.story-card--highlight .story-card__media img {
+  width: 80%;
+}
+
+.story-card--highlight .story-card__media img {
+  display: block;
+  height: auto;
+  object-fit: cover;
 }
 
 .story-features {
@@ -769,6 +783,11 @@ header.is-scrolled .mobile-menu a:focus{
   margin: 0;
   line-height: 1.75;
   color: #55636b;
+}
+
+.feature-content a {
+  display: inline-block;
+  margin-top: 20px;
 }
 
 .story-card--highlight .story-card__text {
@@ -1157,7 +1176,6 @@ section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 80px 20px;
-  background: #f8f6f2;
 }
 
 .content-intro {
@@ -1239,6 +1257,21 @@ section {
 .story-card--highlight {
   grid-template-columns: 1fr;
   background: linear-gradient(135deg, #ffffff, #f4efe7);
+  max-width: 1000px;
+  width: min(1100px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.story-card--highlight .story-card__media,
+.story-card--highlight .story-card__media img {
+  width: 80%;
+}
+
+.story-card--highlight .story-card__media img {
+  display: block;
+  height: auto;
+  object-fit: cover;
 }
 
 .story-features {
@@ -1318,6 +1351,11 @@ section {
   line-height: 1.7;
   color: #55636b;
   font-size: 0.98rem;
+}
+
+.feature-content a {
+  display: inline-block;
+  margin-top: 20px;
 }
 
 .story-card--highlight .story-card__text {
