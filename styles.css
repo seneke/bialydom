@@ -598,10 +598,6 @@ header.is-scrolled .mobile-menu a:focus{
     order: unset;
   }
 
-  .story-card__image img {
-    height: 240px;
-  }
-
   .story-features {
     grid-template-columns: 1fr;
   }
@@ -1164,10 +1160,6 @@ section {
     order: unset;
   }
 
-  .story-card__image img {
-    height: 240px;
-  }
-
   .story-features {
     grid-template-columns: 1fr;
   }
@@ -1254,11 +1246,17 @@ section {
   border-radius: 18px;
 }
 
+.story-card--highlight .story-card__image img {
+    width: 100%;
+    height: clamp(260px, 38vw, 420px);
+    object-fit: cover;
+  }
+
 .story-card--highlight {
   grid-template-columns: 1fr;
   background: linear-gradient(135deg, #ffffff, #f4efe7);
-  max-width: 1000px;
-  width: min(1100px, 100%);
+  width: 100%;
+    max-width: none;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1683,6 +1681,10 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.45);
 }
 
+.content-story {
+  display: none;
+
+}
 
    /* --- Karuzela --- */
 .gallery-carousel {
