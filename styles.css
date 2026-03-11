@@ -33,15 +33,9 @@ header {
   right: 0;
   z-index: 9999;
   color: #fff;
-
-  /* NA HERO: brak tła */
   background: transparent;
   backdrop-filter: none;
-
-  /* płynne pojawianie się tła */
-  transition:
-    background 250ms ease,
-    backdrop-filter 250ms ease;
+  transition: background 250ms ease, backdrop-filter 250ms ease;
 }
 
 header.is-scrolled {
@@ -49,18 +43,51 @@ header.is-scrolled {
   backdrop-filter: blur(6px);
 }
 
-header.is-scrolled .logo img{
-  content: url("img/logo2.png");
+.logo {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  width: 220px;
+  height: 90px;
+  flex-shrink: 0;
+}
+
+.logo__img {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* pierwsze logo */
+.logo__img--light {
+  opacity: 1;
+  height: 72px;
+}
+
+/* drugie logo */
+.logo__img--dark {
+  opacity: 0;
+  height: 88px; /* tutaj ustawiasz rozmiar logo2 */
+}
+
+/* po scrollu chowamy pierwsze, pokazujemy drugie */
+header.is-scrolled .logo__img--light {
+  opacity: 0;
+}
+
+header.is-scrolled .logo__img--dark {
+  opacity: 1;
 }
 
 header.is-scrolled .desktop-menu a{
   color: #fff;
   transition: color 0.3s ease;
-}
-
-.logo {
-  max-width: 50px;
-  display: block !important; /* Domyślnie logo jest ukryte */
 }
 
 section {
@@ -356,14 +383,23 @@ footer {
   }
 
   .logo {
-    max-width: none; /* usuwa ograniczenie 50px */
-    }
+  max-width: none;
+}
 
-  .logo img {
-    height: 100px;   /* ustaw docelowo: 70–90px */
-    width: auto;
-    display: block;
-    }
+.logo img {
+  height: 100px;
+  width: auto;
+  display: block;
+}
+
+.logo__img--light {
+    height: 64px;
+  }
+
+  /* drugie logo */
+  .logo__img--dark {
+    height: 78px;
+  }
 
   .nav {
     position: relative;
@@ -1034,8 +1070,24 @@ header.is-scrolled .mobile-menu a:focus{
 
   h1{ font-size: 2em; }
 
-  .logo{ display: block; }
-  .logo img{ height: 120px; }
+.logo {
+  max-width: none;
+}
+
+.logo img {
+  height: 100px;
+  width: auto;
+  display: block;
+}
+
+.logo__img--light {
+    height: 64px;
+  }
+
+  /* drugie logo */
+  .logo__img--dark {
+    height: 78px;
+  }
 
   .background-container{
     background-image: url("img/tlo_tablet.jpg");
@@ -2012,4 +2064,4 @@ header.is-scrolled .desktop-menu li a:focus span{
     transform: translateY(0);
   }
 
-}
+} 
