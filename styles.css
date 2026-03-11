@@ -818,6 +818,11 @@ header.is-scrolled .mobile-menu a:focus{
   transform: scale(1.02);
 }
 
+.mobile-lightbox.hide-arrows .lightbox-prev,
+.mobile-lightbox.hide-arrows .lightbox-next {
+  display: none;
+}
+
   .carousel-control-prev,
   .carousel-control-next {
     display: none;
@@ -1397,6 +1402,11 @@ section {
 
 .feature-lightbox:hover .feature-image {
   transform: scale(1.02);
+}
+
+.mobile-lightbox.hide-arrows .lightbox-prev,
+.mobile-lightbox.hide-arrows .lightbox-next {
+  display: none;
 }
 
   .carousel-control-prev,
