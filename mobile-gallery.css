@@ -46,14 +46,12 @@
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 14px;
   }
 
   .mobile-gallery-preview__grid img:only-child {
   grid-column: 1 / -1;
-  justify-self: center;
 }
 
   .mobile-gallery-preview__actions {
