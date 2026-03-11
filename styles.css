@@ -621,11 +621,11 @@ header.is-scrolled .mobile-menu a:focus{
 
 .section-eyebrow {
   display: inline-block;
-  margin-bottom: 12px;
-  font-size: 0.85rem;
+  margin-bottom: 52px;
+  font-size: 1.85rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #9a7b4f;
+  color: #000000;
   font-weight: 700;
 }
 
@@ -762,7 +762,7 @@ header.is-scrolled .mobile-menu a:focus{
 }
 
 .feature-content {
-  padding: 0 18px 18px;
+  padding: 10px 18px 18px;
 }
 
 .feature-content p {
@@ -793,7 +793,7 @@ header.is-scrolled .mobile-menu a:focus{
   height: 200px;
   object-fit: cover;
   border-radius: 12px;
-  margin-top: 14px;
+  margin-top: 18px;
   display: block;
 }
 
@@ -1202,11 +1202,11 @@ section {
 
 .section-eyebrow {
   display: inline-block;
-  margin-bottom: 12px;
-  font-size: 0.85rem;
+  margin-bottom: 50px;
+  font-size: 1.85rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #9a7b4f;
+  color: #000000;
   font-weight: 700;
 }
 
@@ -1344,7 +1344,7 @@ section {
 }
 
 .feature-content {
-  padding: 0 16px 16px;
+  padding: 10px 18px 18px;
 }
 
 .feature-content p {
