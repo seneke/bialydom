@@ -44,45 +44,19 @@ header.is-scrolled {
 }
 
 .logo {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-  width: 220px;
-  height: 90px;
-  flex-shrink: 0;
+  display: block;
+  width: fit-content;
 }
 
-.logo__img {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.logo img {
   display: block;
   width: auto;
-  height: auto;
-  max-width: 100%;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  height: clamp(70px, 9vw, 110px);
+  transition: height 0.3s ease, transform 0.3s ease;
 }
 
-/* pierwsze logo */
-.logo__img--light {
-  opacity: 1;
-  height: 72px;
-}
-
-/* drugie logo */
-.logo__img--dark {
-  opacity: 0;
-  height: 88px; /* tutaj ustawiasz rozmiar logo2 */
-}
-
-/* po scrollu chowamy pierwsze, pokazujemy drugie */
-header.is-scrolled .logo__img--light {
-  opacity: 0;
-}
-
-header.is-scrolled .logo__img--dark {
-  opacity: 1;
+header.is-scrolled .logo img {
+  height: clamp(78px, 10vw, 125px);
 }
 
 header.is-scrolled .desktop-menu a{
@@ -382,24 +356,22 @@ footer {
     margin: 0;
   }
 
-  .logo {
-  max-width: none;
+.logo {
+  display: block;
+  width: fit-content;
 }
 
 .logo img {
-  height: 100px;
-  width: auto;
   display: block;
+  width: auto;
+  height: clamp(70px, 9vw, 110px);
+  transition: height 0.3s ease, transform 0.3s ease;
 }
 
-.logo__img--light {
-    height: 64px;
-  }
-
-  /* drugie logo */
-  .logo__img--dark {
-    height: 78px;
-  }
+/* logo po scrollu - trochę większe */
+header.is-scrolled .logo img {
+  height: clamp(78px, 10vw, 125px);
+}
 
   .nav {
     position: relative;
@@ -1071,23 +1043,21 @@ header.is-scrolled .mobile-menu a:focus{
   h1{ font-size: 2em; }
 
 .logo {
-  max-width: none;
+  display: block;
+  width: fit-content;
 }
 
 .logo img {
-  height: 100px;
-  width: auto;
   display: block;
+  width: auto;
+  height: clamp(70px, 9vw, 110px);
+  transition: height 0.3s ease, transform 0.3s ease;
 }
 
-.logo__img--light {
-    height: 64px;
-  }
-
-  /* drugie logo */
-  .logo__img--dark {
-    height: 78px;
-  }
+/* logo po scrollu - trochę większe */
+header.is-scrolled .logo img {
+  height: clamp(78px, 10vw, 125px);
+}
 
   .background-container{
     background-image: url("img/tlo_tablet.jpg");
@@ -1628,9 +1598,22 @@ section {
     font-size: 1.2em;
   }
 
-  .logo {
-    display: none; /* Logo ukryte na desktopach */
-  }
+.logo {
+  display: block;
+  width: fit-content;
+}
+
+.logo img {
+  display: block;
+  width: auto;
+  height: clamp(70px, 9vw, 110px);
+  transition: height 0.3s ease, transform 0.3s ease;
+}
+
+/* logo po scrollu - trochę większe */
+header.is-scrolled .logo img {
+  height: clamp(78px, 10vw, 125px);
+}
 
   .background-container {
     background-image: url("img/tlo.jpg");
