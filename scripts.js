@@ -183,29 +183,18 @@ document.addEventListener('DOMContentLoaded', function () {
      ========================= */
   (function () {
   const header = document.querySelector('header');
-  const homeHero = document.querySelector('.background-container');
-  const galleryHero = document.querySelector('.gallery-page-hero');
-  const hero = homeHero || galleryHero;
+  const hero = document.querySelector('.background-container') || document.querySelector('.gallery-page-hero');
 
   if (!header || !hero) return;
 
   function updateHeader() {
+    const trigger = Math.max(40, hero.offsetHeight * 0.15);
 
-  let trigger;
-
-  if (homeHero) {
-    // STRONA GŁÓWNA – szybciej pojawia się tło
-    trigger = homeHero.offsetHeight - header.offsetHeight - 700;
-  } else if (galleryHero) {
-    // STRONA GALERII – zostaje jak było
-    trigger = galleryHero.offsetTop + galleryHero.offsetHeight - header.offsetHeight - 1;
-  }
-
-  if (window.scrollY > trigger) {
-    header.classList.add('is-scrolled');
-  } else {
-    header.classList.remove('is-scrolled');
-  }
+    if (window.scrollY > trigger) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
+    }
   }
 
   updateHeader();
