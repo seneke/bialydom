@@ -344,17 +344,21 @@ p{
 }
 
 #contact {
-  display: flex;
+display: flex;
  justify-content: center;
  align-items: flex-start;
  box-sizing: border-box;
  gap: 40px;
- max-width: 1200px;
+
+ width: min(1100px, 92%);
  margin: 2em auto;
- padding: 20px 18px 18px;
+
+ padding: 28px;
+
  background: rgba(255, 255, 255, 0.94);
  border-radius: 18px;
  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
  flex-wrap: wrap;
 }
 
@@ -939,10 +943,15 @@ header.is-scrolled .mobile-menu a:focus{
 
   #contact {
     flex-direction: column;
-  padding: 20px 18px 18px;
-  background: rgba(255, 255, 255, 0.94);
-  border-radius: 18px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+ width: min(1100px, 95%);
+ margin: 2em auto;
+
+ padding: 24px 18px;
+
+ background: rgba(255, 255, 255, 0.94);
+ border-radius: 18px;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   }
 
   .contact-container {
