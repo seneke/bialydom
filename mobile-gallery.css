@@ -4,17 +4,17 @@
 */
 
 @media (max-width: 1023px) {
-.mobile-gallery-preview {
+  .mobile-gallery-preview {
     display: block;
     width: calc(100% - 40px);
     max-width: 1200px;
-    margin: 0 auto 40px;
+    margin: 40px auto;
     padding: 24px 0 12px;
     background: #ffffff;
     border-radius: 28px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-    backdrop-filter: none;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
     overflow: hidden;
+    backdrop-filter: none;
   }
 
   .mobile-gallery-preview__box {

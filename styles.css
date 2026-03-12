@@ -95,10 +95,9 @@ header.is-scrolled .logo-scrolled {
   z-index: 5;
   max-width: 1200px;
   margin: 0 auto 40px;
-  padding: 80px 20px;
-  background: #ffffff;
+  padding: 50px 10px;
+  background: #f7f4ee;
   border-radius: 28px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   backdrop-filter: none;
 }
 
@@ -492,24 +491,23 @@ footer {
 
 /* mobile menu domyślnie schowane */
 .mobile-menu {
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    width: min(260px, calc(100vw - 32px));
-    padding: 12px;
-    border-radius: 14px;
-    background: rgba(0, 0, 0, 0.78);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(-8px);
-    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(150px, calc(100vw - 48px));
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
   }
 
  .mobile-menu.is-open {
@@ -677,10 +675,12 @@ header.is-scrolled .mobile-menu a:focus{
   }
 
 .main-content {
-    margin-top: -36px;
-    border-radius: 22px 22px 0 0;
-    padding: 64px 18px;
-  }
+  margin-top: -36px;
+  border-radius: 22px 22px 0 0;
+  padding: 64px 18px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
   .story-card {
     grid-template-columns: 1fr;
@@ -696,12 +696,6 @@ header.is-scrolled .mobile-menu a:focus{
   .story-features {
     grid-template-columns: 1fr;
   }
-
-  .main-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 20px;
-}
 
 .content-intro {
   max-width: 760px;
