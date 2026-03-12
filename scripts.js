@@ -65,18 +65,31 @@ document.addEventListener('DOMContentLoaded', function () {
   /* =========================
      Smooth scroll dla a[href^="#"]
      ========================= */
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', function (e) {
-      const href = link.getAttribute('href');
-      if (!href || href === '#') return;
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', function (e) {
+    const href = link.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
-      const target = document.querySelector(href);
-      if (!target) return;
+/* ========================= Story accordion ========================= */
+const featureItems = document.querySelectorAll('.feature-accordion .feature-item');
 
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth' });
+featureItems.forEach((item) => {
+  item.addEventListener('toggle', function () {
+    if (!item.open) return;
+
+    featureItems.forEach((otherItem) => {
+      if (otherItem !== item) {
+        otherItem.removeAttribute('open');
+      }
     });
   });
+});
 
   /* =========================
      Magnific Popup (jQuery)
