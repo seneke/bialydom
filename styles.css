@@ -818,7 +818,6 @@ header.is-scrolled .mobile-menu a:focus{
   overflow: hidden;
   box-shadow: 0 8px 22px rgba(31, 42, 48, 0.06);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-  box-sizing: border-box;
 }
 
 .feature-item:hover {
@@ -885,22 +884,7 @@ header.is-scrolled .mobile-menu a:focus{
 }
 
 .feature-content {
-  height: 0;
-  overflow: hidden;
-  opacity: 0;
-  padding: 0 18px 18px;
-  box-sizing: border-box;
-  transition: height 0.4s ease, opacity 0.25s ease;
-  will-change: height;
-}
-
-.feature-item[open] .feature-content {
-  opacity: 1;
-}
-
-.feature-content__inner {
-  padding: 0 18px 18px;
-  box-sizing: border-box;
+  padding: 0 20px 20px;
 }
 
 .feature-content p {
