@@ -79,15 +79,91 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 /* ========================= Story accordion ========================= */
 const featureItems = document.querySelectorAll('.feature-accordion .feature-item');
 
-featureItems.forEach((item) => {
-  item.addEventListener('toggle', function () {
-    if (!item.open) return;
+function openFeatureItem(item) {
+  const content = item.querySelector('.feature-content');
+  if (!content) return;
 
-    featureItems.forEach((otherItem) => {
-      if (otherItem !== item) {
-        otherItem.removeAttribute('open');
+  featureItems.forEach((otherItem) => {
+    if (otherItem !== item && otherItem.open) {
+      closeFeatureItem(otherItem);
+    }
+  });
+
+  item.open = true;
+  content.style.overflow = 'hidden';
+  content.style.height = '0px';
+
+  requestAnimationFrame(() => {
+    const fullHeight = content.scrollHeight;
+    content.style.height = fullHeight + 'px';
+  });
+
+  content.addEventListener(
+    'transitionend',
+    function handler(e) {
+      if (e.propertyName === 'height' && item.open) {
+        content.style.height = 'auto';
       }
-    });
+      content.removeEventListener('transitionend', handler);
+    }
+  );
+}
+
+function closeFeatureItem(item) {
+  const content = item.querySelector('.feature-content');
+  if (!content) return;
+
+  const fullHeight = content.scrollHeight;
+
+  content.style.overflow = 'hidden';
+  content.style.height = fullHeight + 'px';
+
+  content.offsetHeight;
+
+  requestAnimationFrame(() => {
+    content.style.height = '0px';
+  });
+
+  content.addEventListener(
+    'transitionend',
+    function handler(e) {
+      if (e.propertyName === 'height') {
+        item.open = false;
+      }
+      content.removeEventListener('transitionend', handler);
+    }
+  );
+}
+
+featureItems.forEach((item) => {
+  const summary = item.querySelector('summary');
+  const content = item.querySelector('.feature-content');
+
+  if (!summary || !content) return;
+
+  if (item.open) {
+    content.style.height = 'auto';
+  } else {
+    content.style.height = '0px';
+  }
+
+  summary.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    if (item.open) {
+      closeFeatureItem(item);
+    } else {
+      openFeatureItem(item);
+    }
+  });
+});
+
+window.addEventListener('resize', () => {
+  featureItems.forEach((item) => {
+    const content = item.querySelector('.feature-content');
+    if (item.open && content) {
+      content.style.height = 'auto';
+    }
   });
 });
 

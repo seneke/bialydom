@@ -818,6 +818,7 @@ header.is-scrolled .mobile-menu a:focus{
   overflow: hidden;
   box-shadow: 0 8px 22px rgba(31, 42, 48, 0.06);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  box-sizing: border-box;
 }
 
 .feature-item:hover {
@@ -884,7 +885,17 @@ header.is-scrolled .mobile-menu a:focus{
 }
 
 .feature-content {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
   padding: 0 20px 20px;
+  box-sizing: border-box;
+  transition: height 0.4s ease, opacity 0.25s ease;
+  will-change: height;
+}
+
+.feature-item[open] .feature-content {
+  opacity: 1;
 }
 
 .feature-content p {
@@ -930,12 +941,10 @@ header.is-scrolled .mobile-menu a:focus{
 
 .feature-image {
   width: 100%;
-  height: 220px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 16px;
-  margin-top: 18px;
   display: block;
-  box-shadow: 0 10px 24px rgba(31, 42, 48, 0.10);
+  border-radius: 10px;
 }
 
 .feature-item[open] .feature-image {
@@ -944,13 +953,16 @@ header.is-scrolled .mobile-menu a:focus{
 
 .feature-lightbox {
   display: block;
-  margin-top: 14px;
-  border-radius: 12px;
+  width: 85%;
+  margin: 16px auto 0;
+  border-radius: 10px;
   overflow: hidden;
+  aspect-ratio: 16 / 10;
 }
 
 .feature-lightbox .feature-image {
-  margin-top: 0;
+  width: 100%;
+  height: 100%;
   cursor: zoom-in;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
