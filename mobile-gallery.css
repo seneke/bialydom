@@ -12,7 +12,6 @@
   }
 
   .mobile-gallery-preview__box {
-    background: rgba(255, 255, 255, 0.94);
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
