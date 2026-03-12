@@ -598,39 +598,15 @@ header.is-scrolled .mobile-menu a:focus{
 }
 
 .hero-topline {
-  margin: 0 0 22px;
-  font-size: 0.95rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
-
-  text-shadow: 
-  0 1px 3px rgba(0,0,0,0.8),
-  0 0 6px rgba(0,0,0,0.6);
+  display: none;
 }
 
 .hero-content h1 {
-  margin: 0 0 28px;
-  font-size: clamp(2.2rem, 5vw, 4.5rem);
-  line-height: 1.15;
-
-  color: rgba(255, 255, 255, 0.9);
-  
-  text-shadow:
-    0 0 4px rgba(0,0,0,0.8),
-    0 2px 10px rgba(0,0,0,0.6);
+  display: none;
 }
 
 .hero-text {
-  margin: 0 auto 32px;
-  max-width: 620px;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.95);
-
-  text-shadow: 
-  0 1px 3px rgba(0,0,0,0.8),
-  0 0 6px rgba(0,0,0,0.6);
+ display: none;
 }
 
 .hero-buttons {
