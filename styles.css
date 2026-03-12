@@ -584,17 +584,18 @@ header.is-scrolled .mobile-menu a:focus{
 .hero-content {
   position: absolute;
   z-index: 2;
-  left: 95%;
-  top: 35%;
-  transform: translate(-50%, -50%);
-  width: min(90%, 760px);
-  text-align: center;
+  right: 8px;        /* było 20px */
+  left: auto;
+  top: 40%;
+  transform: translateY(-50%);
+  width: auto;
+  text-align: right;
   color: #fff;
-  padding: 20px;
-
+  padding: 20px 8px 20px 20px; /* zmniejszony padding z prawej */
   display: flex;
   flex-direction: column;
-  gap: 24px;   /* TU kontrolujesz odstęp */
+  align-items: flex-end;
+  gap: 24px;
 }
 
 .hero-topline {
@@ -611,10 +612,9 @@ header.is-scrolled .mobile-menu a:focus{
 
 .hero-buttons {
   display: flex;
-  gap: 14px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: -6px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
 }
 
 .hero-btn {
@@ -622,16 +622,13 @@ header.is-scrolled .mobile-menu a:focus{
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-width: 180px;
-  padding: 15px 24px;
+
+  padding: 14px 24px;
   border-radius: 999px;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 0.98rem;
-  letter-spacing: 0.01em;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(6px);
+  font-weight: 600;
+  transition: 0.25s ease;
+  min-width: 180px;
 }
 
 .hero-btn i {
