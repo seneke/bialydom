@@ -344,16 +344,18 @@ p{
 }
 
 #contact {
-  display: flex; /* Ustawia kontener na flexbox */
-  justify-content: center; /* Rozkłada elementy na przestrzeni kontenera */
-  align-items: flex-start; /* Ustawia elementy do góry kontenera */
-  box-sizing: border-box; /* Upewnia się, że padding jest uwzględniany w szerokości kontenera */
-  gap: 40px; /* Odstęp między galeriami */
-  max-width: 1200px; /* Ta sama maksymalna szerokość co dla innych sekcji */
-  margin: 2em auto; /* Wyśrodkowanie sekcji na stronie */
-  padding: 2em; /* Padding wewnętrzny */
-  background-color: #f5f5f5; /* Tło sekcji */
-  flex-wrap: wrap; /* Umożliwia przejście elementów do nowej linii */
+  display: flex;
+ justify-content: center;
+ align-items: flex-start;
+ box-sizing: border-box;
+ gap: 40px;
+ max-width: 1200px;
+ margin: 2em auto;
+ padding: 20px 18px 18px;
+ background: rgba(255, 255, 255, 0.94);
+ border-radius: 18px;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+ flex-wrap: wrap;
 }
 
 .contact-container,
@@ -762,7 +764,9 @@ header.is-scrolled .mobile-menu a:focus{
 
 .story-card--highlight {
   grid-template-columns: 1fr;
-  background: linear-gradient(135deg, #ffffff, #f4efe7);
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   max-width: 900px;
   width: min(1100px, 100%);
   margin-left: auto;
@@ -934,9 +938,11 @@ header.is-scrolled .mobile-menu a:focus{
   }
 
   #contact {
-    flex-direction: column; /* Ustaw elementy w kolumnie dla urządzeń mobilnych */
-    padding: 2em;
-    background-color: #f5f5f5;
+    flex-direction: column;
+  padding: 20px 18px 18px;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   }
 
   .contact-container {
