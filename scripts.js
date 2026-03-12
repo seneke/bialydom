@@ -94,8 +94,7 @@ function openFeatureItem(item) {
   content.style.height = '0px';
 
   requestAnimationFrame(() => {
-    const fullHeight = content.scrollHeight;
-    content.style.height = fullHeight + 'px';
+    content.style.height = content.scrollHeight + 'px';
   });
 
   content.addEventListener(
@@ -113,15 +112,13 @@ function closeFeatureItem(item) {
   const content = item.querySelector('.feature-content');
   if (!content) return;
 
-  const fullHeight = content.scrollHeight;
-
+  content.style.height = content.scrollHeight + 'px';
   content.style.overflow = 'hidden';
-  content.style.height = fullHeight + 'px';
-
-  content.offsetHeight;
 
   requestAnimationFrame(() => {
-    content.style.height = '0px';
+    requestAnimationFrame(() => {
+      content.style.height = '0px';
+    });
   });
 
   content.addEventListener(

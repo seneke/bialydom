@@ -888,7 +888,7 @@ header.is-scrolled .mobile-menu a:focus{
   height: 0;
   overflow: hidden;
   opacity: 0;
-  padding: 0 20px 20px;
+  padding: 0 18px 18px;
   box-sizing: border-box;
   transition: height 0.4s ease, opacity 0.25s ease;
   will-change: height;
@@ -896,6 +896,11 @@ header.is-scrolled .mobile-menu a:focus{
 
 .feature-item[open] .feature-content {
   opacity: 1;
+}
+
+.feature-content__inner {
+  padding: 0 18px 18px;
+  box-sizing: border-box;
 }
 
 .feature-content p {
