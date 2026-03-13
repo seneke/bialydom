@@ -457,7 +457,7 @@ footer {
 :root {
     --header-height: 110px;
     --logo-width: clamp(200px, 50vw, 300px);
-    --logo-width-scrolled: clamp(135px, 38vw, 210px);
+    --logo-width-scrolled: clamp(200px, 50vw, 300px);
   }
 
   h1 {
@@ -1087,14 +1087,20 @@ header.is-scrolled .mobile-menu a:focus{
     min-height: 100px;
   }
 
-  .logo img {
-    height: 82px;
+  .logo {
+    flex: 0 0 auto;
+    max-width: 260px;
   }
+
+.logo img {
+  height: clamp(100px, 10vw, 130px);
+  width: auto;
+}
 
   .desktop-menu {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: clamp(36px, 5vw, 66px);
     margin-left: auto;
   }
 
@@ -1105,14 +1111,23 @@ header.is-scrolled .mobile-menu a:focus{
 
   .desktop-menu a {
     color: #000;
-    font-size: 15px;
+    font-size: 22px;
     font-weight: 600;
     white-space: nowrap;
+    transition: color 0.25s ease;
   }
 
-  header.is-scrolled .desktop-menu a {
+.desktop-menu a:hover {
+  color: #cc6b11;
+}
+
+.nav.scrolled .desktop-menu a:hover {
+  color: #d6bfa3;
+}
+
+header.is-scrolled .desktop-menu a {
     color: #fff;
-  }
+}
 
 .mobile-nav-toggle,
 .mobile-menu {
