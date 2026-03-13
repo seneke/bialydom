@@ -11,8 +11,8 @@
   --nav-side-padding: clamp(16px, 4vw, 32px);
 
   /* zamiast sterowania samą wysokością */
---logo-width: clamp(240px, 20vw, 520px);
---logo-width-scrolled: clamp(200px, 16vw, 420px);
+  --logo-width: clamp(240px, 20vw, 520px);
+  --logo-width-scrolled: clamp(200px, 16vw, 420px);
 
   --nav-link-color: #ffffff;
   --nav-link-color-scrolled: #ffffff;
