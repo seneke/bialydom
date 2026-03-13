@@ -455,7 +455,7 @@ footer {
 /* Styl dla urządzeń mobilnych */
 @media (max-width: 1023px) {
 :root {
-    --header-height: 78px;
+    --header-height: 110px;
     --logo-width: clamp(200px, 50vw, 300px);
     --logo-width-scrolled: clamp(135px, 38vw, 210px);
   }
@@ -488,20 +488,19 @@ footer {
     transition: background 0.3s ease;
   }
 
-  .logo {
-  display: flex;
-  align-items: center;
-  min-height: var(--header-height);
-}
-
-.logo img {
-  max-height: calc(var(--header-height) - 16px);
+.logo-default {
   width: auto;
-  max-width: 100%;
-  object-fit: contain;
+  height: auto;
+  max-height: 8%;
+  max-width: none;
 }
 
 .logo-scrolled {
+  width: auto;
+  height: auto;
+  max-height: 110px;
+  max-width: none;
+
   top: 50%;
   left: 0;
   right: auto;
