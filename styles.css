@@ -1,15 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 :root {
-  --light-grey: #f5f5f5; /* Jasnoszary */
-  --white: #ffffff; /* Biały */
-  --black: #000000; /* Czarny */
-  --violet: #8a3ffc; /* Fioletowy */
-  --dark-grey: #474747; /* Ciemnoszary */
+  --light-grey: #f5f5f5;
+  --white: #ffffff;
+  --black: #000000;
+  --violet: #8a3ffc;
+  --dark-grey: #474747;
 
   --header-height: 88px;
   --nav-side-padding: clamp(16px, 4vw, 32px);
-  --logo-height: clamp(60px, 6vw, 140px);
+
+  /* zamiast sterowania samą wysokością */
+  --logo-width: clamp(180px, 22vw, 360px);
+  --logo-width-scrolled: clamp(160px, 18vw, 300px);
+
   --nav-link-color: #ffffff;
   --nav-link-color-scrolled: #ffffff;
   --mobile-panel-bg: rgba(0, 0, 0, 0.88);
@@ -53,21 +57,23 @@ header.is-scrolled {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 var(--nav-side-padding);
   box-sizing: border-box;
   position: relative;
+  min-height: var(--header-height);
 }
 
 .logo {
-  display: flex;
-  align-items: center;
+  position: relative;
+  display: block;
   flex: 0 0 auto;
+  width: var(--logo-width);
 }
 
 .logo img {
   display: block;
-  height: var(--logo-height);
-  width: auto;
+  width: 100%;
+  height: auto;
 }
 
 .logo-default,
@@ -77,9 +83,13 @@ header.is-scrolled {
 
 .logo-scrolled {
   position: absolute;
-  inset: 0 auto auto 0;
+  inset: 0;
   opacity: 0;
   pointer-events: none;
+}
+
+header.is-scrolled .logo {
+  width: var(--logo-width-scrolled);
 }
 
 header.is-scrolled .logo-default {
@@ -446,7 +456,8 @@ footer {
 @media (max-width: 1023px) {
 :root {
     --header-height: 78px;
-    --logo-height: clamp(44px, 12vw, 64px);
+    --logo-width: clamp(200px, 50vw, 300px);
+    --logo-width-scrolled: clamp(135px, 38vw, 210px);
   }
 
   h1 {
@@ -455,15 +466,7 @@ footer {
   }
 
 .nav {
-    min-height: 90px;
-}
-
-  .logo__img--light {
-    height: 130px;
-  }
-
-  .logo__img--dark {
-    height: 164px;
+    min-height: var(--header-height);
   }
 
 .mobile-nav-toggle {
