@@ -488,6 +488,27 @@ footer {
     transition: background 0.3s ease;
   }
 
+  .logo {
+  display: flex;
+  align-items: center;
+  min-height: var(--header-height);
+}
+
+.logo img {
+  max-height: calc(var(--header-height) - 16px);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.logo-scrolled {
+  top: 50%;
+  left: 0;
+  right: auto;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
   header.is-scrolled .mobile-nav-toggle span {
     background: var(--nav-ink-inv);
   }
