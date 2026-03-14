@@ -1131,10 +1131,11 @@ header.is-scrolled .desktop-menu a {
     display: none !important;
   }
 
-.main-content > section {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 0 40px 0;
+.main-content,
+.gallery-section,
+#contact {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto 40px;
   padding: 4em;
   background: #ffffff;
   border-radius: 28px;
@@ -1150,10 +1151,6 @@ header.is-scrolled .desktop-menu a {
   text-transform: uppercase;
   color: #000000;
   font-weight: 700;
-}
-
-.main-content > section:last-of-type {
-  margin-bottom: 0;
 }
 
 .gallery-section {
@@ -1391,8 +1388,10 @@ img.mfp-img {
   justify-content: space-between;
   align-items: stretch;
   gap: 40px;
-  max-width: 1200px;
-  margin: 40px auto;
+}
+
+#contact:last-of-type {
+  margin-bottom: 0;
 }
 
   .contact-container {
