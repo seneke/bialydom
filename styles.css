@@ -416,7 +416,7 @@ footer {
   backdrop-filter: blur(5px);
   border-radius: 28px;
   padding: 2em;
-  margin: auto 1em 0;
+  margin: auto 2em;
   text-align: center;
   box-shadow: 0 10px 24px rgba(0,0,0,0.08);
   border-radius: 28px 28px 0 0px;
@@ -1618,6 +1618,18 @@ img.mfp-img {
 .lightbox-next {
   right: 20px;
 }
+
+footer {
+  background: #ffffff;
+  backdrop-filter: blur(5px);
+  border-radius: 28px;
+  padding: 2em;
+  margin: auto 40px auto 40px;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  border-radius: 28px 28px 0 0px;
+}
+
 }
 
 :root{
