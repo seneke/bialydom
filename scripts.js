@@ -82,8 +82,8 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
       extraOffset = 30;
     }
 
-    if (href === '#about') {
-      extraOffset = 40;
+    if (href === '#about-anchor') {
+      extraOffset = 65;
     }
 
     const targetPosition =
