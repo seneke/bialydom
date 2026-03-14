@@ -2,50 +2,51 @@ document.addEventListener('DOMContentLoaded', function () {
   /* =========================
      MOBILE MENU (hamburger)
      ========================= */
-  const menuToggle = document.querySelector('.mobile-nav-toggle');
-  const mobileMenu = document.querySelector('#mobile-menu');
+  /* =========================
+   MOBILE MENU (hamburger)
+   ========================= */
+const menuToggle = document.querySelector('.mobile-nav-toggle');
+const mobileMenu = document.querySelector('#mobile-menu-panel');
+const mobileMenuAddress = document.querySelector('#mobileMenuAddress');
 
-  const isMenuOpen = () => mobileMenu && mobileMenu.classList.contains('is-open');
+const isMenuOpen = () => mobileMenu && mobileMenu.classList.contains('is-open');
 
-  const openMenu = () => {
-    if (!menuToggle || !mobileMenu) return;
-    mobileMenu.classList.add('is-open');
-    menuToggle.setAttribute('aria-expanded', 'true');
-    mobileMenu.setAttribute('aria-hidden', 'false');
-  };
+const openMenu = () => {
+  if (!menuToggle || !mobileMenu) return;
+  mobileMenu.classList.add('is-open');
+  menuToggle.setAttribute('aria-expanded', 'true');
+  mobileMenu.setAttribute('aria-hidden', 'false');
+};
 
-  const closeMenu = () => {
-    if (!menuToggle || !mobileMenu) return;
-    mobileMenu.classList.remove('is-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    mobileMenu.setAttribute('aria-hidden', 'true');
-  };
+const closeMenu = () => {
+  if (!menuToggle || !mobileMenu) return;
+  mobileMenu.classList.remove('is-open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  mobileMenu.setAttribute('aria-hidden', 'true');
+};
 
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', function (e) {
-      e.stopPropagation();
-      if (isMenuOpen()) closeMenu();
-      else openMenu();
-    });
+if (menuToggle && mobileMenu) {
+  menuToggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (isMenuOpen()) closeMenu();
+    else openMenu();
+  });
 
-    // zamknij po kliknięciu w link
-    mobileMenu.querySelectorAll('a').forEach((a) => {
-      a.addEventListener('click', closeMenu);
-    });
+  mobileMenu.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', closeMenu);
+  });
 
-    // zamknij po kliknięciu poza menu
-    document.addEventListener('click', function (event) {
-      if (!isMenuOpen()) return;
-      if (menuToggle.contains(event.target)) return;
-      if (mobileMenu.contains(event.target)) return;
-      closeMenu();
-    });
+  document.addEventListener('click', function (event) {
+    if (!isMenuOpen()) return;
+    if (menuToggle.contains(event.target)) return;
+    if (mobileMenu.contains(event.target)) return;
+    closeMenu();
+  });
 
-    // na większych ekranach zawsze zamknięte
-    window.addEventListener('resize', function () {
-      if (window.innerWidth > 1023) closeMenu();
-    });
-  }
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1023) closeMenu();
+  });
+}
 
   /* =========================
      ScrollReveal

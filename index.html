@@ -79,7 +79,7 @@
                 </a>
 
                 <button class="mobile-nav-toggle" type="button"
-                    aria-controls="mobile-menu"
+                    aria-controls="mobile-menu-panel"
                     aria-expanded="false"
                     aria-label="Otwórz menu">
                     <span></span>
@@ -87,17 +87,51 @@
                     <span></span>
                 </button>
 
+            <div class="mobile-menu-wrap">
+        <a href="https://maps.google.com/?q=Nadmorska+37+Sarbinowo"
+        class="mobile-menu-address"
+        id="mobileMenuAddress"
+        target="_blank"
+        rel="noopener">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <span>Sarbinowo, ul. Polna 8B</span>
+        </a>
+
+        <button class="mobile-nav-toggle" type="button"
+            aria-controls="mobile-menu-panel"
+            aria-expanded="false"
+            aria-label="Otwórz menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div id="mobile-menu-panel" class="mobile-menu-panel" aria-hidden="true">
+            <div class="mobile-menu-actions">
+                <a href="tel:+48504226321" class="mobile-menu-action mobile-menu-action--call">
+                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                    <span>Zadzwoń</span>
+                </a>
+
+                <a href="gallery.html" class="mobile-menu-action mobile-menu-action--gallery">
+                    <i class="fas fa-images" aria-hidden="true"></i>
+                    <span>Galeria</span>
+                </a>
+
+                <a href="#contact" class="mobile-menu-action mobile-menu-action--location">
+                    <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+                    <span>Lokalizacja</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
                 <ul class="desktop-menu">
                     <li><a href="#gallery"><span>GALERIA</span></a></li>
                     <li><a href="#offer"><span>O NAS</span></a></li>
                     <li><a href="#contact"><span>KONTAKT</span></a></li>
                 </ul>
 
-                <ul id="mobile-menu" class="mobile-menu" aria-hidden="true">
-                    <li><a href="gallery.html">Galeria</a></li>
-                    <li><a href="#offer">O nas</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
-                </ul>
             </nav>
         </header>
     </div>
