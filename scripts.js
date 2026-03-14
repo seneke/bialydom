@@ -131,83 +131,100 @@ featureItems.forEach((item) => {
   /* =========================
      Carousels
      ========================= */
-  const carousels = document.querySelectorAll('.gallery-carousel');
+  /* =========================
+   Carousels
+   ========================= */
+const carousels = document.querySelectorAll('.gallery-carousel');
 
-  carousels.forEach((carousel) => {
-    const prevButton = carousel.querySelector('.carousel-control-prev');
-    const nextButton = carousel.querySelector('.carousel-control-next');
-    const carouselInner = carousel.querySelector('.carousel-inner');
-    if (!prevButton || !nextButton || !carouselInner) return;
+carousels.forEach((carousel) => {
+  const prevButton = carousel.querySelector('.carousel-control-prev');
+  const nextButton = carousel.querySelector('.carousel-control-next');
+  const carouselInner = carousel.querySelector('.carousel-inner');
 
-    const items = carouselInner.querySelectorAll('.carousel-item');
-    if (!items.length) return;
+  if (!prevButton || !nextButton || !carouselInner) return;
 
-    const indicators = carousel.querySelectorAll('.carousel-indicators button');
-    let currentIndex = 0;
+  const originalItems = Array.from(carouselInner.querySelectorAll('.carousel-item'));
+  if (!originalItems.length) return;
 
-    const firstClone = items[0].cloneNode(true);
-    const lastClone = items[items.length - 1].cloneNode(true);
+  const firstClone = originalItems[0].cloneNode(true);
+  const lastClone = originalItems[originalItems.length - 1].cloneNode(true);
 
-    carouselInner.appendChild(firstClone);
-    carouselInner.insertBefore(lastClone, items[0]);
+  carouselInner.appendChild(firstClone);
+  carouselInner.insertBefore(lastClone, originalItems[0]);
 
-    carouselInner.style.transform = 'translateX(-100%)';
+  const allItems = () => carouselInner.querySelectorAll('.carousel-item');
+  let currentIndex = 0;
+  let isAnimating = false;
 
-    function updateIndicators(index) {
-      indicators.forEach((indicator, idx) => {
-        indicator.classList.toggle('active', idx === index);
-      });
+  const indicators = carousel.querySelectorAll('.carousel-indicators button');
+
+  function updateIndicators(index) {
+    indicators.forEach((indicator, idx) => {
+      indicator.classList.toggle('active', idx === index);
+    });
+  }
+
+  function getSlideWidth() {
+    const items = allItems();
+    return items[0] ? items[0].getBoundingClientRect().width : 0;
+  }
+
+  function setPosition(index, withTransition = true) {
+    const slideWidth = getSlideWidth();
+    if (!slideWidth) return;
+
+    carouselInner.style.transition = withTransition ? 'transform 0.5s ease-in-out' : 'none';
+    carouselInner.style.transform = `translateX(-${(index + 1) * slideWidth}px)`;
+    updateIndicators(Math.max(0, Math.min(index, originalItems.length - 1)));
+  }
+
+  function goToIndex(index) {
+    if (isAnimating) return;
+    isAnimating = true;
+    currentIndex = index;
+    setPosition(currentIndex, true);
+  }
+
+  carouselInner.addEventListener('transitionend', () => {
+    if (currentIndex === -1) {
+      currentIndex = originalItems.length - 1;
+      setPosition(currentIndex, false);
     }
 
-    function updateCarousel(index) {
-      carouselInner.style.transition = 'transform 0.5s ease-in-out';
-      carouselInner.style.transform = `translateX(-${(index + 1) * 100}%)`;
-      updateIndicators(Math.max(0, Math.min(index, items.length - 1)));
+    if (currentIndex === originalItems.length) {
+      currentIndex = 0;
+      setPosition(currentIndex, false);
     }
 
-    carouselInner.addEventListener('transitionend', () => {
-      if (currentIndex === -1) {
-        carouselInner.style.transition = 'none';
-        currentIndex = items.length - 1;
-        carouselInner.style.transform = `translateX(-${(currentIndex + 1) * 100}%)`;
-        updateIndicators(currentIndex);
-      }
-
-      if (currentIndex === items.length) {
-        carouselInner.style.transition = 'none';
-        currentIndex = 0;
-        carouselInner.style.transform = 'translateX(-100%)';
-        updateIndicators(0);
-      }
-    });
-
-    function goToIndex(index) {
-      currentIndex = index;
-      updateCarousel(currentIndex);
-    }
-
-    prevButton.addEventListener('click', () => goToIndex(currentIndex - 1));
-    nextButton.addEventListener('click', () => goToIndex(currentIndex + 1));
-
-    indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click', () => goToIndex(index));
-    });
-
-    let touchstartX = 0;
-    let touchendX = 0;
-
-    carouselInner.addEventListener('touchstart', (event) => {
-      touchstartX = event.changedTouches[0].screenX;
-    });
-
-    carouselInner.addEventListener('touchend', (event) => {
-      touchendX = event.changedTouches[0].screenX;
-      if (touchendX < touchstartX) goToIndex(currentIndex + 1);
-      if (touchendX > touchstartX) goToIndex(currentIndex - 1);
-    });
-
-    updateCarousel(0);
+    isAnimating = false;
   });
+
+  prevButton.addEventListener('click', () => goToIndex(currentIndex - 1));
+  nextButton.addEventListener('click', () => goToIndex(currentIndex + 1));
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => goToIndex(index));
+  });
+
+  let touchstartX = 0;
+  let touchendX = 0;
+
+  carouselInner.addEventListener('touchstart', (event) => {
+    touchstartX = event.changedTouches[0].screenX;
+  });
+
+  carouselInner.addEventListener('touchend', (event) => {
+    touchendX = event.changedTouches[0].screenX;
+    if (touchendX < touchstartX - 30) goToIndex(currentIndex + 1);
+    if (touchendX > touchstartX + 30) goToIndex(currentIndex - 1);
+  });
+
+  window.addEventListener('resize', () => {
+    setPosition(currentIndex, false);
+  });
+
+  setPosition(0, false);
+});
 
   /* =========================
      Header: is-scrolled

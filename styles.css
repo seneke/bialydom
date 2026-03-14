@@ -224,17 +224,27 @@ p{
 }
 
 .carousel-item {
-  flex: 0 0 auto;
+  flex: 0 0 100%;
   width: 100%; /* Szerokość każdego elementu */
+  min-width: 100%;
   box-sizing: border-box;
   transition: transform 0.5s ease; /* Płynne przejścia między zdjęciami */
   flex-shrink: 0;
 }
 
+.carousel-item a {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 2;
+    overflow: hidden;
+  }
+
 .carousel-item img {
   max-width: 100%; /* Maksymalna szerokość zdjęcia */
   height: 100%; /* Zachowanie proporcji */
   margin: 0;
+  object-fit: cover;
+  display: block;
   padding: 0;
 }
 
