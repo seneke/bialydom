@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
-
 /* =========================
    MOBILE MENU (hamburger)
    ========================= */
@@ -267,7 +265,7 @@ disableParallaxOnMobile();
 window.addEventListener('resize', disableParallaxOnMobile);
 
 
-document.addEventListener("DOMContentLoaded", () => {
+
   const reveals = document.querySelectorAll(".reveal-up");
 
   const observer = new IntersectionObserver((entries, obs) => {
@@ -282,4 +280,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   reveals.forEach((el) => observer.observe(el));
-});
+
+
