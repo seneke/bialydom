@@ -103,10 +103,10 @@ header.is-scrolled .logo-scrolled {
 .main-content {
   position: relative;
   z-index: 5;
-  max-width: 1200px;
+  width: min(1200px, calc(100% - 48px));
   margin: 0 auto 40px;
-  padding: 50px 10px;
-  background: transparent;
+  padding: 50px 0;
+  background: #f7f4ee;
   border-radius: 28px;
   backdrop-filter: none;
 }
@@ -366,22 +366,19 @@ p{
 }
 
 #contact {
-display: flex;
- justify-content: center;
- align-items: flex-start;
- box-sizing: border-box;
- gap: 40px;
-
- width: min(1100px, 92%);
- margin: 2em auto;
-
- padding: 28px;
-
- background: rgba(255, 255, 255, 0.94);
- border-radius: 18px;
- box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-
- flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  flex-wrap: wrap;
 }
 
 .contact-container,
@@ -700,8 +697,8 @@ header.is-scrolled .mobile-menu a:focus{
 .main-content {
   margin-top: -36px;
   border-radius: 22px 22px 0 0;
-  padding: 64px 18px;
-  max-width: 1200px;
+  width: min(1200px, calc(100% - 32px));
+  padding: 64px 0;
   margin: 0 auto;
 }
 
