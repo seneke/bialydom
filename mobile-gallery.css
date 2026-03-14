@@ -64,24 +64,24 @@
     line-height: 1.6;
   }
 
-  .mobile-gallery-preview__button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 220px;
-    padding: 14px 22px;
-    border-radius: 999px;
-    text-decoration: none;
-    color: #fff;
-    background: #111;
-    font-weight: 700;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
+.mobile-gallery-preview__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border-radius: 24px;
+  color: #7f633d;
+  font-weight: 600;
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
 
-  .mobile-gallery-preview__button:hover {
-    opacity: 0.92;
-    transform: translateY(-1px);
-  }
+.mobile-gallery-preview__button:hover {
+  background: rgba(154, 123, 79, 0.16);
+  transform: translateY(-1px);
+}
 
   /* Ukrycie starej galerii tylko na telefonie i tablecie */
   #gallery,
