@@ -431,7 +431,6 @@ footer {
 }
 
 .mobile-menu-wrap {
-  position: relative;
   margin-left: auto;
   display: flex;
   align-items: center;
@@ -468,9 +467,10 @@ header.is-scrolled .mobile-nav-toggle span {
 
 .mobile-menu-address {
   position: absolute;
+  left: 50%;
   top: calc(50% + 10px);
+  transform: translate(-50%, -50%) translateX(10px);
   right: calc(100% + 24px);
-  transform: translateY(-50%) translateX(10px);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -498,7 +498,7 @@ header.is-scrolled .mobile-nav-toggle span {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateY(-50%) translateX(0);
+  transform: translate(-50%, -50%) translateX(0);
 }
 
 .mobile-menu-panel {
