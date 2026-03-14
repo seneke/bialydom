@@ -1160,6 +1160,20 @@ header.is-scrolled .desktop-menu a {
   box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 }
 
+.gallery-section a {
+  display: block;
+  aspect-ratio: 4 / 2;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.gallery-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   .gallery-container img {
     width: 100%; /* Zwiększ szerokość obrazów */
   }
