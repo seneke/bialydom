@@ -553,7 +553,7 @@ header.is-scrolled .mobile-nav-toggle span {
 
 .mobile-menu-action--gallery {
   background: linear-gradient(135deg, #5a573c, #272726);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
 }
 
 .mobile-menu-action--location {

@@ -221,7 +221,11 @@ featureItems.forEach((item) => {
   if (!header || !hero) return;
 
   function updateHeader() {
-    const trigger = Math.max(40, hero.offsetHeight * 0.15);
+    const isMobile = window.innerWidth < 1023;
+
+    const trigger = isMobile
+      ? Math.max(90, hero.offsetHeight * 0.22)
+      : Math.max(40, hero.offsetHeight * 0.15);
 
     if (window.scrollY > trigger) {
       header.classList.add('is-scrolled');
@@ -234,7 +238,6 @@ featureItems.forEach((item) => {
   window.addEventListener('scroll', updateHeader, { passive: true });
   window.addEventListener('resize', updateHeader);
 })();
-});
 
 function disableParallaxOnMobile() {
   if (window.innerWidth <= 768) {
