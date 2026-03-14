@@ -2,8 +2,6 @@
   Mobilna przebudowa galerii do 1023px + style strony gallery.html.
   Plik można dołączyć PO styles.css.
 */
-
-@media (max-width: 1023px) {
   .mobile-gallery-preview {
     display: block;
     width: calc(100% - 40px);
@@ -82,7 +80,7 @@
   background: rgba(154, 123, 79, 0.16);
   transform: translateY(-1px);
 }
-
+@media (max-width: 1023px) {
 .gallery-page-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
@@ -105,12 +103,6 @@
   .gallery-container,
   .main-gallery,
   .photo-gallery {
-    display: none !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .mobile-gallery-preview {
     display: none !important;
   }
 }
