@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
   /* =========================
    MOBILE MENU (hamburger)
    ========================= */
+/* =========================
+   MOBILE MENU (hamburger)
+   ========================= */
 const menuToggle = document.querySelector('.mobile-nav-toggle');
 const mobileMenu = document.querySelector('#mobile-menu-panel');
 const mobileMenuAddress = document.querySelector('#mobileMenuAddress');
@@ -14,6 +17,7 @@ const isMenuOpen = () => mobileMenu && mobileMenu.classList.contains('is-open');
 const openMenu = () => {
   if (!menuToggle || !mobileMenu) return;
   mobileMenu.classList.add('is-open');
+  mobileMenuAddress?.classList.add('is-open');
   menuToggle.setAttribute('aria-expanded', 'true');
   mobileMenu.setAttribute('aria-hidden', 'false');
 };
@@ -21,6 +25,7 @@ const openMenu = () => {
 const closeMenu = () => {
   if (!menuToggle || !mobileMenu) return;
   mobileMenu.classList.remove('is-open');
+  mobileMenuAddress?.classList.remove('is-open');
   menuToggle.setAttribute('aria-expanded', 'false');
   mobileMenu.setAttribute('aria-hidden', 'true');
 };
@@ -40,6 +45,7 @@ if (menuToggle && mobileMenu) {
     if (!isMenuOpen()) return;
     if (menuToggle.contains(event.target)) return;
     if (mobileMenu.contains(event.target)) return;
+    if (mobileMenuAddress && mobileMenuAddress.contains(event.target)) return;
     closeMenu();
   });
 
