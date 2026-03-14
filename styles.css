@@ -468,7 +468,7 @@ header.is-scrolled .mobile-nav-toggle span {
 
 .mobile-menu-address {
   position: absolute;
-  top: 50%;
+  top: calc(50% + 10px);
   right: calc(100% + 24px);
   transform: translateY(-50%) translateX(10px);
   display: flex;
@@ -503,7 +503,7 @@ header.is-scrolled .mobile-nav-toggle span {
 
 .mobile-menu-panel {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 38px);
   right: 0;
   opacity: 0;
   visibility: hidden;
@@ -625,21 +625,11 @@ header.is-scrolled .mobile-nav-toggle span {
   display: none !important;
 }
 
-  header.is-scrolled {
-  background: var(--nav-ink-inv);
-  }
-
-  header.is-scrolled {
-  background: rgba(0,0,0,0.90);
-  border-radius: 14px 0 0 14px;
-}
-
 header.is-scrolled {
-  color: var(--nav-ink-inv);
-}
-
-header.is-scrolled {
-  background: rgba(255,255,255,0.12);
+  background: rgba(0, 0, 0, 0.50);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
 }
 
   .background-container {
