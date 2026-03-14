@@ -67,8 +67,7 @@
 .mobile-gallery-preview__button {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 18px;
+  justify-content: center;
   padding: 10px 16px;
   border-radius: 24px;
   color: #7f633d;
