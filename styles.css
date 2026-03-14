@@ -1154,9 +1154,11 @@ header.is-scrolled .desktop-menu a {
 }
 
 .gallery-section {
-  background: #ffffff;
-  overflow: hidden;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  width: min(1200px, calc(100% - 64px));
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 4em;
+  box-sizing: border-box;
 }
 
   .gallery-container img {
