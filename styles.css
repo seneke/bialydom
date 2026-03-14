@@ -928,7 +928,8 @@ header.is-scrolled .mobile-menu a:focus{
   color: #5a676f;
 }
 
-.feature-content a {
+.feature-content a,
+.mobile-gallery-preview__button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -938,10 +939,12 @@ header.is-scrolled .mobile-menu a:focus{
   color: #7f633d;
   font-weight: 600;
   text-decoration: none;
+  background: transparent;
   transition: background 0.25s ease, transform 0.25s ease;
 }
 
-.feature-content a:hover {
+.feature-content a:hover,
+.mobile-gallery-preview__button:hover {
   background: rgba(154, 123, 79, 0.16);
   transform: translateY(-1px);
 }
