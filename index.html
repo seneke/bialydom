@@ -79,35 +79,37 @@
                 </a>
 
                  <div class="mobile-menu-wrap">
+    <button class="mobile-nav-toggle" type="button"
+        aria-controls="mobile-menu-panel"
+        aria-expanded="false"
+        aria-label="Otwórz menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-                    <button class="mobile-nav-toggle" type="button"
-                        aria-controls="mobile-menu-panel"
-                        aria-expanded="false"
-                        aria-label="Otwórz menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
+    <div id="mobile-menu-panel" class="mobile-menu-panel" aria-hidden="true">
+        <div class="mobile-menu-actions">
+            <a href="tel:+48504226321" class="mobile-menu-action mobile-menu-action--call">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                <span>Zadzwoń</span>
+            </a>
 
-                    <div id="mobile-menu-panel" class="mobile-menu-panel" aria-hidden="true">
-                        <div class="mobile-menu-actions">
-                            <a href="tel:+48504226321" class="mobile-menu-action mobile-menu-action--call">
-                                <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                                <span>Zadzwoń</span>
-                            </a>
+            <a href="gallery.html" class="mobile-menu-action mobile-menu-action--gallery">
+                <i class="fas fa-images" aria-hidden="true"></i>
+                <span>Galeria</span>
+            </a>
 
-                            <a href="gallery.html" class="mobile-menu-action mobile-menu-action--gallery">
-                                <i class="fas fa-images" aria-hidden="true"></i>
-                                <span>Galeria</span>
-                            </a>
-
-                            <a href="https://maps.google.com/?q=Sarbinowo,+ul.+Polna+8B"
-                                class="mobile-menu-action mobile-menu-action--location"
-                                target="_blank"
-                                rel="noopener">
-                        </div>
-                    </div>
-                </div>
+            <a href="https://maps.google.com/?q=Sarbinowo,+ul.+Polna+8B"
+               class="mobile-menu-action mobile-menu-action--location"
+               target="_blank"
+               rel="noopener">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span>Lokalizacja</span>
+            </a>
+        </div>
+    </div>
+</div>
 
                     <ul class="desktop-menu">
                         <li><a href="#gallery"><span>GALERIA</span></a></li>

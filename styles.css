@@ -467,8 +467,8 @@ header.is-scrolled .mobile-nav-toggle span {
 
 .mobile-menu-panel {
   position: absolute;
-  top: calc(100% + 38px);
-  right: 0;
+  top: calc(100% + 16px);
+  right: 12px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -548,16 +548,17 @@ header.is-scrolled .mobile-nav-toggle span {
 }
 
 .mobile-menu-action--call {
-  background: linear-gradient(135deg, #20bd59, #269e52);
+  background: linear-gradient(135deg, #2bca65, #269e52);
 }
 
 .mobile-menu-action--gallery {
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: linear-gradient(135deg, #5a573c, #272726);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .mobile-menu-action--location {
-  background: rgba(0, 0, 0, 0.78);
+  background: linear-gradient(135deg, #4b7dbe, #bd2f42);
+  box-shadow: 0 6px 18px rgba(26, 162, 96, 0.35);
 }
 
 .logo-default {
