@@ -321,3 +321,23 @@
 .gallery-page-body .desktop-menu a {
   color: #fff;
 }
+
+.feature-content__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 50%;
+  min-height: 56px;
+  padding: 12px 18px;
+  margin: 20px auto;
+
+  background: #f7f4ee;
+  border: 1px solid rgba(166, 145, 110, 0.22);
+  border-radius: 22px;
+
+  color: #3f454b;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
