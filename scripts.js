@@ -1,10 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  /* =========================
-     MOBILE MENU (hamburger)
-     ========================= */
-  /* =========================
-   MOBILE MENU (hamburger)
-   ========================= */
+
 /* =========================
    MOBILE MENU (hamburger)
    ========================= */
@@ -54,7 +49,7 @@ if (menuToggle && mobileMenu) {
      ScrollReveal
      ========================= */
   if (typeof ScrollReveal === 'function') {
-    ScrollReveal().reveal('.gallery-container, .contact-container, .contact-map, #offer', {
+    ScrollReveal().reveal('.gallery-container, .contact-container, .contact-map, #about', {
       distance: '20px',
       duration: 1000,
       easing: 'ease-in-out',
@@ -72,10 +67,32 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener('click', function (e) {
     const href = link.getAttribute('href');
     if (!href || href === '#') return;
+
     const target = document.querySelector(href);
     if (!target) return;
+
     e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth' });
+
+    const header = document.querySelector('header');
+    const headerOffset = header ? header.offsetHeight : 0;
+
+    let extraOffset = 20;
+
+    if (href === '#gallery' || href === '#contact') {
+      extraOffset = 30;
+    }
+
+    if (href === '#about') {
+      extraOffset = 40;
+    }
+
+    const targetPosition =
+      target.getBoundingClientRect().top + window.pageYOffset - headerOffset - extraOffset;
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
   });
 });
 

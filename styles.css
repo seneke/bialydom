@@ -1089,6 +1089,10 @@ header.is-scrolled {
   width: auto;
 }
 
+.mobile-menu-wrap {
+  display: none;
+}
+
   .desktop-menu {
     display: flex;
     align-items: center;
