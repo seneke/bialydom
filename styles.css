@@ -23,8 +23,12 @@ body {
   font-family: "Montserrat", sans-serif;
   text-align: left;
   color: var(--white);
-  scroll-padding-top: 90px; /* żeby kotwice #gallery/#offer nie wchodziły pod nagłówek */
+  scroll-padding-top: 90px;
   background: #f7f4ee;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .background-container {
@@ -444,7 +448,7 @@ p{
 
 footer {
   width: min(1200px, calc(100% - 48px));
-  margin: 0 auto 40px;
+  margin: auto auto 40px;
   padding: 2em;
 
   background: #ffffff;
@@ -1402,10 +1406,6 @@ img.mfp-img {
   align-items: stretch;
   gap: 40px;
   margin: 40px auto 80px;
-}
-
-#contact:last-of-type {
-  margin-bottom: 0;
 }
 
   .contact-container {
