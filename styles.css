@@ -1390,10 +1390,12 @@ img.mfp-img {
 .mfp-arrow-right{ right: 20px !important; }
 
 #contact {
- display: flex;
- justify-content: space-between;
- align-items: stretch;
- gap: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
 }
 
   .contact-container {
