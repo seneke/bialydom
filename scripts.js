@@ -112,21 +112,48 @@ featureItems.forEach((item) => {
   /* =========================
      Magnific Popup (jQuery)
      ========================= */
-  if (typeof window.jQuery !== 'undefined' && typeof jQuery.fn.magnificPopup === 'function') {
-    jQuery(function ($) {
-      $('.gallery-container, .gallery').each(function () {
-        $(this).find('.image-popup').magnificPopup({
-          type: 'image',
-          gallery: { enabled: true, navigateByImgClick: true, preload: [0, 2] },
-          zoom: { enabled: false },
-          closeOnContentClick: true,
-          closeBtnInside: true,
-          mainClass: 'mfp-no-zoom',
-          disableOn: 0
-        });
+if (typeof window.jQuery !== 'undefined' && typeof jQuery.fn.magnificPopup === 'function') {
+  jQuery(function ($) {
+    function movePopupArrowsInside() {
+      const instance = $.magnificPopup.instance;
+      if (!instance || !instance.content) return;
+
+      const $content = instance.content.closest('.mfp-content');
+      const $figure = $content.find('.mfp-figure');
+
+      if (!$figure.length || !instance.arrowLeft || !instance.arrowRight) return;
+
+      if (!$figure.find('.mfp-arrow-left').length) {
+        $figure.append(instance.arrowLeft);
+      }
+
+      if (!$figure.find('.mfp-arrow-right').length) {
+        $figure.append(instance.arrowRight);
+      }
+    }
+
+    $('.gallery-container, .gallery').each(function () {
+      $(this).find('.image-popup').magnificPopup({
+        type: 'image',
+        gallery: {
+          enabled: true,
+          navigateByImgClick: true,
+          preload: [0, 2]
+        },
+        zoom: { enabled: false },
+        closeOnContentClick: true,
+        closeBtnInside: true,
+        mainClass: 'mfp-no-zoom',
+        disableOn: 0,
+        callbacks: {
+          open: movePopupArrowsInside,
+          change: movePopupArrowsInside,
+          resize: movePopupArrowsInside
+        }
       });
     });
-  }
+  });
+}
 
   /* =========================
      Carousels
