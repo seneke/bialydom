@@ -229,6 +229,9 @@
   margin: 0;
   max-width: min(1100px, 90vw);
   max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile-lightbox__figure img {
