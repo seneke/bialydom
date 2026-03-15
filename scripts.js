@@ -242,11 +242,6 @@ carousels.forEach((carousel) => {
   window.addEventListener('resize', updateHeader);
 })();
 
-disableParallaxOnMobile();
-window.addEventListener('resize', disableParallaxOnMobile);
-
-
-
   const reveals = document.querySelectorAll(".reveal-up");
 
   const observer = new IntersectionObserver((entries, obs) => {
