@@ -209,16 +209,26 @@ carousels.forEach((carousel) => {
      ========================= */
   (function () {
   const header = document.querySelector('header');
+  const body = document.body;
   const hero = document.querySelector('.background-container') || document.querySelector('.gallery-page-hero');
 
   if (!header || !hero) return;
 
   function updateHeader() {
     const isMobile = window.innerWidth < 1023;
+    const isGalleryPage = body.classList.contains('gallery-page-body');
 
-    const trigger = isMobile
-      ? Math.max(90, hero.offsetHeight * 0.22)
-      : Math.max(40, hero.offsetHeight * 0.15);
+    let trigger;
+
+    if (isGalleryPage) {
+      trigger = isMobile
+        ? Math.max(140, hero.offsetHeight * 0.68)
+        : Math.max(260, hero.offsetHeight * 0.78);
+    } else {
+      trigger = isMobile
+        ? Math.max(90, hero.offsetHeight * 0.22)
+        : Math.max(40, hero.offsetHeight * 0.75);
+    }
 
     if (window.scrollY > trigger) {
       header.classList.add('is-scrolled');
@@ -231,30 +241,6 @@ carousels.forEach((carousel) => {
   window.addEventListener('scroll', updateHeader, { passive: true });
   window.addEventListener('resize', updateHeader);
 })();
-
-function disableParallaxOnMobile() {
-  if (window.innerWidth <= 768) {
-    document.querySelectorAll('.parallax-mirror').forEach(el => el.remove());
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  const fab = document.querySelector('.contact-fab');
-  const toggle = document.getElementById('contactFabToggle');
-
-  if (!fab || !toggle) return;
-
-  toggle.addEventListener('click', function (e) {
-    e.stopPropagation();
-    fab.classList.toggle('active');
-  });
-
-  document.addEventListener('click', function (e) {
-    if (!fab.contains(e.target)) {
-      fab.classList.remove('active');
-    }
-  });
-});
 
 disableParallaxOnMobile();
 window.addEventListener('resize', disableParallaxOnMobile);
