@@ -70,78 +70,75 @@
 
 </head>
 <body>
-    <div class="background-container">
+    <div class="background-container" id="top">
         <header>
             <nav class="nav">
                 <a class="logo" href="#top" aria-label="Biały Dom Sarbinowo - strona główna">
-                <img class="logo-default" src="img/logo.png" alt="Biały Dom Sarbinowo">
-                <img class="logo-scrolled" src="img/logo2.png" alt="">
+                    <img class="logo-default" src="img/logo.png" alt="Biały Dom Sarbinowo">
+                    <img class="logo-scrolled" src="img/logo2.png" alt="">
                 </a>
 
-                 <div class="mobile-menu-wrap">
+                <div class="mobile-menu-wrap">
+                    <button class="mobile-nav-toggle" type="button"
+                        aria-controls="mobile-menu-panel"
+                        aria-expanded="false"
+                        aria-label="Otwórz menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
 
-                <button class="mobile-nav-toggle" type="button"
-                    aria-controls="mobile-menu-panel"
-                    aria-expanded="false"
-                    aria-label="Otwórz menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                    <div id="mobile-menu-panel" class="mobile-menu-panel" aria-hidden="true">
+                        <div class="mobile-menu-actions">
+                            <a href="tel:+48504226321" class="mobile-menu-action mobile-menu-action--call">
+                                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                                <span>Zadzwoń</span>
+                            </a>
 
-            <div id="mobile-menu-panel" class="mobile-menu-panel" aria-hidden="true">
-            <div class="mobile-menu-actions">
-                <a href="tel:+48504226321" class="mobile-menu-action mobile-menu-action--call">
+                            <a href="gallery.html" class="mobile-menu-action mobile-menu-action--gallery">
+                                <i class="fas fa-images" aria-hidden="true"></i>
+                                <span>Galeria</span>
+                            </a>
+
+                            <a href="https://maps.google.com/?q=Sarbinowo,+ul.+Polna+8B"
+                            class="mobile-menu-action mobile-menu-action--location"
+                            target="_blank"
+                            rel="noopener">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                <span>Lokalizacja</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="desktop-menu">
+                    <li><a href="gallery.html"><span>GALERIA</span></a></li>
+                    <li><a href="#about-anchor"><span>O NAS</span></a></li>
+                    <li><a href="#contact"><span>KONTAKT</span></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="hero-content">
+            <p class="hero-topline">SZUKASZ IDEALNEGO MIEJSCA NA WAKACYJNY RELAKS?</p>
+            <h1>BIAŁY DOM SARBINOWO</h1>
+            <p class="hero-text">ZAPOMNIJ O KRZYKLIWYCH SZYLDACH I TŁUMIE DEPTAKA.</p>
+
+            <div class="hero-buttons">
+                <a href="tel:+48504226321" class="hero-btn hero-btn--call">
                     <i class="fas fa-phone-alt" aria-hidden="true"></i>
                     <span>Zadzwoń</span>
                 </a>
 
-                <a href="gallery.html" class="mobile-menu-action mobile-menu-action--gallery">
-                    <i class="fas fa-images" aria-hidden="true"></i>
+                <a href="gallery.html" class="hero-btn hero-btn--gallery">
+                <i class="fas fa-images" aria-hidden="true"></i>
                     <span>Galeria</span>
-                </a>
-
-                <a href="https://maps.google.com/?q=Sarbinowo,+ul.+Polna+8B"
-                class="mobile-menu-action mobile-menu-action--location"
-                target="_blank"
-                rel="noopener">
-                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                    <span>Lokalizacja</span>
                 </a>
             </div>
         </div>
     </div>
 
-                    <ul class="desktop-menu">
-                        <li><a href="gallery.html"><span>GALERIA</span></a></li>
-                        <li><a href="#about-anchor"><span>O NAS</span></a></li>
-                        <li><a href="#contact"><span>KONTAKT</span></a></li>
-                    </ul>
-
-            </nav>
-        </header>
-    </div>
-    
-    <div class="hero-content">
-          <p class="hero-topline">SZUKASZ IDEALNEGO MIEJSCA NA WAKACYJNY RELAKS?</p>
-          <h1>BIAŁY DOM SARBINOWO</h1>
-          <p class="hero-text">
-            ZAPOMNIJ O KRZYKLIWYCH SZYLDACH I TŁUMIE DEPTAKA.
-          </p>
-          <div class="hero-buttons">
-            <a href="tel:+48504226321" class="hero-btn hero-btn--call">
-                <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                <span>Zadzwoń</span>
-            </a>
-
-            <a href="gallery.html" class="hero-btn hero-btn--gallery">
-                <i class="fas fa-images" aria-hidden="true"></i>
-                <span>Galeria</span>
-            </a>
-            </div>
-    </div>
-    
-    <section class="main-content" id="about">
+<section class="main-content" id="about">
   <div class="content-intro reveal-up">
     <span id="about-anchor" class="section-eyebrow">Biały Dom Sarbinowo</span>
     <p>
