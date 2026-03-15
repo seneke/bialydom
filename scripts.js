@@ -222,12 +222,12 @@ carousels.forEach((carousel) => {
 
     if (isGalleryPage) {
       trigger = isMobile
-        ? Math.max(140, hero.offsetHeight * 0.68)
+        ? Math.max(140, hero.offsetHeight * 0.22)
         : Math.max(260, hero.offsetHeight * 0.78);
     } else {
       trigger = isMobile
         ? Math.max(90, hero.offsetHeight * 0.22)
-        : Math.max(40, hero.offsetHeight * 0.75);
+        : Math.max(40, hero.offsetHeight * 0.25);
     }
 
     if (window.scrollY > trigger) {
