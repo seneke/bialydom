@@ -31,7 +31,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
-    padding: 14px 20px 0;
+    padding: 40px 40px 0 40px;
     justify-items: center;
   }
 
@@ -80,6 +80,7 @@
   background: rgba(154, 123, 79, 0.16);
   transform: translateY(-1px);
 }
+
 @media (max-width: 1023px) {
 .gallery-page-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
