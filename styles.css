@@ -1018,17 +1018,22 @@ header.is-scrolled {
     padding-right: 0;
   }
 
-  .mfp-arrow{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.mfp-arrow {
+    width: 44px;
+    height: 44px;
+    margin-top: -22px;
   }
 
-  .mfp-arrow-left{
+.mfp-arrow::before,
+.mfp-arrow::after {
+  margin: 0;
+}
+
+  .mfp-arrow-left {
     left: 10px;
   }
 
-  .mfp-arrow-right{
+  .mfp-arrow-right {
     right: 10px;
   }
 
@@ -1406,6 +1411,7 @@ header.is-scrolled .desktop-menu a {
   height: auto !important;
   max-width: 90vw !important;
   max-height: 90vh !important;
+  position: relative;
 }
 
 img.mfp-img {
@@ -1413,16 +1419,17 @@ img.mfp-img {
   width: auto !important;
 }
 
-.mfp-arrow{
-  position: fixed !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  margin: 0 !important;
-  z-index: 10002 !important; /* nad obrazem i tłem */
+.mfp-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  opacity: 1;
 }
 
-.mfp-arrow-left{ left: 20px !important; }
-.mfp-arrow-right{ right: 20px !important; }
+.mfp-arrow-left{ left: 10px !important; }
+.mfp-arrow-right{ right: 10px !important; }
 
 .mobile-gallery-preview a {
     transition: transform 0.25s ease,
@@ -1662,6 +1669,22 @@ footer {
   --nav-ink-inv: #fff;             /* kolor ikon/tekstu na ciemnym tle */
   --dropdown-bg: rgba(255,255,255,0.85);  /* tło dropdownu na starcie */
   --dropdown-bg-scrolled: rgba(0,0,0,0.65); /* tło dropdownu po scrollu */
+}
+
+@media (max-width: 600px) {
+  .mfp-arrow {
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+  }
+
+  .mfp-arrow-left {
+    left: 6px;
+  }
+
+  .mfp-arrow-right {
+    right: 6px;
+  }
 }
 
 /* feature-content*/
