@@ -1019,64 +1019,20 @@ header.is-scrolled {
   }
 
 .mfp-arrow {
-    width: 44px;
-    height: 44px;
-    margin-top: -22px;
-  }
+  width: 52px;
+  height: 52px;
+  opacity: 1;
+  margin-top: 0;
+  transform: none;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 50%;
+  backdrop-filter: blur(2px);;
+}
 
 .mfp-arrow::before,
 .mfp-arrow::after {
   margin: 0;
 }
-
-  .mfp-arrow-left {
-    left: 10px;
-  }
-
-  .mfp-arrow-right {
-    right: 10px;
-  }
-  .mfp-content .mfp-figure {
-  position: relative;
-}
-
-.mfp-content .mfp-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-top: 0;
-  opacity: 1;
-  width: 52px;
-  height: 52px;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 50%;
-}
-
-.mfp-content .mfp-arrow::before,
-.mfp-content .mfp-arrow::after {
-  margin: 0;
-}
-
-.mfp-content .mfp-arrow-left {
-  left: 12px;
-}
-
-.mfp-content .mfp-arrow-right {
-  right: 12px;
-}
-
-.mfp-content .mfp-arrow {
-    width: 44px;
-    height: 44px;
-  }
-
-  .mfp-content .mfp-arrow-left {
-    left: 8px;
-  }
-
-  .mfp-content .mfp-arrow-right {
-    right: 8px;
-  }
 
   #contact {
     flex-direction: column;

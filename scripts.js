@@ -112,24 +112,40 @@ featureItems.forEach((item) => {
   /* =========================
      Magnific Popup (jQuery)
      ========================= */
+/* ========================= Magnific Popup (jQuery) ========================= */
 if (typeof window.jQuery !== 'undefined' && typeof jQuery.fn.magnificPopup === 'function') {
   jQuery(function ($) {
-    function movePopupArrowsInside() {
-      const instance = $.magnificPopup.instance;
-      if (!instance || !instance.content) return;
+    function positionPopupArrows() {
+      const $img = $('.mfp-figure .mfp-img');
 
-      const $content = instance.content.closest('.mfp-content');
-      const $figure = $content.find('.mfp-figure');
+      if (!$img.length) return;
 
-      if (!$figure.length || !instance.arrowLeft || !instance.arrowRight) return;
+      const rect = $img[0].getBoundingClientRect();
+      const $left = $('.mfp-arrow-left');
+      const $right = $('.mfp-arrow-right');
 
-      if (!$figure.find('.mfp-arrow-left').length) {
-        $figure.append(instance.arrowLeft);
-      }
+      if (!$left.length || !$right.length) return;
 
-      if (!$figure.find('.mfp-arrow-right').length) {
-        $figure.append(instance.arrowRight);
-      }
+      const arrowSize = window.innerWidth <= 600 ? 40 : window.innerWidth <= 1023 ? 44 : 52;
+      const sideOffset = window.innerWidth <= 600 ? 6 : window.innerWidth <= 1023 ? 8 : 12;
+
+      const top = rect.top + (rect.height / 2) - (arrowSize / 2);
+      const left = rect.left + sideOffset;
+      const right = window.innerWidth - rect.right + sideOffset;
+
+      $left.css({
+        position: 'fixed',
+        top: `${top}px`,
+        left: `${left}px`,
+        right: 'auto'
+      });
+
+      $right.css({
+        position: 'fixed',
+        top: `${top}px`,
+        right: `${right}px`,
+        left: 'auto'
+      });
     }
 
     $('.gallery-container, .gallery').each(function () {
@@ -146,11 +162,26 @@ if (typeof window.jQuery !== 'undefined' && typeof jQuery.fn.magnificPopup === '
         mainClass: 'mfp-no-zoom',
         disableOn: 0,
         callbacks: {
-          open: movePopupArrowsInside,
-          change: movePopupArrowsInside,
-          resize: movePopupArrowsInside
+          open: function () {
+            setTimeout(positionPopupArrows, 30);
+          },
+          change: function () {
+            setTimeout(positionPopupArrows, 30);
+          },
+          resize: function () {
+            positionPopupArrows();
+          },
+          imageLoadComplete: function () {
+            setTimeout(positionPopupArrows, 30);
+          }
         }
       });
+    });
+
+    $(window).on('resize', function () {
+      if ($.magnificPopup.instance && $.magnificPopup.instance.isOpen) {
+        positionPopupArrows();
+      }
     });
   });
 }
