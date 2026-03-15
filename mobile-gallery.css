@@ -259,8 +259,6 @@
 }
 
 .mobile-lightbox__nav {
-  top: 50%;
-  transform: translateY(-50%);
   width: 52px;
   height: 52px;
   border: 2px solid rgba(255, 255, 255, 0.9);
@@ -294,17 +292,17 @@
     font-size: 1.6rem;
   }
 
+  .mobile-lightbox__close {
+    top: 10px;
+    right: 10px;
+  }
+
   .mobile-lightbox__nav--prev {
     left: 55px;
   }
 
   .mobile-lightbox__nav--next {
     right: 55px;
-  }
-
-  .mobile-lightbox__close {
-    top: 10px;
-    right: 10px;
   }
 }
 

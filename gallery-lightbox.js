@@ -14,6 +14,29 @@
 
   if (!lightbox || !image) return;
 
+  function updateArrowPositions() {
+    if (!arrowsEnabled || !prevBtn || !nextBtn || !image.src) return;
+
+    const rect = image.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+
+    const isSmall = window.innerWidth <= 767;
+    const arrowSize = isSmall ? 44 : 52;
+    const offset = isSmall ? 8 : 12;
+
+    const top = rect.top + rect.height / 2 - arrowSize / 2;
+    const prevLeft = rect.left + offset;
+    const nextRight = window.innerWidth - rect.right + offset;
+
+    prevBtn.style.top = `${top}px`;
+    prevBtn.style.left = `${prevLeft}px`;
+    prevBtn.style.right = 'auto';
+
+    nextBtn.style.top = `${top}px`;
+    nextBtn.style.right = `${nextRight}px`;
+    nextBtn.style.left = 'auto';
+  }
+
   function setImage(index) {
     currentIndex = index;
     const link = activeLinks[currentIndex];
@@ -29,12 +52,14 @@
 
     setImage(index);
 
-    if (prevBtn) prevBtn.style.display = showArrows ? '' : 'none';
-    if (nextBtn) nextBtn.style.display = showArrows ? '' : 'none';
+    if (prevBtn) prevBtn.style.display = showArrows ? 'flex' : 'none';
+    if (nextBtn) nextBtn.style.display = showArrows ? 'flex' : 'none';
 
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+
+    setTimeout(updateArrowPositions, 30);
   }
 
   function closeLightbox() {
@@ -49,12 +74,14 @@
     if (!arrowsEnabled || activeLinks.length < 2) return;
     const nextIndex = (currentIndex + 1) % activeLinks.length;
     setImage(nextIndex);
+    setTimeout(updateArrowPositions, 30);
   }
 
   function showPrev() {
     if (!arrowsEnabled || activeLinks.length < 2) return;
     const prevIndex = (currentIndex - 1 + activeLinks.length) % activeLinks.length;
     setImage(prevIndex);
+    setTimeout(updateArrowPositions, 30);
   }
 
   galleryLinks.forEach((link, index) => {
@@ -70,6 +97,9 @@
       openLightbox(index, featureLinks, false);
     });
   });
+
+  image.addEventListener('load', updateArrowPositions);
+  window.addEventListener('resize', updateArrowPositions);
 
   if (closeBtn) {
     closeBtn.addEventListener('click', closeLightbox);
@@ -97,7 +127,6 @@
 
   document.addEventListener('keydown', function (event) {
     if (!lightbox.classList.contains('is-open')) return;
-
     if (event.key === 'Escape') closeLightbox();
     if (event.key === 'ArrowRight') showNext();
     if (event.key === 'ArrowLeft') showPrev();

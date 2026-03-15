@@ -1013,22 +1013,6 @@ header.is-scrolled {
   display: none;
 } 
 
-  .mfp-container{
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-.mfp-arrow {
-  width: 52px;
-  height: 52px;
-  opacity: 1;
-  margin-top: 0;
-  transform: none;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 50%;
-  backdrop-filter: blur(2px);;
-}
-
 .mfp-arrow::before,
 .mfp-arrow::after {
   margin: 0;
@@ -1387,47 +1371,6 @@ header.is-scrolled .desktop-menu a {
   z-index: 10000 !important;
 }
 
-.mfp-wrap {
-  z-index: 10001 !important;
-}
-
-/* prawdziwe centrowanie w pionie i poziomie */
-.mfp-container {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 24px !important;
-  box-sizing: border-box;
-  padding-left: 90px !important;
-  padding-right: 90px !important;
-}
-
-/* ograniczenia rozmiaru okna/zdjęcia */
-.mfp-content {
-  width: auto !important;
-  height: auto !important;
-  max-width: 90vw !important;
-  max-height: 90vh !important;
-  position: relative;
-}
-
-img.mfp-img {
-  max-height: 90vh !important;
-  width: auto !important;
-}
-
-.mfp-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 52px;
-  height: 52px;
-  opacity: 1;
-}
-
-.mfp-arrow-left{ left: 10px !important; }
-.mfp-arrow-right{ right: 10px !important; }
-
 .mobile-gallery-preview a {
     transition: transform 0.25s ease,
                 box-shadow 0.25s ease,
@@ -1669,32 +1612,6 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .mfp-arrow {
-    width: 40px;
-    height: 40px;
-    margin-top: -20px;
-  }
-
-  .mfp-arrow-left {
-    left: 6px;
-  }
-
-  .mfp-arrow-right {
-    right: 6px;
-  }
-
-.mfp-content .mfp-arrow {
-    width: 40px;
-    height: 40px;
-  }
-
-  .mfp-content .mfp-arrow-left {
-    left: 6px;
-  }
-
-  .mfp-content .mfp-arrow-right {
-    right: 6px;
-  }
 
 }
 
