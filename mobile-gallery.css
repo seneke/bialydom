@@ -218,6 +218,7 @@
   background: rgba(0, 0, 0, 0.92);
   z-index: 9999;
   padding: 24px;
+  box-sizing: border-box;
 }
 
 .mobile-lightbox.is-open {
@@ -233,54 +234,59 @@
   justify-content: center;
 }
 
-.mobile-lightbox__figure img {
+.mobile-lightbox__figure img,
+#lightboxImage {
   display: block;
   width: auto;
+  height: auto;
   max-width: 100%;
   max-height: 90vh;
+  object-fit: contain;
   border-radius: 12px;
 }
 
-.mobile-lightbox__close,
-.mobile-lightbox__nav {
+/* zamknięcie */
+.lightbox-close {
   position: fixed;
-  cursor: pointer;
-}
-
-.mobile-lightbox__close {
   top: 20px;
   right: 20px;
   width: 48px;
   height: 48px;
   border: 2px solid #000;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   color: #000;
   border-radius: 999px;
   font-size: 2rem;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10001;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  padding: 0;
 }
 
-.mobile-lightbox__nav {
+/* strzałki */
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
   width: 52px;
   height: 52px;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.95);
   background: rgba(0, 0, 0, 0.45);
   color: #fff;
   border-radius: 999px;
   font-size: 2rem;
+  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
   z-index: 10000;
-}
-
-.mobile-lightbox__nav--prev {
-  left: 55px;
-}
-
-.mobile-lightbox__nav--next {
-  right: 55px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  padding: 0;
+  font-weight: 700;
 }
 
 @media (max-width: 767px) {
@@ -288,23 +294,16 @@
     padding: 16px;
   }
 
-  .mobile-lightbox__nav {
-    width: 44px;
-    height: 44px;
-    font-size: 1.6rem;
-  }
-
-  .mobile-lightbox__close {
+  .lightbox-close {
     top: 10px;
     right: 10px;
   }
 
-  .mobile-lightbox__nav--prev {
-    left: 55px;
-  }
-
-  .mobile-lightbox__nav--next {
-    right: 55px;
+  .lightbox-prev,
+  .lightbox-next {
+    width: 44px;
+    height: 44px;
+    font-size: 1.6rem;
   }
 }
 
