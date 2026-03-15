@@ -46,29 +46,65 @@
     image.alt = link.querySelector('img')?.alt || '';
   }
 
-  function openLightbox(index, links, showArrows) {
-    activeLinks = links;
-    arrowsEnabled = showArrows;
+function openLightbox(index, links, showArrows) {
+  activeLinks = links;
+  arrowsEnabled = showArrows;
 
-    setImage(index);
+  setImage(index);
 
-    if (prevBtn) prevBtn.style.display = showArrows ? 'flex' : 'none';
-    if (nextBtn) nextBtn.style.display = showArrows ? 'flex' : 'none';
-
-    lightbox.classList.add('is-open');
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-
-    setTimeout(updateArrowPositions, 30);
+  if (closeBtn) {
+    closeBtn.style.display = 'flex';
   }
 
-  function closeLightbox() {
-    lightbox.classList.remove('is-open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    image.src = '';
-    image.alt = '';
+  if (prevBtn) {
+    prevBtn.style.display = showArrows ? 'flex' : 'none';
+    prevBtn.style.visibility = showArrows ? 'visible' : 'hidden';
+    prevBtn.style.opacity = showArrows ? '1' : '0';
   }
+
+  if (nextBtn) {
+    nextBtn.style.display = showArrows ? 'flex' : 'none';
+    nextBtn.style.visibility = showArrows ? 'visible' : 'hidden';
+    nextBtn.style.opacity = showArrows ? '1' : '0';
+  }
+
+  lightbox.classList.add('is-open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  setTimeout(updateArrowPositions, 30);
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('is-open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+
+  image.src = '';
+  image.alt = '';
+
+  if (closeBtn) {
+    closeBtn.style.display = '';
+  }
+
+  if (prevBtn) {
+    prevBtn.style.display = '';
+    prevBtn.style.visibility = '';
+    prevBtn.style.opacity = '';
+    prevBtn.style.top = '';
+    prevBtn.style.left = '';
+    prevBtn.style.right = '';
+  }
+
+  if (nextBtn) {
+    nextBtn.style.display = '';
+    nextBtn.style.visibility = '';
+    nextBtn.style.opacity = '';
+    nextBtn.style.top = '';
+    nextBtn.style.left = '';
+    nextBtn.style.right = '';
+  }
+}
 
   function showNext() {
     if (!arrowsEnabled || activeLinks.length < 2) return;

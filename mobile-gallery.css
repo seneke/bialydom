@@ -234,6 +234,22 @@
   justify-content: center;
 }
 
+.mobile-lightbox.is-open .lightbox-close,
+.mobile-lightbox.is-open .lightbox-prev,
+.mobile-lightbox.is-open .lightbox-next {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+}
+
 .mobile-lightbox__figure img,
 #lightboxImage {
   display: block;
