@@ -166,7 +166,7 @@
   max-width: 820px;
   margin-bottom: 40px;
   margin-top: 20px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  background: none;
 }
 
 .gallery-page-hero h1 {

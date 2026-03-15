@@ -768,6 +768,10 @@ header.is-scrolled {
   gap: 28px;
 }
 
+.content-story a {
+    pointer-events: none;
+  }
+
 .story-card {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -1098,6 +1102,14 @@ header.is-scrolled {
   height: clamp(100px, 10vw, 130px);
   width: auto;
 }
+
+.gallery-page-hero {
+    margin-top: -36px;
+  border-radius: 22px 22px 0 0;
+  width: min(1200px, calc(100% - 32px));
+  padding: 64px 0;
+  margin: 0 auto;
+  }
 
 .mobile-menu-wrap {
   display: none;
