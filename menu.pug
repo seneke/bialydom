@@ -1,0 +1,86 @@
+document.addEventListener('DOMContentLoaded', function () {
+
+    // Event dla menu-toggle
+    const mobileMenuToggle = document.querySelector('.menu-toggle'); // Upewnij się, że to odpowiada Twojemu przyciskowi menu
+    const mobileMenu = document.querySelector('.menu .list'); // Upewnij się, że to odpowiada Twojemu menu
+
+    // Kliknięcie na mobilne menu
+    mobileMenuToggle.addEventListener('click', function(event) {
+        event.stopPropagation(); // Zatrzymanie propagacji kliknięcia
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Nasłuchiwanie na kliknięcie w dokument
+    document.addEventListener('click', function(event) {
+        if (!mobileMenuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+            // Jeśli kliknięcie nie miało miejsca w menu lub przycisku, chowamy menu
+            mobileMenu.classList.add('hidden');
+        }
+    });
+
+    // Initialize Carousels
+    const carousels = document.querySelectorAll('.gallery-carousel');
+
+    carousels.forEach((carousel) => {
+        const prevButton = carousel.querySelector('.carousel-control-prev');
+        const nextButton = carousel.querySelector('.carousel-control-next');
+        const carouselInner = carousel.querySelector('.carousel-inner');
+        const items = carouselInner.querySelectorAll('.carousel-item');
+        const indicators = carousel.querySelectorAll('.carousel-indicators button');
+
+        let currentIndex = 0;
+
+        // Update Carousel
+        function updateCarousel() {
+            items.forEach((item, index) => {
+                item.style.transform = `translateX(-${currentIndex * 100}%)`;
+            });
+
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // Go to specific index
+        function goToIndex(index) {
+            currentIndex = (index + items.length) % items.length;
+            updateCarousel();
+        }
+
+        // Event Listeners for Controls
+        prevButton.addEventListener('click', () => goToIndex(currentIndex - 1));
+        nextButton.addEventListener('click', () => goToIndex(currentIndex + 1));
+
+        // Event Listeners for Indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToIndex(index));
+        });
+
+        // Touch events for mobile
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        carouselInner.addEventListener('touchstart', (event) => {
+            touchstartX = event.changedTouches[0].screenX;
+        });
+
+        carouselInner.addEventListener('touchend', (event) => {
+            touchendX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchendX < touchstartX) {
+                goToIndex(currentIndex + 1); // Swipe left
+            }
+            if (touchendX > touchstartX) {
+                goToIndex(currentIndex - 1); // Swipe right
+            }
+        }
+
+        // Initialize
+        updateCarousel();
+    });
+});
+
+console.log(ScrollReveal);
