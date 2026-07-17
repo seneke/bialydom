@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101716">
+    <meta name="description" content="Prototyp podstrony prezentującej pomysły na spokojne odkrywanie Sarbinowa i Chłopów.">
+    <title>Atrakcje Sarbinowa i Chłopów – prototyp | Biały Dom</title>
+
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="attractions-prototype.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Przejdź do treści</a>
+
+    <header class="site-header" data-header>
+        <nav class="site-nav" aria-label="Nawigacja prototypu">
+            <a class="site-logo" href="index.html" aria-label="Biały Dom Sarbinowo – strona główna">
+                <img class="site-logo__default" src="img/logo.PNG" width="964" height="341" alt="Biały Dom Sarbinowo">
+                <img class="site-logo__compact" src="img/logo2.png" width="964" height="344" alt="">
+            </a>
+
+            <a class="back-link back-link--desktop" href="index.html">
+                <span aria-hidden="true">←</span>
+                Wróć do strony głównej
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="prototype-menu" aria-label="Otwórz menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="mobile-menu" id="prototype-menu" aria-hidden="true">
+                <a href="index.html">Strona główna</a>
+                <a href="gallery.html">Galeria</a>
+                <a href="tel:+48504226321">Zadzwoń</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="page-title">
+        <div class="hero__image" data-parallax aria-hidden="true"></div>
+        <div class="hero__shade" aria-hidden="true"></div>
+        <div class="hero__content">
+            <p class="hero__eyebrow">Biały Dom Sarbinowo</p>
+            <h1 id="page-title">Atrakcje Sarbinowa i Chłopów</h1>
+            <p class="hero__subtitle">Plaże, spacery, dobre jedzenie i pomysły na spokojny wieczór nad morzem</p>
+        </div>
+        <a class="scroll-cue" href="#intro" aria-label="Przewiń do treści">
+            <span>Przewiń</span>
+            <i aria-hidden="true"></i>
+        </a>
+    </section>
+
+    <main id="main-content">
+        <section class="intro-card reveal" id="intro" aria-labelledby="intro-title">
+            <p class="section-kicker">Okolica w skrócie</p>
+            <h2 id="intro-title">Poznaj okolicę po swojemu</h2>
+            <p>Sarbinowo i Chłopy można odkrywać bez pośpiechu: rano wybrać plażę, w ciągu dnia ruszyć na spacer lub rower, a wieczorem znaleźć miejsce na spokojną kolację. Poniżej najważniejsze pomysły — szczegóły pojawiają się dopiero wtedy, gdy ich potrzebujesz.</p>
+        </section>
+
+        <div class="sections-shell">
+            <section class="attraction attraction--split reveal" aria-labelledby="beaches-title" data-section>
+                <div class="media-column">
+                    <div class="attraction__media">
+                        <img src="img/sarbinowo/14.jpg" width="2048" height="922" alt="Szeroka plaża i drewniane molo nad Bałtykiem" loading="lazy">
+                    </div>
+                    <aside class="best-for" aria-label="Kiedy najlepiej wybrać się nad morze">
+                        <p>Najlepiej sprawdzi się na...</p>
+                        <ul>
+                            <li><span>01</span> spokojny początek dnia</li>
+                            <li><span>02</span> odpoczynek po plażowaniu</li>
+                            <li><span>03</span> wieczór przy zachodzie słońca</li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="attraction__content">
+                    <p class="section-kicker">01 · Morze</p>
+                    <h2 id="beaches-title">Plaże i nadmorskie spacery</h2>
+                    <p class="attraction__lead">Szeroki horyzont, piasek i ścieżki biegnące wzdłuż brzegu pozwalają zacząć dzień spokojnie albo zakończyć go przy zachodzie słońca. Każda pora pokazuje wybrzeże z innej strony.</p>
+                    <ul class="feature-chips" aria-label="Najważniejsze cechy">
+                        <li>Poranny spacer</li>
+                        <li>Zachód słońca</li>
+                        <li>Nadmorskie widoki</li>
+                        <li>Bez pośpiechu</li>
+                    </ul>
+                    <button class="details-toggle" type="button" aria-expanded="false" aria-controls="beaches-details" data-expand>
+                        <span>Dowiedz się więcej</span><i aria-hidden="true">+</i>
+                    </button>
+                    <div class="expandable" id="beaches-details" aria-hidden="true">
+                        <div class="expandable__inner">
+                            <p>Spacer można dopasować do pogody i własnego tempa: wybrać otwartą plażę, fragment promenady albo spokojniejszy odcinek przy wydmach i lesie. Warto zostawić sobie czas na przystanek, obserwowanie morza i powrót inną drogą.</p>
+                            <div class="details-gallery details-gallery--two" aria-label="Dodatkowe zdjęcia plaży">
+                                <figure>
+                                    <img src="img/sarbinowo/1.jpg" width="2048" height="922" alt="Piaszczyste zejście prowadzące pomiędzy wydmami nad morze" loading="lazy">
+                                    <figcaption>Naturalne zejścia i szeroki horyzont</figcaption>
+                                </figure>
+                                <figure>
+                                    <img src="img/sarbinowo/15.jpg" width="2048" height="922" alt="Muszle ułożone na piasku przy spokojnym morzu" loading="lazy">
+                                    <figcaption>Detale, które warto zauważyć po drodze</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="attraction attraction--split attraction--reverse reveal" aria-labelledby="port-title" data-section>
+                <div class="attraction__media">
+                    <img src="img/sarbinowo/3.jpg" width="2048" height="922" alt="Kolorowe łodzie rybackie stojące na plaży" loading="lazy">
+                </div>
+                <div class="attraction__content">
+                    <p class="section-kicker">02 · Chłopy</p>
+                    <h2 id="port-title">Port rybacki w Chłopach</h2>
+                    <p class="attraction__lead">Łodzie stojące na piasku tworzą charakterystyczny obraz Chłopów i przypominają o rybackiej tradycji miejscowości. To dobry kierunek na niespieszny spacer i kilka nadmorskich kadrów.</p>
+                    <ul class="feature-chips" aria-label="Najważniejsze cechy">
+                        <li>Rybacki klimat</li>
+                        <li>Łodzie na plaży</li>
+                        <li>Spacer brzegiem</li>
+                        <li>Fotogeniczne miejsce</li>
+                    </ul>
+                    <button class="details-toggle" type="button" aria-expanded="false" aria-controls="port-details" data-expand>
+                        <span>Dowiedz się więcej</span><i aria-hidden="true">+</i>
+                    </button>
+                    <div class="expandable" id="port-details" aria-hidden="true">
+                        <div class="expandable__inner">
+                            <p>Wizyta w Chłopach może być krótkim celem samym w sobie albo częścią dłuższego spaceru wzdłuż wybrzeża. Najwięcej uroku ma proste obserwowanie łodzi, morza i codziennego rytmu niewielkiej miejscowości.</p>
+                            <div class="details-gallery details-gallery--single">
+                                <figure>
+                                    <img src="img/sarbinowo/13.jpg" width="1152" height="1152" alt="Mewa stojąca na piasku przy spokojnym morzu" loading="lazy">
+                                    <figcaption>Nadmorski detal podczas spaceru</figcaption>
+                                </figure>
+                                <!-- DO UZUPEŁNIENIA ZDJĘCIEM -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="attraction attraction--panorama reveal" aria-labelledby="evening-two-title" data-section>
+                <div class="panorama__image" data-scroll-shift="18">
+                    <img src="img/sarbinowo/4.jpg" width="2048" height="922" alt="Zachód słońca nad morzem i sylwetki jeźdźców na plaży" loading="lazy">
+                </div>
+                <div class="panorama__card">
+                    <p class="section-kicker">03 · Razem</p>
+                    <h2 id="evening-two-title">Spokojny wieczór we dwoje</h2>
+                    <p class="attraction__lead">Zachód słońca, spacer przy wodzie i chwila bez planu często wystarczą, by wieczór zapamiętać na długo. Można zostać na plaży albo połączyć spacer z późniejszą kolacją.</p>
+                    <ul class="feature-chips" aria-label="Najważniejsze cechy">
+                        <li>Zachód słońca</li>
+                        <li>Spacer we dwoje</li>
+                        <li>Spokojne tempo</li>
+                    </ul>
+                    <button class="details-toggle" type="button" aria-expanded="false" aria-controls="evening-two-details" data-expand>
+                        <span>Dowiedz się więcej</span><i aria-hidden="true">+</i>
+                    </button>
+                    <div class="expandable" id="evening-two-details" aria-hidden="true">
+                        <div class="expandable__inner">
+                            <ol class="chapter-list" aria-label="Trzy pomysły na spokojny wieczór">
+                                <li><span>01</span><div><h3>Spacer o zachodzie słońca</h3><p>Wybierzcie kierunek i zostawcie czas na przystanek przy morzu.</p></div></li>
+                                <li><span>02</span><div><h3>Kolacja</h3><p>Dopasujcie miejsce do nastroju i aktualnej oferty.</p></div></li>
+                                <li><span>03</span><div><h3>Spokojny powrót</h3><p>Wróćcie plażą lub promenadą, bez dokładnego planowania wieczoru.</p></div></li>
+                            </ol>
+                            <div class="details-gallery details-gallery--two" aria-label="Wieczorne widoki nad morzem">
+                                <figure>
+                                    <img src="img/sarbinowo/9.jpg" width="2048" height="922" alt="Słońce zachodzące nad morzem i mokrym brzegiem" loading="lazy">
+                                    <figcaption>Ostatnie światło nad wodą</figcaption>
+                                </figure>
+                                <figure>
+                                    <img src="img/sarbinowo/10.jpg" width="2048" height="922" alt="Nadmorski las i plaża w świetle zachodzącego słońca" loading="lazy">
+                                    <figcaption>Spokojny powrót wzdłuż brzegu</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="attraction attraction--food reveal" aria-labelledby="food-title" data-section>
+                <div class="section-heading">
+                    <p class="section-kicker">04 · Smaki</p>
+                    <h2 id="food-title">Gdzie zjeść</h2>
+                    <p class="attraction__lead">W okolicy można szukać zarówno prostych nadmorskich smaków, jak i miejsca na kawę lub deser. Zamiast jednej listy warto wybrać kategorię pasującą do planu dnia.</p>
+                </div>
+                <div class="food-grid" aria-label="Pomysły kulinarne">
+                    <article class="visual-card">
+                        <img src="img/sarbinowo/3.jpg" width="2048" height="922" alt="Łodzie rybackie na nadmorskiej plaży" loading="lazy">
+                        <div><span aria-hidden="true">◌</span><h3>Nadmorskie smaki</h3><p>Coś prostego po spacerze.</p></div>
+                    </article>
+                    <article class="visual-card visual-card--tall">
+                        <img src="img/sarbinowo/21.jpg" width="2048" height="922" alt="Kawa oraz deser podane na jasnym stole" loading="lazy">
+                        <div><span aria-hidden="true">◇</span><h3>Kawa i deser</h3><p>Spokojna przerwa w ciągu dnia.</p></div>
+                    </article>
+                    <article class="visual-card">
+                        <img src="img/sarbinowo/5.jpg" width="2048" height="922" alt="Nadmorska promenada o zachodzie słońca" loading="lazy">
+                        <div><span aria-hidden="true">○</span><h3>Kolacja wieczorem</h3><p>Zakończenie dnia bez pośpiechu.</p></div>
+                    </article>
+                </div>
+                <ul class="feature-chips feature-chips--center" aria-label="Najważniejsze cechy">
+                    <li>Ryby i proste dania</li>
+                    <li>Kawiarnie</li>
+                    <li>Desery</li>
+                    <li>Wieczorna kolacja</li>
+                </ul>
+                <div class="section-action">
+                    <button class="details-toggle" type="button" aria-expanded="false" aria-controls="food-details" data-expand>
+                        <span>Dowiedz się więcej</span><i aria-hidden="true">+</i>
+                    </button>
+                </div>
+                <div class="expandable expandable--wide" id="food-details" aria-hidden="true">
+                    <div class="expandable__inner">
+                        <p class="details-intro">Konkretne propozycje zostaną dodane po sprawdzeniu aktualnej oferty i informacji o lokalach.</p>
+                        <!-- DO UZUPEŁNIENIA PO WERYFIKACJI LOKALI -->
+                        <div class="venue-grid" aria-label="Miejsca na zweryfikowane lokale">
+                            <article class="venue-placeholder">
+                                <span>01</span>
+                                <h3>Nazwa lokalu</h3>
+                                <p>Krótki opis miejsca</p>
+                                <dl><div><dt>Kuchnia</dt><dd>Do uzupełnienia</dd></div><div><dt>Mapa</dt><dd>Link po weryfikacji</dd></div></dl>
+                            </article>
+                            <article class="venue-placeholder">
+                                <span>02</span>
+                                <h3>Nazwa lokalu</h3>
+                                <p>Krótki opis miejsca</p>
+                                <dl><div><dt>Kuchnia</dt><dd>Do uzupełnienia</dd></div><div><dt>Mapa</dt><dd>Link po weryfikacji</dd></div></dl>
+                            </article>
+                            <article class="venue-placeholder">
+                                <span>03</span>
+                                <h3>Nazwa lokalu</h3>
+                                <p>Krótki opis miejsca</p>
+                                <dl><div><dt>Kuchnia</dt><dd>Do uzupełnienia</dd></div><div><dt>Mapa</dt><dd>Link po weryfikacji</dd></div></dl>
+                            </article>
+                        </div>
+                        <!-- DO UZUPEŁNIENIA ZDJĘCIEM -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="attraction attraction--night reveal" aria-labelledby="night-title" data-section>
+                <div class="night-gallery" aria-label="Wieczorne kadry z wybrzeża">
+                    <img class="night-gallery__main" src="img/sarbinowo/5.jpg" width="2048" height="922" alt="Promenada i morze w ciepłym świetle zachodzącego słońca" loading="lazy">
+                    <img class="night-gallery__accent" src="img/sarbinowo/2.jpg" width="2048" height="922" alt="Paralotnia nad plażą i morzem" loading="lazy" data-scroll-shift="28">
+                </div>
+                <div class="attraction__content night-copy">
+                    <p class="section-kicker">05 · Po zachodzie</p>
+                    <h2 id="night-title">Wieczorna rozrywka</h2>
+                    <p class="attraction__lead">Wieczór może oznaczać spacer po promenadzie, sezonowe wydarzenie albo spokojne miejsce na zakończenie dnia. Plan najlepiej dopasować do nastroju i aktualnej oferty.</p>
+                    <ul class="feature-chips" aria-label="Najważniejsze cechy">
+                        <li>Promenada</li>
+                        <li>Sezonowe wydarzenia</li>
+                        <li>Spokojny wieczór</li>
+                    </ul>
+                    <button class="details-toggle" type="button" aria-expanded="false" aria-controls="night-details" data-expand>
+                        <span>Dowiedz się więcej</span><i aria-hidden="true">+</i>
+                    </button>
+                    <div class="expandable" id="night-details" aria-hidden="true">
+                        <div class="expandable__inner">
+                            <!-- DO UZUPEŁNIENIA PO WERYFIKACJI WYDARZEŃ I MIEJSC -->
+                            <div class="option-grid">
+                                <article><span aria-hidden="true">01</span><h3>Wydarzenia sezonowe</h3><p>Aktualny program do sprawdzenia przed wyjściem.</p></article>
+                                <article><span aria-hidden="true">02</span><h3>Miejsca z muzyką</h3><p>Propozycje zostaną dodane po weryfikacji.</p></article>
+                                <article><span aria-hidden="true">03</span><h3>Spokojny wieczór</h3><p>Miejsca otwarte wieczorem, bez głośnego planu.</p></article>
+                            </div>
+                            <div class="details-gallery details-gallery--single">
+                                <figure>
+                                    <img src="img/sarbinowo/25.jpg" width="1080" height="2160" alt="Kolorowe latawce nad plażą i zabudową Sarbinowa" loading="lazy">
+                                    <figcaption>Sezonowy klimat nadmorskiej miejscowości</figcaption>
+                                </figure>
+                                <!-- DO UZUPEŁNIENIA ZDJĘCIEM -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="attraction attraction--route reveal" aria-labelledby="bike-title" data-section>
+                <div class="route-intro">
+                    <div>
+                        <p class="section-kicker">06 · Na dwóch kołach</p>
+                        <h2 id="bike-title">Wycieczki rowerowe</h2>
+                        <p class="attraction__lead">Rower pozwala połączyć Sarbinowo i Chłopy w jedną spokojną wycieczkę. Trasę można skrócić, wydłużyć albo przerwać wtedy, gdy znajdzie się dobre miejsce na odpoczynek.</p>
+                    </div>
+                    <img src="img/dom/12.jpg" width="2412" height="1468" alt="Rowery przygotowane dla gości Białego Domu" loading="lazy">
+                </div>
+                <ol class="route-line" aria-label="Przykładowy przebieg wycieczki">
+                    <li><span>Start</span><strong>Biały Dom</strong><small>Spokojny początek</small></li>
+                    <li><span>Przystanek</span><strong>Sarbinowo</strong><small>Plaża i promenada</small></li>
+                    <li><span>Kierunek</span><strong>Chłopy</strong><small>Rybacki klimat</small></li>
+                    <li><span>Powrót</span><strong>Własnym rytmem</strong><small>Bez narzuconego tempa</small></li>
+                </ol>
+                <ul class="feature-chips feature-chips--center" aria-label="Najważniejsze cechy">
+                    <li>Elastyczna trasa</li>
+                    <li>Przystanki po drodze</li>
+                    <li>Rowery dla gości</li>
+                </ul>
+                <div class="section-action">
+                    <button class="details-toggle" type="button" aria-expanded="false" aria-controls="bike-details" data-expand>
+                        <span>Dowiedz się więcej</span><i aria-hidden="true">+</i>
+                    </button>
+                </div>
+                <div class="expandable expandable--wide" id="bike-details" aria-hidden="true">
+                    <div class="expandable__inner">
+                        <div class="route-options" aria-label="Propozycje wariantów trasy">
+                            <article><span>01</span><h3>Trasa krótka</h3><p>Na spokojny przejazd z możliwością szybkiego powrotu.</p></article>
+                            <article><span>02</span><h3>Trasa spokojna</h3><p>Z przystankami przy plaży i czasem na odpoczynek.</p></article>
+                            <article><span>03</span><h3>Trasa dłuższa</h3><p>Do zaplanowania według pogody i własnych możliwości.</p></article>
+                        </div>
+                        <p class="details-note">Przed wyjazdem warto ocenić pogodę i wiatr. Podane warianty pozostają elastycznym pomysłem — bez niezweryfikowanych kilometrów i czasów przejazdu.</p>
+                        <div class="details-gallery details-gallery--single details-gallery--landscape">
+                            <figure>
+                                <img src="img/dom/10.jpg" width="2048" height="922" alt="Dekoracyjny rower z zegarem stojący na parapecie Białego Domu" loading="lazy">
+                                <figcaption>Rowerowy motyw w Białym Domu</figcaption>
+                            </figure>
+                            <!-- DO UZUPEŁNIENIA ZDJĘCIEM -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="final-cta reveal" aria-labelledby="cta-title">
+            <div class="final-cta__glow" aria-hidden="true"></div>
+            <p class="section-kicker">Twój spokojny punkt startowy</p>
+            <h2 id="cta-title">Zaplanuj swój pobyt w Białym Domu</h2>
+            <p>Wybierz termin, obejrzyj pokoje i zapytaj o szczegóły bezpośrednio.</p>
+            <div class="final-cta__actions">
+                <a class="button button--primary" href="https://www.booking.com/hotel/pl/bialy-dom-sarbinowo.pl.html" target="_blank" rel="noopener">Sprawdź dostępność</a>
+                <a class="button button--outline" href="gallery.html">Zobacz galerię</a>
+                <a class="button button--call" href="tel:+48504226321">Zadzwoń</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="site-footer__logo" href="index.html" aria-label="Wróć do strony głównej Białego Domu">
+            <img src="img/logo.PNG" width="964" height="341" alt="Biały Dom Sarbinowo">
+        </a>
+        <div class="site-footer__identity">
+            <strong>Biały Dom Sarbinowo</strong>
+            <span>bialydomsarbinowo.pl</span>
+        </div>
+        <div class="site-footer__links">
+            <a href="tel:+48504226321">+48 504 226 321</a>
+            <a href="index.html">Wróć do strony głównej</a>
+        </div>
+    </footer>
+
+    <script src="attractions-prototype.js"></script>
+</body>
+</html>
