@@ -38,6 +38,13 @@ if (menuToggle && mobileMenu) {
     closeMenu();
   });
 
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && isMenuOpen()) {
+      closeMenu();
+      menuToggle.focus();
+    }
+  });
+
   window.addEventListener('resize', function () {
     if (window.innerWidth > 1023) closeMenu();
   });
@@ -127,6 +134,9 @@ carousels.forEach((carousel) => {
   const firstClone = originalItems[0].cloneNode(true);
   const lastClone = originalItems[originalItems.length - 1].cloneNode(true);
 
+  firstClone.setAttribute('data-carousel-clone', 'true');
+  lastClone.setAttribute('data-carousel-clone', 'true');
+
   carouselInner.appendChild(firstClone);
   carouselInner.insertBefore(lastClone, originalItems[0]);
 
@@ -138,7 +148,15 @@ carousels.forEach((carousel) => {
 
   function updateIndicators(index) {
     indicators.forEach((indicator, idx) => {
-      indicator.classList.toggle('active', idx === index);
+      const isActive = idx === index;
+
+      indicator.classList.toggle('active', isActive);
+
+      if (isActive) {
+        indicator.setAttribute('aria-current', 'true');
+      } else {
+        indicator.removeAttribute('aria-current');
+      }
     });
   }
 
@@ -147,7 +165,27 @@ carousels.forEach((carousel) => {
     return items[0] ? items[0].getBoundingClientRect().width : 0;
   }
 
+  function updateSlideAccessibility(index) {
+    const visibleItemIndex = index + 1;
+
+    allItems().forEach((item, itemIndex) => {
+      const isVisible = itemIndex === visibleItemIndex;
+
+      item.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
+
+      item.querySelectorAll('a').forEach((link) => {
+        if (isVisible) {
+          link.removeAttribute('tabindex');
+        } else {
+          link.setAttribute('tabindex', '-1');
+        }
+      });
+    });
+  }
+
   function setPosition(index, withTransition = true) {
+    updateSlideAccessibility(index);
+
     const slideWidth = getSlideWidth();
     if (!slideWidth) return;
 

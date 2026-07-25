@@ -1,7 +1,7 @@
 (function () {
   const galleryLinks = Array.from(document.querySelectorAll('#galleryGrid a'));
   const featureLinks = Array.from(document.querySelectorAll('.feature-lightbox'));
-  const sectionLinks = Array.from(document.querySelectorAll('.gallery-section .image-popup'));
+  const sectionCarousels = Array.from(document.querySelectorAll('.gallery-section .gallery-carousel'));
 
   const lightbox = document.getElementById('mobileLightbox');
   const image = document.getElementById('lightboxImage');
@@ -12,6 +12,7 @@
   let currentIndex = 0;
   let activeLinks = [];
   let arrowsEnabled = false;
+  let previouslyFocusedElement = null;
 
   if (!lightbox || !image) return;
 
@@ -25,17 +26,25 @@
     const arrowSize = isSmall ? 44 : 52;
     const offset = isSmall ? 8 : 12;
 
-    const top = rect.top + rect.height / 2 - arrowSize / 2;
-    const prevLeft = rect.left + offset;
-    const nextRight = window.innerWidth - rect.right + offset;
+    const top = rect.top + rect.height / 2;
+    const roomOnLeft = rect.left >= arrowSize + offset * 2;
+    const roomOnRight = window.innerWidth - rect.right >= arrowSize + offset * 2;
+
+    const prevLeft = roomOnLeft
+      ? rect.left - arrowSize - offset
+      : rect.left + offset;
+
+    const nextLeft = roomOnRight
+      ? rect.right + offset
+      : rect.right - arrowSize - offset;
 
     prevBtn.style.top = `${top}px`;
-    prevBtn.style.left = `${prevLeft}px`;
+    prevBtn.style.left = `${Math.max(offset, prevLeft)}px`;
     prevBtn.style.right = 'auto';
 
     nextBtn.style.top = `${top}px`;
-    nextBtn.style.right = `${nextRight}px`;
-    nextBtn.style.left = 'auto';
+    nextBtn.style.left = `${Math.min(window.innerWidth - arrowSize - offset, nextLeft)}px`;
+    nextBtn.style.right = 'auto';
   }
 
   function setImage(index) {
@@ -48,6 +57,7 @@
   }
 
   function openLightbox(index, links, showArrows) {
+    previouslyFocusedElement = document.activeElement;
     activeLinks = links;
     arrowsEnabled = showArrows;
 
@@ -72,6 +82,10 @@
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+
+    if (closeBtn) {
+      closeBtn.focus();
+    }
 
     setTimeout(updateArrowPositions, 30);
   }
@@ -105,6 +119,12 @@
       nextBtn.style.left = '';
       nextBtn.style.right = '';
     }
+
+    if (previouslyFocusedElement instanceof HTMLElement) {
+      previouslyFocusedElement.focus();
+    }
+
+    previouslyFocusedElement = null;
   }
 
   function showNext() {
@@ -121,6 +141,28 @@
     setTimeout(updateArrowPositions, 30);
   }
 
+  function trapFocus(event) {
+    const focusableControls = [closeBtn, prevBtn, nextBtn].filter((control) => {
+      if (!control) return false;
+
+      const style = window.getComputedStyle(control);
+      return style.display !== 'none' && style.visibility !== 'hidden';
+    });
+
+    if (!focusableControls.length) return;
+
+    const firstControl = focusableControls[0];
+    const lastControl = focusableControls[focusableControls.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstControl) {
+      event.preventDefault();
+      lastControl.focus();
+    } else if (!event.shiftKey && document.activeElement === lastControl) {
+      event.preventDefault();
+      firstControl.focus();
+    }
+  }
+
   galleryLinks.forEach((link, index) => {
     link.addEventListener('click', function (event) {
       event.preventDefault();
@@ -131,14 +173,28 @@
   featureLinks.forEach((link, index) => {
     link.addEventListener('click', function (event) {
       event.preventDefault();
-      openLightbox(index, featureLinks, false);
+      const showArrows = link.dataset.lightboxArrows === 'true';
+      openLightbox(index, featureLinks, showArrows);
     });
   });
 
-  sectionLinks.forEach((link, index) => {
-    link.addEventListener('click', function (event) {
-      event.preventDefault();
-      openLightbox(index, sectionLinks, true);
+  sectionCarousels.forEach((carousel) => {
+    const carouselLinks = Array.from(
+      carousel.querySelectorAll('.carousel-item:not([data-carousel-clone="true"]) .image-popup')
+    );
+    const interactiveLinks = Array.from(carousel.querySelectorAll('.image-popup'));
+
+    interactiveLinks.forEach((link) => {
+      const index = carouselLinks.findIndex(
+        (carouselLink) => carouselLink.getAttribute('href') === link.getAttribute('href')
+      );
+
+      if (index === -1) return;
+
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        openLightbox(index, carouselLinks, true);
+      });
     });
   });
 
@@ -171,6 +227,7 @@
 
   document.addEventListener('keydown', function (event) {
     if (!lightbox.classList.contains('is-open')) return;
+    if (event.key === 'Tab') trapFocus(event);
     if (event.key === 'Escape') closeLightbox();
     if (event.key === 'ArrowRight') showNext();
     if (event.key === 'ArrowLeft') showPrev();

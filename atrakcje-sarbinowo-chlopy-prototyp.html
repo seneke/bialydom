@@ -22,28 +22,38 @@
     <header class="site-header" data-header>
         <nav class="site-nav" aria-label="Nawigacja prototypu">
             <a class="site-logo" href="index.html" aria-label="Biały Dom Sarbinowo – strona główna">
-                <img class="site-logo__default" src="img/logo.PNG" width="964" height="341" alt="Biały Dom Sarbinowo">
+                <img class="site-logo__default" src="img/logo2.png" width="964" height="344" alt="Biały Dom Sarbinowo">
                 <img class="site-logo__compact" src="img/logo2.png" width="964" height="344" alt="">
             </a>
 
-            <a class="back-link back-link--desktop" href="index.html">
-                <span aria-hidden="true">←</span>
-                Wróć do strony głównej
-            </a>
+            <ul class="desktop-menu">
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="gallery.html">Galeria</a></li>
+                <li><a href="index.html#contact">Kontakt</a></li>
+            </ul>
 
             <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="prototype-menu" aria-label="Otwórz menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="menu-toggle__label">Menu</span>
+                <span class="menu-toggle__icon" aria-hidden="true">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
             </button>
 
             <div class="mobile-menu" id="prototype-menu" aria-hidden="true">
                 <a href="index.html">Strona główna</a>
                 <a href="gallery.html">Galeria</a>
-                <a href="tel:+48504226321">Zadzwoń</a>
+                <a href="index.html#contact">Kontakt</a>
             </div>
         </nav>
     </header>
+
+    <a class="floating-home" href="index.html" aria-label="Przejdź do strony głównej">
+        <span aria-hidden="true">←</span>
+        <span class="floating-home__label floating-home__label--desktop">Strona główna</span>
+        <span class="floating-home__label floating-home__label--mobile">Główna</span>
+    </a>
 
     <section class="hero" aria-labelledby="page-title">
         <div class="hero__image" data-parallax aria-hidden="true"></div>
@@ -69,8 +79,10 @@
         <div class="sections-shell">
             <section class="attraction attraction--split reveal" aria-labelledby="beaches-title" data-section>
                 <div class="media-column">
-                    <div class="attraction__media">
-                        <img src="img/sarbinowo/14.jpg" width="2048" height="922" alt="Szeroka plaża i drewniane molo nad Bałtykiem" loading="lazy">
+                    <div class="attraction__media beach-image-switcher" data-beach-switcher>
+                        <img class="beach-image beach-image--morning is-active" data-beach-image="morning" src="img/sarbinowo/14.jpg" width="3264" height="1468" alt="Jasna plaża i drewniane molo pod błękitnym niebem" aria-hidden="false" loading="lazy">
+                        <img class="beach-image beach-image--views" data-beach-image="views" src="img/sarbinowo/18.jpg" width="3264" height="1468" alt="Szeroki widok na plażę, morze i nadmorski las" aria-hidden="true" loading="lazy">
+                        <img class="beach-image beach-image--sunset" data-beach-image="sunset" src="img/sarbinowo/19.jpg" width="1800" height="4000" alt="Zachód słońca nad brzegiem morza" aria-hidden="true" loading="lazy">
                     </div>
                     <aside class="best-for" aria-label="Kiedy najlepiej wybrać się nad morze">
                         <p>Najlepiej sprawdzi się na...</p>
@@ -81,16 +93,15 @@
                         </ul>
                     </aside>
                 </div>
-                <div class="attraction__content">
+                <div class="attraction__content content-card content-card--sea">
                     <p class="section-kicker">01 · Morze</p>
                     <h2 id="beaches-title">Plaże i nadmorskie spacery</h2>
                     <p class="attraction__lead">Szeroki horyzont, piasek i ścieżki biegnące wzdłuż brzegu pozwalają zacząć dzień spokojnie albo zakończyć go przy zachodzie słońca. Każda pora pokazuje wybrzeże z innej strony.</p>
-                    <ul class="feature-chips" aria-label="Najważniejsze cechy">
-                        <li>Poranny spacer</li>
-                        <li>Zachód słońca</li>
-                        <li>Nadmorskie widoki</li>
-                        <li>Bez pośpiechu</li>
-                    </ul>
+                    <div class="beach-image-controls" role="group" aria-label="Wybierz zdjęcie plaży">
+                        <button class="beach-image-control is-active" type="button" data-beach-target="morning" aria-pressed="true" aria-label="Pokaż zdjęcie: Poranny spacer">Poranny spacer</button>
+                        <button class="beach-image-control" type="button" data-beach-target="views" aria-pressed="false" aria-label="Pokaż zdjęcie: Nadmorskie widoki">Nadmorskie widoki</button>
+                        <button class="beach-image-control" type="button" data-beach-target="sunset" aria-pressed="false" aria-label="Pokaż zdjęcie: Zachód słońca">Zachód słońca</button>
+                    </div>
                     <button class="details-toggle" type="button" aria-expanded="false" aria-controls="beaches-details" data-expand>
                         <span>Dowiedz się więcej</span><i aria-hidden="true">+</i>
                     </button>
@@ -113,10 +124,20 @@
             </section>
 
             <section class="attraction attraction--split attraction--reverse reveal" aria-labelledby="port-title" data-section>
-                <div class="attraction__media">
-                    <img src="img/sarbinowo/3.jpg" width="2048" height="922" alt="Kolorowe łodzie rybackie stojące na plaży" loading="lazy">
+                <div class="media-column media-column--harbour">
+                    <div class="attraction__media">
+                        <img src="img/sarbinowo/3.jpg" width="2048" height="922" alt="Kolorowe łodzie rybackie stojące na plaży" loading="lazy">
+                    </div>
+                    <aside class="harbour-note" aria-label="Na co warto zwrócić uwagę w porcie rybackim">
+                        <p>Warto zwrócić uwagę</p>
+                        <ol>
+                            <li><span>01</span> łodzie stojące bezpośrednio na plaży</li>
+                            <li><span>02</span> rybacki charakter Chłopów</li>
+                            <li><span>03</span> spokojny spacer i nadmorskie zdjęcia</li>
+                        </ol>
+                    </aside>
                 </div>
-                <div class="attraction__content">
+                <div class="attraction__content content-card content-card--harbour">
                     <p class="section-kicker">02 · Chłopy</p>
                     <h2 id="port-title">Port rybacki w Chłopach</h2>
                     <p class="attraction__lead">Łodzie stojące na piasku tworzą charakterystyczny obraz Chłopów i przypominają o rybackiej tradycji miejscowości. To dobry kierunek na niespieszny spacer i kilka nadmorskich kadrów.</p>
@@ -148,7 +169,7 @@
                 <div class="panorama__image" data-scroll-shift="18">
                     <img src="img/sarbinowo/4.jpg" width="2048" height="922" alt="Zachód słońca nad morzem i sylwetki jeźdźców na plaży" loading="lazy">
                 </div>
-                <div class="panorama__card">
+                <div class="panorama__card content-card content-card--evening">
                     <p class="section-kicker">03 · Razem</p>
                     <h2 id="evening-two-title">Spokojny wieczór we dwoje</h2>
                     <p class="attraction__lead">Zachód słońca, spacer przy wodzie i chwila bez planu często wystarczą, by wieczór zapamiętać na długo. Można zostać na plaży albo połączyć spacer z późniejszą kolacją.</p>
@@ -183,7 +204,7 @@
             </section>
 
             <section class="attraction attraction--food reveal" aria-labelledby="food-title" data-section>
-                <div class="section-heading">
+                <div class="section-heading content-card content-card--food">
                     <p class="section-kicker">04 · Smaki</p>
                     <h2 id="food-title">Gdzie zjeść</h2>
                     <p class="attraction__lead">W okolicy można szukać zarówno prostych nadmorskich smaków, jak i miejsca na kawę lub deser. Zamiast jednej listy warto wybrać kategorię pasującą do planu dnia.</p>
@@ -247,7 +268,7 @@
                     <img class="night-gallery__main" src="img/sarbinowo/5.jpg" width="2048" height="922" alt="Promenada i morze w ciepłym świetle zachodzącego słońca" loading="lazy">
                     <img class="night-gallery__accent" src="img/sarbinowo/2.jpg" width="2048" height="922" alt="Paralotnia nad plażą i morzem" loading="lazy" data-scroll-shift="28">
                 </div>
-                <div class="attraction__content night-copy">
+                <div class="attraction__content night-copy content-card content-card--night">
                     <p class="section-kicker">05 · Po zachodzie</p>
                     <h2 id="night-title">Wieczorna rozrywka</h2>
                     <p class="attraction__lead">Wieczór może oznaczać spacer po promenadzie, sezonowe wydarzenie albo spokojne miejsce na zakończenie dnia. Plan najlepiej dopasować do nastroju i aktualnej oferty.</p>
@@ -281,7 +302,7 @@
 
             <section class="attraction attraction--route reveal" aria-labelledby="bike-title" data-section>
                 <div class="route-intro">
-                    <div>
+                    <div class="content-card content-card--bike">
                         <p class="section-kicker">06 · Na dwóch kołach</p>
                         <h2 id="bike-title">Wycieczki rowerowe</h2>
                         <p class="attraction__lead">Rower pozwala połączyć Sarbinowo i Chłopy w jedną spokojną wycieczkę. Trasę można skrócić, wydłużyć albo przerwać wtedy, gdy znajdzie się dobre miejsce na odpoczynek.</p>
